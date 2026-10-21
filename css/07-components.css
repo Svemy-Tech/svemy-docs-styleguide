@@ -134,11 +134,11 @@ pre code {
 /* ===============================
 HIGHLIGHTED TEXT
 =============================== */
+/* Design system: yellow is never a highlight; grey fill, square corners */
 .text-highlight {
-  background: var(--svemy-primary-300);
+  background: var(--svemy-light-300);
   color: var(--svemy-dark-500);
   padding: 0.1mm 0.5mm;
-  border-radius: 1px;
   font-weight: 400;
 }
 

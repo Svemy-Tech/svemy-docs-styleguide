@@ -470,72 +470,289 @@
 
         <main role="main">
           <p class="text-muted mb-6">
-            The following examples define the exact visual appearance of
-            headings, body text, captions, and inline styles. Use this page as a
-            reference when generating new documents from AI prompts.
+            Two typefaces and one type scale for every SVEMY document. Sizes
+            are in points with exact leading. Set every paragraph in one of
+            these styles and never size text by hand.
           </p>
 
           <article class="subsection">
-            <h4 id="typography-headings" class="subsection-title">
-              <a href="#toc">Headings</a>
+            <h4 id="typography-typefaces" class="subsection-title">
+              <a href="#toc">Typefaces</a>
             </h4>
-            <h1>Heading 1 · Report Title</h1>
-            <h2>Heading 2 · Report Subtitle</h2>
-            <h3>Heading 3 · Section Title</h3>
-            <h4>Heading 4 · Subsection Title</h4>
+            <div class="type-families">
+              <div class="type-family">
+                <div class="type-family-sample is-display">Aa</div>
+                <div>
+                  <p class="type-family-name">DINish Condensed</p>
+                  <p class="type-family-weights is-display">
+                    <span style="font-weight: 400">Regular</span> ·
+                    <span style="font-weight: 500">Medium</span> ·
+                    <span style="font-weight: 600">SemiBold</span> ·
+                    <span style="font-weight: 700">Bold</span>
+                  </p>
+                  <p class="type-small">
+                    Display: document title, subtitle, H1–H3, labels, caption
+                    labels and page furniture.
+                  </p>
+                </div>
+              </div>
+              <div class="type-family">
+                <div class="type-family-sample is-body">Aa</div>
+                <div>
+                  <p class="type-family-name">Geist</p>
+                  <p class="type-family-weights is-body">
+                    <span style="font-weight: 400">Regular</span> ·
+                    <span style="font-style: italic">Italic</span> ·
+                    <span style="font-weight: 600">SemiBold</span> ·
+                    <span style="font-weight: 700">Bold</span>
+                  </p>
+                  <p class="type-small">
+                    Reading: H4, lead, body, small text, captions and table
+                    text.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="subsection">
+            <h4 id="typography-headings" class="subsection-title">
+              <a href="#toc">Titles &amp; headings</a>
+            </h4>
+            <div class="type-specimen">
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-doc-title">Document title</p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">Title · DINish Condensed Bold</p>
+                  <p class="type-small">40 / 40 pt · space 18 / 6</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-doc-subtitle">Subtitle under the title</p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">
+                    Subtitle · DINish Condensed Medium
+                  </p>
+                  <p class="type-small">15 / 19 pt · +0.02 em · space 0 / 0</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-h1">Section heading</p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">H1 · DINish Condensed Bold</p>
+                  <p class="type-small">20 / 24 pt · space 30 / 10</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-h2">Subsection Heading in Title Case</p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">H2 · DINish Condensed Bold</p>
+                  <p class="type-small">14 / 18 pt · space 20 / 6</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-h3">Topic heading in sentence case</p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">H3 · DINish Condensed Bold</p>
+                  <p class="type-small">11.5 / 15 pt · space 14 / 4</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-h4">Minor heading above a paragraph</p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">H4 · Geist SemiBold</p>
+                  <p class="type-small">10 / 15 pt · space 10 / 2</p>
+                </div>
+              </div>
+            </div>
           </article>
 
           <article class="subsection">
             <h4 id="typography-body-text" class="subsection-title">
-              <a href="#toc">Body & inline text</a>
+              <a href="#toc">Text &amp; labels</a>
             </h4>
-            <ol class="list-ordered-decimal">
-              <li>
-                Regular text, used for the main narrative and descriptions
-                across the document.
-              </li>
-              <li>
-                <span class="text-bold">Bold text</span> is used for emphasis
-                and key phrases inside a paragraph.
-              </li>
-              <li>
-                <span class="text-italic">Italic text</span> is used for notes,
-                references, or external documents.
-              </li>
-              <li>
-                <span class="text-underline">Underlined text</span> is reserved
-                for legal terms or explicit emphasis.
-              </li>
-              <li>
-                <span class="text-strike">Strikethrough text</span> indicates
-                deprecated information or revisions.
-              </li>
-              <li>
-                Inline <span class="text-code">code-style text</span> is used to
-                highlight parameter names or IDs.
-              </li>
-              <li>
-                <span class="text-highlight-warning">Highlighted text</span> is
-                used to emphasize important information within paragraphs.
-              </li>
-              <li>
-                A sentence with a
-                <a href="https://svemy.com" class="text-link">link</a>
-                that can be clicked.
-              </li>
-              <li>
-                <span class="text-muted"
-                  >Muted text is used for secondary information, metadata, or
-                  less important content.</span
-                >
-              </li>
-              <li>
-                <span class="text-small text-muted"
-                  >Small text is used for footnotes, captions, and
-                  disclaimers.</span
-                >
-              </li>
-            </ol>
+            <div class="type-specimen">
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-lead">
+                    Lead paragraph that opens the document and states its
+                    purpose in one or two sentences.
+                  </p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">Lead · Geist Regular</p>
+                  <p class="type-small">12 / 18 pt · space 0 / 14</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-body">
+                    Body text for the narrative, descriptions and clauses. Left
+                    aligned, ragged right, never justified.
+                    <strong>SemiBold</strong> is the only emphasis.
+                  </p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">Body · Geist Regular</p>
+                  <p class="type-small">10 / 15 pt · space 0 / 8</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-small">
+                    Small text for notes, disclaimers and secondary information.
+                  </p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">Small · Geist Regular</p>
+                  <p class="type-small">8.5 / 12 pt · space 0 / 6</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-caption">
+                    <span class="type-caption-label">Figure 01</span>&ensp;Caption
+                    under a figure, as wide as the image.
+                  </p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">Caption · Geist Regular</p>
+                  <p class="type-small">8.5 / 12 pt · space 6 / 16</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p><span class="type-caption-label">Figure 01 · Table 01</span></p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">
+                    Caption label · DINish Condensed Bold
+                  </p>
+                  <p class="type-small">9 / 12 pt · +0.04 em · run-in</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-label">Prepared for</p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">
+                    Label · DINish Condensed SemiBold
+                  </p>
+                  <p class="type-small">9 / 12 pt · +0.06 em · no colon</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-label-small">Contract no.</p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">
+                    Label small · DINish Condensed SemiBold
+                  </p>
+                  <p class="type-small">7.5 / 10 pt · +0.08 em · space 2 / 0</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-table-text">
+                    Table cells · 3,000 m³ · $25,000.00 CAD · September 9, 2026
+                  </p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">Table text · Geist Regular</p>
+                  <p class="type-small">9 / 13 pt · tabular figures</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="subsection">
+            <h4 id="typography-inline" class="subsection-title">
+              <a href="#toc">Inline styles</a>
+            </h4>
+            <div class="type-specimen">
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-body">
+                    Girders are placed <strong>after the pad is tested</strong>.
+                  </p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">Strong · Geist SemiBold</p>
+                  <p class="type-small">The only emphasis in body text</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-body">
+                    Designed to the <em>BC Building Code 2024</em>.
+                  </p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">Italic · Geist Italic</p>
+                  <p class="type-small">Publication titles and placeholders</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-body">
+                    Details at
+                    <a href="https://svemy.com" class="text-link">svemy.com</a>.
+                  </p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">Link · text colour, underline</p>
+                  <p class="type-small">No coloured links</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-body">
+                    See drawing <span class="text-code">BF77585_SD_02R0</span>.
+                  </p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">Code · monospace 9 pt</p>
+                  <p class="type-small">File names, IDs and parameters</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-body">
+                    Access closes
+                    <span class="text-highlight">on November 4, 2026</span>.
+                  </p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">Highlight · grey fill</p>
+                  <p class="type-small">Sparingly; never yellow</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <p class="type-body">
+                    Girder weight <span class="text-strike">36 t</span> 38 t.
+                  </p>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">Strikethrough · secondary grey</p>
+                  <p class="type-small">Superseded values in revisions</p>
+                </div>
+              </div>
+            </div>
           </article>
         </main>
 

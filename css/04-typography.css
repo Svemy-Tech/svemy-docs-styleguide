@@ -98,6 +98,8 @@ p {
   padding: 0 1mm;
 }
 
+/* Inline styles are not in the type scale; they follow the design system
+   rules: no yellow or coloured text, grey fill only, square corners */
 .text-code {
   font-family:
     "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
@@ -105,22 +107,23 @@ p {
   font-size: 9pt;
   background: var(--svemy-light-300);
   padding: 0.3mm 1.5mm;
-  border-radius: 2px;
 }
 
 .text-link {
-  color: var(--svemy-primary-500);
+  color: inherit;
   text-decoration: underline;
-  text-decoration-color: var(--svemy-primary-500);
-  text-decoration-thickness: 0.6px;
+  text-decoration-color: var(--svemy-dark-200);
+  text-decoration-thickness: 0.5pt;
+  text-underline-offset: 1.5pt;
 }
 
 .text-link:hover {
-  color: var(--svemy-primary-500);
+  color: inherit;
 }
 
 .text-strike {
   text-decoration: line-through;
+  color: var(--svemy-dark-200);
 }
 .text-underline {
   text-decoration: underline;
@@ -137,4 +140,263 @@ em,
 i {
   font-style: italic;
   font-weight: 400;
+}
+
+/* ===============================
+TYPE SCALE (design system)
+One class per element of the SVEMY Documents type scale.
+Sizes in pt, leading exact, margins = space before / after.
+Colours use the current palette until it is aligned with the
+design system: text = dark-600, secondary and muted = dark-200.
+=============================== */
+.type-doc-title {
+  font-family: var(--font-display);
+  font-size: 40pt;
+  line-height: 40pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--svemy-dark-600);
+  margin: 18pt 0 6pt;
+}
+
+.type-doc-subtitle {
+  font-family: var(--font-display);
+  font-size: 15pt;
+  line-height: 19pt;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--svemy-dark-600);
+  margin: 0;
+}
+
+.type-h1 {
+  font-family: var(--font-display);
+  font-size: 20pt;
+  line-height: 24pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: var(--svemy-dark-600);
+  margin: 30pt 0 10pt;
+}
+
+/* H2 Title Case and H3 sentence case: typed as written, no transform */
+.type-h2 {
+  font-family: var(--font-display);
+  font-size: 14pt;
+  line-height: 18pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--svemy-dark-600);
+  margin: 20pt 0 6pt;
+}
+
+.type-h3 {
+  font-family: var(--font-display);
+  font-size: 11.5pt;
+  line-height: 15pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--svemy-dark-600);
+  margin: 14pt 0 4pt;
+}
+
+.type-h4 {
+  font-family: var(--font-body);
+  font-size: 10pt;
+  line-height: 15pt;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--svemy-dark-600);
+  margin: 10pt 0 2pt;
+}
+
+.type-lead {
+  font-family: var(--font-body);
+  font-size: 12pt;
+  line-height: 18pt;
+  font-weight: 400;
+  color: var(--svemy-dark-600);
+  margin: 0 0 14pt;
+}
+
+.type-body {
+  font-family: var(--font-body);
+  font-size: 10pt;
+  line-height: 15pt;
+  font-weight: 400;
+  color: var(--svemy-dark-600);
+  margin: 0 0 8pt;
+}
+
+.type-small {
+  font-family: var(--font-body);
+  font-size: 8.5pt;
+  line-height: 12pt;
+  font-weight: 400;
+  color: var(--svemy-dark-200);
+  margin: 0 0 6pt;
+}
+
+.type-caption {
+  font-family: var(--font-body);
+  font-size: 8.5pt;
+  line-height: 12pt;
+  font-weight: 400;
+  color: var(--svemy-dark-200);
+  margin: 6pt 0 16pt;
+}
+
+/* Run-in label at the start of a caption: FIGURE 01 + en space */
+.type-caption-label {
+  font-family: var(--font-display);
+  font-size: 9pt;
+  line-height: 12pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--svemy-dark-200);
+}
+
+/* Labels have no colon: PREPARED FOR, not PREPARED FOR: */
+.type-label {
+  font-family: var(--font-display);
+  font-size: 9pt;
+  line-height: 12pt;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--svemy-dark-600);
+  margin: 0;
+}
+
+.type-label-small {
+  font-family: var(--font-display);
+  font-size: 7.5pt;
+  line-height: 10pt;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--svemy-dark-200);
+  margin: 2pt 0 0;
+}
+
+.type-table-text {
+  font-family: var(--font-body);
+  font-size: 9pt;
+  line-height: 13pt;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--svemy-dark-600);
+  margin: 0;
+}
+
+/* ===============================
+TYPE SPECIMEN (Typography System page)
+Sample on the left, spec on the right, rows split by hairlines
+=============================== */
+.type-families {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 18pt;
+}
+
+.type-family {
+  display: flex;
+  align-items: flex-start;
+  gap: 12pt;
+  border-top: 0.75pt solid var(--svemy-dark-600);
+  padding-top: 8pt;
+}
+
+.type-family-sample {
+  font-size: 44pt;
+  line-height: 40pt;
+  color: var(--svemy-dark-600);
+}
+
+.type-family-sample.is-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+.type-family-sample.is-body {
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.type-family-name {
+  font-family: var(--font-display);
+  font-size: 11.5pt;
+  line-height: 15pt;
+  font-weight: 700;
+  color: var(--svemy-dark-600);
+}
+
+.type-family-weights {
+  font-size: 9pt;
+  line-height: 13pt;
+  color: var(--svemy-dark-600);
+  margin-bottom: 4pt;
+}
+
+.type-family-weights.is-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.02em;
+}
+
+.type-family-weights.is-body {
+  font-family: var(--font-body);
+}
+
+.type-family .type-small {
+  margin: 0;
+}
+
+/* Rows are top aligned. Text boxes are trimmed to the cap height and the
+   baseline, so cap tops of sample and spec line up and every row has the
+   same space above and below its text, whatever the font size. */
+.type-specimen-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 62mm;
+  column-gap: 18pt;
+  align-items: start;
+  padding: 9pt 0;
+  border-bottom: 0.5pt solid var(--svemy-light-400);
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* In the specimen the space before/after is listed, not applied */
+.type-specimen-sample > * {
+  margin: 0;
+  text-box: trim-both cap alphabetic;
+}
+
+.type-specimen-spec .type-label-small {
+  margin: 0;
+}
+
+.type-specimen-spec .type-small {
+  margin: 0;
+}
+
+.type-specimen-spec > :first-child {
+  text-box: trim-start cap alphabetic;
+}
+
+.type-specimen-spec > :last-child {
+  text-box: trim-end cap alphabetic;
+}
+
+/* Same top alignment for the typeface cards: "Aa" and the family name */
+.type-family-sample {
+  text-box: trim-both cap alphabetic;
+}
+
+.type-family-name {
+  text-box: trim-start cap alphabetic;
+  margin-bottom: 4pt;
 }
