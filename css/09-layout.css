@@ -290,40 +290,29 @@ main > .section-header:first-child,
 }
 
 .subsection-title {
-  position: relative;
-  padding-left: 4mm;
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-}
-
-.subsection-title::before {
-  content: "\203A";
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 30pt;
-  color: var(--svemy-primary-500);
 }
 
 .section-header-index {
   font-family: var(--font-display);
   font-size: 18pt;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--svemy-primary-500);
+  color: var(--svemy-dark-500); /* same as .section-header a h3 */
   text-decoration: none;
 }
 
+/* Gap after the dot: 0.3em of the 18pt title, as in the TOC */
 .section-header-index-dot {
   font-family: var(--font-display);
-  font-weight: 700;
-  color: var(--svemy-light-700);
+  font-weight: 600;
+  color: var(--svemy-dark-500);
   margin-left: 0;
-  margin-right: 0.4mm;
+  margin-right: 5.4pt;
 }
 
 /* Entire section header is clickable */
@@ -340,7 +329,7 @@ main > .section-header:first-child,
 }
 
 .section-header h3 {
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
 }
@@ -494,7 +483,7 @@ DOCUMENT NAVIGATION (PAGE 2)
   text-transform: uppercase;
   letter-spacing: 0.02em;
   line-height: 1.7;
-  font-weight: 700;
+  font-weight: 500;
   padding: 0;
   margin: 0;
   display: flex;
@@ -515,21 +504,29 @@ nav .document-navigation li > ul > li > a,
   color: var(--svemy-dark-400);
 }
 
-/* Number and dot inside link */
+/* Subsections - sentence case, shown as typed in the heading */
+.document-navigation li > ul > li > a,
+.document-navigation li > ul > li > a .nav-number-dot,
+.document-navigation li > ul > li > a .page-ref {
+  text-transform: none;
+}
+
+/* Number and dot inside link - same colour as the entry text */
 .document-navigation a .nav-number-dot {
   font-family: var(--font-display);
   font-size: 14pt;
+  font-variant-numeric: tabular-nums;
   text-transform: uppercase;
   letter-spacing: 0.02em;
   line-height: 1.7;
-  margin-right: 0.5mm;
+  margin-right: 0.3em;
   padding-right: 0;
   flex-shrink: 0;
 }
 
 .document-navigation a .nav-number-dot::before {
   content: counter(nav-counter);
-  color: var(--svemy-primary-500);
+  color: inherit;
 }
 
 /* Hide numbers for elements without number */
@@ -541,20 +538,14 @@ nav .document-navigation li > ul > li > a,
   content: "";
 }
 
+/* No gap for the empty number, so the title lines up with the numbers */
+.document-navigation > li.nav-no-number a .nav-number-dot {
+  margin-right: 0;
+}
+
 /* Sub-numbers for subsections */
 .document-navigation li ul li a .nav-number-dot::before {
   content: counter(nav-counter) "." counter(sub-nav-counter);
-}
-
-.document-navigation a .nav-number-dot {
-  font-family: var(--font-display);
-  font-size: 14pt;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-  line-height: 1.7;
-  margin-right: 0.1mm;
-  padding-right: 0;
-  flex-shrink: 0;
 }
 
 /* Selection of entire link content, including pseudo-elements */
@@ -570,7 +561,7 @@ nav .document-navigation li > ul > li > a,
 
 .document-navigation a .nav-number-dot::after {
   content: ".";
-  color: var(--svemy-light-700);
+  color: inherit;
 }
 
 /* Section title text with dotted line */
@@ -601,7 +592,7 @@ nav .document-navigation li > ul > li > a,
   color: var(--svemy-dark-500);
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 400;
+  font-weight: inherit;
   line-height: 1.7;
   margin: 0;
   padding: 0;
