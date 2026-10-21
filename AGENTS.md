@@ -1,6 +1,6 @@
 # SVEMY document styleguide — agent guide
 
-Styleguide that AI agents use as a block library to generate branded SVEMY Construction Ltd. PDF documents (printed from Chrome, US Letter). The target design system is described in `SVEMY-Document-System.md` (ask the user for the current copy if it is not in the repo).
+Styleguide that AI agents use as a block library to generate branded SVEMY Construction Ltd. PDF documents (printed from Chrome, US Letter). The target design system is described in `context/design-system/SVEMY-Document-System.md`. The `context/` folder is git-ignored and shared out of band; if it is missing, ask the user for it. Its `README.md` explains the full project background.
 
 ## Layout
 
@@ -31,7 +31,7 @@ CSS files load in prefix order and the cascade depends on it. Do not reorder fil
 - **Parallel work**: several agents may work in this folder at the same time. Each task names the files you own. Edit only those files.
 - **Commits**: commit only your files, using explicit paths (`git add css/06-tables.css`). Never use `git add -A` or `git add .`. Never stash, reset or check out files you do not own.
 - **Live server**: browser-sync already runs on http://localhost:3001 and reloads on changes to `*.html`, `css/`, `js/`, `fonts/` and `assets/`. Do not start, stop or restart it.
-- **Ignored folders**: `old_versions/`, `reports/`, `research_notes/` and `dist/` are git-ignored. Do not commit them.
+- **Ignored folders**: `context/` and `dist/` are git-ignored. Do not commit them.
 
 ## Verifying a change
 

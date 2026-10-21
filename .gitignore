@@ -14,10 +14,8 @@ desktop.ini
 *.tmp
 node_modules/
 
-# Local working folders (not part of the repo)
-reports/
-research_notes/
-old_versions/
+# Local context bundle (research, references, design system copy; shared out of band)
+context/
 
 # Build output
 dist/
