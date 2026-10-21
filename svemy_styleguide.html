@@ -53,14 +53,13 @@
         --svemy-white: #ffffff;
         --svemy-black: #000000;
 
-        /* Brand colors */
+        /* Brand colors - primary (50-200 are soft tints for callouts and fills) */
+        --svemy-primary-50: #fffceb;
+        --svemy-primary-100: #fff6cc;
+        --svemy-primary-200: #ffec99;
         --svemy-primary-300: #ffdb4f;
         --svemy-primary-400: #fed01f;
         --svemy-primary-500: #e6a500;
-
-        --svemy-secondary-300: #1c2c4f;
-        --svemy-secondary-400: #14213d;
-        --svemy-secondary-500: #101a30;
 
         /* Brand colors - dark palette */
         --svemy-dark-200: #5a5a5d;
@@ -78,15 +77,21 @@
         --svemy-light-600: #a3a3a3;
         --svemy-light-700: #828282;
 
-        /* Success colors */
-        --svemy-success-300: #ecfdf3;
+        /* Status colors - success (checkbox tick = 400) */
+        --svemy-success-50: #ecfcee;
+        --svemy-success-100: #d6f7db;
+        --svemy-success-200: #b4edbd;
+        --svemy-success-300: #6bca80;
         --svemy-success-400: #16a34a;
-        --svemy-success-500: #065f46;
+        --svemy-success-500: #0b7332;
 
-        /* Danger/Error colors */
-        --svemy-danger-300: #fef2f2;
+        /* Status colors - danger */
+        --svemy-danger-50: #fef4f3;
+        --svemy-danger-100: #fee7e3;
+        --svemy-danger-200: #fed0c9;
+        --svemy-danger-300: #ff7d70;
         --svemy-danger-400: #dc2626;
-        --svemy-danger-500: #991b1b;
+        --svemy-danger-500: #991114;
 
         /* Warning colors */
         --svemy-warning-300: #fffbeb;
@@ -1134,13 +1139,13 @@
       }
 
       .callout-info {
-        border-left-color: var(--svemy-secondary-400);
+        border-left-color: var(--svemy-info-400);
         background: var(--svemy-info-300);
       }
 
       .callout-success {
         border-left-color: var(--svemy-success-400);
-        background: var(--svemy-success-300);
+        background: var(--svemy-success-50);
       }
 
       .callout-warning {
@@ -1150,7 +1155,7 @@
 
       .callout-danger {
         border-left-color: var(--svemy-danger-400);
-        background: var(--svemy-danger-300);
+        background: var(--svemy-danger-50);
       }
 
       /* ===============================
@@ -1173,7 +1178,7 @@
       }
 
       .badge-secondary {
-        background: var(--svemy-secondary-400);
+        background: var(--svemy-dark-500);
         color: var(--svemy-light-300);
       }
 
@@ -1258,7 +1263,7 @@
       }
 
       .text-highlight-success {
-        background: var(--svemy-success-300);
+        background: var(--svemy-success-50);
         color: var(--svemy-success-500);
       }
 
@@ -1268,7 +1273,7 @@
       }
 
       .text-highlight-danger {
-        background: var(--svemy-danger-300);
+        background: var(--svemy-danger-50);
         color: var(--svemy-danger-500);
       }
 
@@ -1303,7 +1308,7 @@
       .color-palette {
         display: flex;
         flex-direction: column;
-        gap: 8mm;
+        gap: 6mm;
         margin: 6mm 0;
       }
 
@@ -1324,14 +1329,21 @@
         margin: 0;
       }
 
-      .color-group:nth-child(3),
-      .color-group:nth-child(4) {
+      .color-group-6 {
         grid-template-columns: repeat(6, 1fr);
       }
 
-      .color-group:nth-child(3) .color-swatch-box,
-      .color-group:nth-child(4) .color-swatch-box {
-        aspect-ratio: 1;
+      .color-group-6 .color-swatch-box {
+        aspect-ratio: 1.5;
+      }
+
+      .color-group h5 {
+        grid-column: 1 / -1;
+        font-family: var(--font-body);
+        font-size: 9pt;
+        font-weight: 600;
+        color: var(--svemy-dark-400);
+        margin: 0;
       }
 
       .color-swatch {
@@ -1351,11 +1363,6 @@
         align-items: flex-start;
         justify-content: flex-end;
         padding: 2.5mm;
-      }
-
-      .color-group:nth-child(3) .color-swatch-box,
-      .color-group:nth-child(4) .color-swatch-box {
-        aspect-ratio: 1;
       }
 
       .color-swatch-box p {
@@ -1386,6 +1393,18 @@
       }
 
       /* Background color classes */
+      .color-bg-primary-50 {
+        background-color: #fffceb;
+      }
+
+      .color-bg-primary-100 {
+        background-color: #fff6cc;
+      }
+
+      .color-bg-primary-200 {
+        background-color: #ffec99;
+      }
+
       .color-bg-primary-300 {
         background-color: #ffdb4f;
       }
@@ -1396,18 +1415,6 @@
 
       .color-bg-primary-500 {
         background-color: #e6a500;
-      }
-
-      .color-bg-secondary-300 {
-        background-color: #1c2c4f;
-      }
-
-      .color-bg-secondary-400 {
-        background-color: #14213d;
-      }
-
-      .color-bg-secondary-500 {
-        background-color: #101a30;
       }
 
       .color-bg-dark-200 {
@@ -1456,6 +1463,54 @@
 
       .color-bg-light-700 {
         background-color: #828282;
+      }
+
+      .color-bg-success-50 {
+        background-color: #ecfcee;
+      }
+
+      .color-bg-success-100 {
+        background-color: #d6f7db;
+      }
+
+      .color-bg-success-200 {
+        background-color: #b4edbd;
+      }
+
+      .color-bg-success-300 {
+        background-color: #6bca80;
+      }
+
+      .color-bg-success-400 {
+        background-color: #16a34a;
+      }
+
+      .color-bg-success-500 {
+        background-color: #0b7332;
+      }
+
+      .color-bg-danger-50 {
+        background-color: #fef4f3;
+      }
+
+      .color-bg-danger-100 {
+        background-color: #fee7e3;
+      }
+
+      .color-bg-danger-200 {
+        background-color: #fed0c9;
+      }
+
+      .color-bg-danger-300 {
+        background-color: #ff7d70;
+      }
+
+      .color-bg-danger-400 {
+        background-color: #dc2626;
+      }
+
+      .color-bg-danger-500 {
+        background-color: #991114;
       }
 
       .color-swatch-var {
@@ -1870,11 +1925,11 @@
 
       .toc-list a {
         text-decoration: none;
-        color: var(--svemy-secondary-400);
+        color: var(--svemy-dark-500);
       }
 
       .toc-list a:hover {
-        color: var(--svemy-secondary-500);
+        color: var(--svemy-dark-700);
         text-decoration: underline;
       }
 
@@ -2666,13 +2721,32 @@
 
         <main role="main">
           <p class="text-muted mb-6">
-            The SVEMY color palette consists of four main categories. Use these
-            colors consistently across all documents to maintain brand identity.
+            The SVEMY color palette consists of three brand scales (Primary,
+            Dark, Light) and a set of status colors. Status colors are reserved
+            for alerts, callouts, approval marks and other state indicators.
           </p>
 
           <div class="color-palette">
-            <div class="color-group">
+            <div class="color-group color-group-6">
               <h4>SVEMY Primary</h4>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-primary-50">
+                  <p class="color-swatch-code color-text-dark">50</p>
+                  <p class="color-swatch-hex color-text-dark">#FFFCEB</p>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-primary-100">
+                  <p class="color-swatch-code color-text-dark">100</p>
+                  <p class="color-swatch-hex color-text-dark">#FFF6CC</p>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-primary-200">
+                  <p class="color-swatch-code color-text-dark">200</p>
+                  <p class="color-swatch-hex color-text-dark">#FFEC99</p>
+                </div>
+              </div>
               <div class="color-swatch">
                 <div class="color-swatch-box color-bg-primary-300">
                   <p class="color-swatch-code color-text-dark">300</p>
@@ -2692,28 +2766,7 @@
                 </div>
               </div>
             </div>
-            <div class="color-group">
-              <h4>SVEMY Secondary</h4>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-secondary-300">
-                  <p class="color-swatch-code color-text-light">300</p>
-                  <p class="color-swatch-hex color-text-light">#1C2C4F</p>
-                </div>
-              </div>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-secondary-400">
-                  <p class="color-swatch-code color-text-light">400</p>
-                  <p class="color-swatch-hex color-text-light">#14213D</p>
-                </div>
-              </div>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-secondary-500">
-                  <p class="color-swatch-code color-text-light">500</p>
-                  <p class="color-swatch-hex color-text-light">#101A30</p>
-                </div>
-              </div>
-            </div>
-            <div class="color-group">
+            <div class="color-group color-group-6">
               <h4>SVEMY Dark</h4>
               <div class="color-swatch">
                 <div class="color-swatch-box color-bg-dark-200">
@@ -2752,7 +2805,7 @@
                 </div>
               </div>
             </div>
-            <div class="color-group">
+            <div class="color-group color-group-6">
               <h4>SVEMY Light</h4>
               <div class="color-swatch">
                 <div class="color-swatch-box color-bg-light-200">
@@ -2788,6 +2841,83 @@
                 <div class="color-swatch-box color-bg-light-700">
                   <p class="color-swatch-code color-text-dark">700</p>
                   <p class="color-swatch-hex color-text-dark">#828282</p>
+                </div>
+              </div>
+            </div>
+            <div class="color-group color-group-6">
+              <h4>Status Colors</h4>
+              <h5>Success</h5>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-success-50">
+                  <p class="color-swatch-code color-text-dark">50</p>
+                  <p class="color-swatch-hex color-text-dark">#ECFCEE</p>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-success-100">
+                  <p class="color-swatch-code color-text-dark">100</p>
+                  <p class="color-swatch-hex color-text-dark">#D6F7DB</p>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-success-200">
+                  <p class="color-swatch-code color-text-dark">200</p>
+                  <p class="color-swatch-hex color-text-dark">#B4EDBD</p>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-success-300">
+                  <p class="color-swatch-code color-text-dark">300</p>
+                  <p class="color-swatch-hex color-text-dark">#6BCA80</p>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-success-400">
+                  <p class="color-swatch-code color-text-light">400</p>
+                  <p class="color-swatch-hex color-text-light">#16A34A</p>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-success-500">
+                  <p class="color-swatch-code color-text-light">500</p>
+                  <p class="color-swatch-hex color-text-light">#0B7332</p>
+                </div>
+              </div>
+              <h5>Danger</h5>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-danger-50">
+                  <p class="color-swatch-code color-text-dark">50</p>
+                  <p class="color-swatch-hex color-text-dark">#FEF4F3</p>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-danger-100">
+                  <p class="color-swatch-code color-text-dark">100</p>
+                  <p class="color-swatch-hex color-text-dark">#FEE7E3</p>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-danger-200">
+                  <p class="color-swatch-code color-text-dark">200</p>
+                  <p class="color-swatch-hex color-text-dark">#FED0C9</p>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-danger-300">
+                  <p class="color-swatch-code color-text-dark">300</p>
+                  <p class="color-swatch-hex color-text-dark">#FF7D70</p>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-danger-400">
+                  <p class="color-swatch-code color-text-light">400</p>
+                  <p class="color-swatch-hex color-text-light">#DC2626</p>
+                </div>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-danger-500">
+                  <p class="color-swatch-code color-text-light">500</p>
+                  <p class="color-swatch-hex color-text-light">#991114</p>
                 </div>
               </div>
             </div>
