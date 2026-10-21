@@ -1,0 +1,60 @@
+/* ==========================================
+FONTS - self-hosted in fonts/ (OFL)
+font-display: block so print never falls back to a system font
+========================================== */
+@font-face {
+  font-family: "DINish Condensed";
+  src: url("../fonts/DINishCondensed-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "DINish Condensed";
+  src: url("../fonts/DINishCondensed-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "DINish Condensed";
+  src: url("../fonts/DINishCondensed-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "DINish Condensed";
+  src: url("../fonts/DINishCondensed-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("../fonts/Geist-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("../fonts/Geist-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: block;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("../fonts/Geist-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: block;
+}
+@font-face {
+  font-family: "Geist";
+  src: url("../fonts/Geist-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: block;
+}

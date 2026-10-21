@@ -1,0 +1,147 @@
+/* ===============================
+LISTS
+=============================== */
+ul,
+ol {
+  margin: 0 0 4mm 4mm;
+  padding-left: 5mm;
+}
+
+/* Default unordered lists use square bullets */
+ul {
+  list-style-type: square;
+}
+
+/* Nested unordered lists use disc bullets */
+ul ul {
+  list-style-type: disc;
+}
+
+/* Top-level lists - remove only margin, keep padding for numbering */
+main > ul,
+main > ol,
+div > ol:not(li ol),
+div > ul:not(li ul) {
+  margin-left: 0;
+  padding-left: 6mm;
+}
+
+li {
+  margin-bottom: 1.5mm;
+}
+
+.list-unordered-disc ul {
+  list-style-type: disc;
+}
+.list-unordered-square ul {
+  list-style-type: square;
+}
+
+.list-unordered-dash ul {
+  list-style-type: none;
+  padding-left: 2mm;
+  margin-left: 0;
+}
+.list-unordered-dash li {
+  padding-left: 0;
+}
+.list-unordered-dash li::before {
+  content: "–";
+  margin-right: 2mm;
+}
+
+.list-ordered-decimal ol {
+  list-style-type: decimal;
+}
+.list-ordered-roman ol {
+  list-style-type: upper-roman;
+}
+.list-ordered-alpha ol {
+  list-style-type: upper-alpha;
+}
+
+/* Checklist lists - override default list margins with higher specificity */
+ul.checklist,
+.checklist {
+  list-style: none;
+  padding-left: 9px;
+  margin-left: 0;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: 6mm;
+}
+
+.checklist li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--svemy-success-400);
+  font-weight: 700;
+}
+
+/* Checklist with cross marks - override default list margins */
+ul.checklist-cross,
+.checklist-cross {
+  list-style: none;
+  padding-left: 9px;
+  margin-left: 0;
+}
+
+.checklist-cross li {
+  position: relative;
+  padding-left: 6mm;
+}
+
+.checklist-cross li::before {
+  content: "✗";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--svemy-danger-400);
+  font-weight: 700;
+}
+
+/* Checklist with mixed marks - override default list margins */
+ul.checklist-mixed,
+.checklist-mixed {
+  list-style: none;
+  padding-left: 9px;
+  margin-left: 0;
+}
+
+.checklist-mixed li {
+  position: relative;
+  padding-left: 6mm;
+}
+
+.checklist-mixed li.check::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--svemy-success-400);
+  font-weight: 700;
+}
+
+.checklist-mixed li.cross::before {
+  content: "✗";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--svemy-danger-400);
+  font-weight: 700;
+}
+
+dl {
+  margin: 0 0 4mm 0;
+}
+dt {
+  font-weight: 600;
+}
+dd {
+  margin: 0 0 3mm 4mm;
+  color: var(--svemy-dark-300);
+}

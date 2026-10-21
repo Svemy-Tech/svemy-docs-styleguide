@@ -1,0 +1,155 @@
+/* ===============================
+TABLES
+=============================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 6mm;
+  page-break-inside: auto;
+  font-size: 10pt;
+}
+
+thead {
+  display: table-header-group;
+  background: var(--svemy-dark-500);
+  color: var(--svemy-light-600);
+}
+
+th,
+td {
+  border: 0.2mm solid var(--svemy-light-500);
+  padding: 2mm 3mm;
+  text-align: left;
+  vertical-align: top;
+}
+
+thead th {
+  background: #fed01f;
+  border: 0.2mm solid var(--svemy-primary-500);
+  color: var(--svemy-dark-600);
+  font-weight: 600;
+}
+
+th {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 9pt;
+  color: var(--svemy-dark-600);
+}
+
+tr {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+  background: var(--svemy-white);
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background: var(--svemy-light-200);
+}
+
+.table-bordered {
+  border: 0.3mm solid var(--svemy-light-500);
+}
+
+.table-header-accent thead {
+  background: transparent;
+  border-bottom: 0.2mm solid var(--svemy-light-500);
+}
+
+.table-header-accent thead th {
+  color: var(--svemy-dark-600);
+  font-weight: 600;
+}
+
+/* Ensure consistent border colors throughout table */
+.table-header-accent tbody tr:last-child td {
+  border-bottom: 0.2mm solid var(--svemy-light-500);
+}
+
+.table-header-accent tfoot td {
+  border-bottom: 0.2mm solid var(--svemy-light-500);
+}
+
+.table-numeric td.numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Table with merged cells */
+.table-merged th[rowspan],
+.table-merged td[rowspan] {
+  vertical-align: middle;
+}
+
+.table-merged th[colspan],
+.table-merged td[colspan] {
+  text-align: center;
+}
+
+.table-merged th:first-child,
+.table-merged td:first-child {
+  width: 25%;
+}
+
+.table-merged th:nth-child(2),
+.table-merged td:nth-child(2),
+.table-merged th:nth-child(3),
+.table-merged td:nth-child(3),
+.table-merged th:nth-child(4),
+.table-merged td:nth-child(4) {
+  width: 25%;
+}
+
+/* Table captions - styled as regular text */
+table caption {
+  font-family: var(--font-body);
+  color: var(--svemy-dark-600);
+  font-size: var(--base-font-size);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+  text-align: left;
+  margin-bottom: 4mm;
+  caption-side: top;
+  line-height: var(--base-line-height);
+}
+
+tfoot {
+  display: table-footer-group;
+}
+
+tfoot tr {
+  background: transparent;
+}
+
+/* Summary row in tfoot: bold with top and bottom borders */
+tfoot td {
+  font-weight: 600;
+  letter-spacing: 0;
+  font-size: 9pt;
+  border-left: 0.2mm solid var(--svemy-light-500);
+  border-right: 0.2mm solid var(--svemy-light-500);
+  border-top: 0.2mm solid var(--svemy-light-500);
+  border-bottom: 0.2mm solid var(--svemy-light-500);
+}
+
+/* Empty cells in tfoot: no bottom and side borders */
+tfoot td:empty,
+tfoot td:first-child {
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+tfoot td.numeric {
+  color: var(--svemy-dark-500);
+}
+
+tfoot td:not(.numeric) {
+  color: var(--svemy-dark-300);
+}

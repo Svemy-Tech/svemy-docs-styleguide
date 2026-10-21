@@ -1,0 +1,395 @@
+/* ===============================
+HEADER / FOOTER FOR INNER PAGES
+=============================== */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--svemy-dark-300);
+  padding-bottom: 2mm;
+  margin-bottom: 8mm;
+}
+
+.brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+}
+
+.brand-subtitle {
+  font-size: 9pt;
+  color: var(--svemy-light-700);
+}
+
+.page-meta {
+  font-size: 9pt;
+  text-align: right;
+  color: var(--svemy-dark-300);
+}
+
+/* Letterhead row: logo left, title block right */
+.page-header-letterhead .page-header-letterhead-title {
+  text-align: right;
+  align-items: flex-end;
+}
+
+/* Shop drawing: no thin header line (replaced by hr below) */
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .page-header-shop-drawing {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new,
+    #section-shop-drawing-blank,
+    #section-shop-drawing-cover
+  )
+  .page-header-letterhead-title
+  h1 {
+  margin-bottom: 0;
+}
+
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .page-header-letterhead-title
+  h2 {
+  margin-top: 15px;
+}
+
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .shop-drawing-header-separator {
+  margin-top: 20px;
+  margin-bottom: 8mm;
+}
+
+/* Document issue status — native checkboxes (no checklist-mixed) */
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  label.issue-status-item {
+  display: flex;
+  align-items: baseline;
+  gap: 2.5mm;
+  margin: 0;
+  font-size: 10pt;
+  font-weight: 400;
+  color: var(--svemy-dark-500);
+  line-height: 1.35;
+}
+
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .issue-status-item
+  input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  flex-shrink: 0;
+  border: 0.2mm solid var(--svemy-dark-300);
+  border-radius: 2px;
+  background-color: var(--svemy-white);
+  cursor: default;
+  vertical-align: baseline;
+}
+
+/* Check stroke #16a34a matches --svemy-success-400 in :root */
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .issue-status-item
+  input[type="checkbox"]:checked {
+  border-color: var(--svemy-success-400);
+  background-color: var(--svemy-white);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='none' stroke='%2316a34a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' d='M2.5 6.5l2.5 2.5 5-6.5'/%3E%3C/svg%3E");
+  background-size: 9px 9px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Document format + review stamp (last page) */
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .shop-drawing-format-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6mm;
+  margin-top: 8mm;
+  flex-wrap: wrap;
+}
+
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .shop-drawing-format-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2mm;
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .shop-drawing-format-col
+  h5 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .shop-drawing-review-stamp {
+  flex: 0 0 auto;
+  width: max-content;
+  max-width: 100%;
+  padding: calc(0.75mm + 5px) 2mm;
+  border: 2px solid var(--svemy-white);
+  border-radius: 0;
+  background-color: #7bc496;
+  color: var(--svemy-white);
+  text-align: left;
+  line-height: 1.1;
+  /* Outer 2px #7bc496 → white 2px → fill #7bc496 */
+  box-shadow: 0 0 0 2px #7bc496;
+}
+
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .shop-drawing-review-stamp
+  h6 {
+  margin-top: 0;
+  margin-bottom: 0.6mm;
+  color: var(--svemy-white);
+  font-size: 9pt;
+  letter-spacing: 0.06em;
+  line-height: 1.05;
+  text-align: left;
+}
+
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .shop-drawing-review-meta {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 1mm 1.25mm;
+  font-weight: 400;
+  color: var(--svemy-white);
+  font-size: 7.25pt;
+  line-height: 1.1;
+}
+
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .shop-drawing-review-meta
+  .text-small {
+  font-size: inherit;
+  margin-bottom: 0;
+}
+
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .page-number {
+  display: none;
+}
+
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .shop-drawing-info-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5mm;
+  margin-bottom: 8mm;
+  width: 100%;
+  font-size: 10pt;
+  line-height: 1.4;
+  color: var(--svemy-dark-500);
+}
+
+:is(
+    #section-shop-drawing,
+    #section-shop-drawing-table,
+    #section-shop-drawing-new
+  )
+  .shop-drawing-info-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.5fr) minmax(0, 1.25fr);
+  column-gap: 3mm;
+  align-items: baseline;
+  margin: 0;
+  padding: 0;
+}
+
+.page-footer {
+  border-top: 1px solid var(--svemy-light-600);
+  margin-top: auto;
+  padding-top: 4mm;
+  font-family: var(--font-display);
+  font-size: 9pt;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--svemy-light-700);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4mm;
+}
+
+.page-footer a {
+  color: var(--svemy-primary-400);
+  text-decoration: none;
+}
+
+.page-footer a:hover {
+  text-decoration: underline;
+}
+
+.page-footer-path {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer-separator {
+  margin: 0 2.5mm;
+  color: var(--svemy-light-700);
+  position: relative;
+  top: -1px;
+}
+
+.page-number {
+  font-family: var(--font-display);
+  font-size: 14pt;
+  color: var(--svemy-dark-500);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 400;
+}
+
+/* ===============================
+COVER PAGE (PAGE 1)
+=============================== */
+.cover-logo {
+  padding: 0;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.cover-logo img,
+.cover-logo svg {
+  max-width: 180px;
+  height: auto;
+  display: block;
+}
+
+.cover-title {
+  font-family: var(--font-display);
+  font-size: 34pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin-bottom: 4mm;
+  color: var(--svemy-dark-500);
+}
+
+.cover-subtitle {
+  font-family: var(--font-display);
+  margin-bottom: 0;
+  color: var(--svemy-dark-200);
+  font-weight: 500 !important;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.cover-meta {
+  font-family: var(--font-display);
+  color: var(--svemy-light-700);
+  line-height: 1.6;
+}
+
+.cover-meta-company {
+  font-size: 11pt;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--svemy-dark-200);
+  margin-bottom: 0.2mm;
+}
+
+.cover-meta-year {
+  font-size: 10pt;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--svemy-dark-200);
+  margin-bottom: 0;
+}
+
+/* ===============================
+DESCRIPTION PAGE (PAGE 2)
+=============================== */
+
+.document-description {
+  text-align: justify;
+  margin-bottom: 6mm;
+}

@@ -1,0 +1,183 @@
+/* ===============================
+CALLOUT BLOCKS / COMPONENTS
+=============================== */
+.callout {
+  border-left: 1mm solid var(--svemy-light-500);
+  padding: 3mm 4mm;
+  margin-bottom: 4mm;
+  background: var(--svemy-light-200);
+}
+
+.callout > p:last-child {
+  margin-bottom: 0;
+}
+
+.callout-title {
+  font-weight: 600;
+  margin-bottom: 1mm;
+}
+
+.callout-info {
+  border-left-color: var(--svemy-info-400);
+  background: var(--svemy-info-300);
+}
+
+.callout-success {
+  border-left-color: var(--svemy-success-400);
+  background: var(--svemy-success-50);
+}
+
+.callout-warning {
+  border-left-color: var(--svemy-primary-400);
+  background: var(--svemy-warning-300);
+}
+
+.callout-danger {
+  border-left-color: var(--svemy-danger-400);
+  background: var(--svemy-danger-50);
+}
+
+/* ===============================
+BADGES / TAGS
+=============================== */
+.badge {
+  display: inline-block;
+  padding: 0.4mm 2mm;
+  font-family: var(--font-display);
+  font-size: 8pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-radius: 2px;
+  line-height: 1.4;
+}
+
+.badge-primary {
+  background: var(--svemy-primary-400);
+  color: var(--svemy-dark-500);
+}
+
+.badge-secondary {
+  background: var(--svemy-dark-500);
+  color: var(--svemy-light-300);
+}
+
+.badge-success {
+  background: var(--svemy-success-400);
+  color: var(--svemy-white);
+}
+
+.badge-warning {
+  background: var(--svemy-primary-400);
+  color: var(--svemy-dark-500);
+}
+
+.badge-danger {
+  background: var(--svemy-danger-400);
+  color: var(--svemy-white);
+}
+
+.badge-neutral {
+  background: var(--svemy-light-400);
+  color: var(--svemy-dark-500);
+}
+
+/* ===============================
+HORIZONTAL RULES / SEPARATORS
+=============================== */
+hr.separator-light {
+  border-top-color: var(--svemy-light-400);
+  border-top-width: 0.15mm;
+}
+
+hr.separator-medium {
+  border-top-color: var(--svemy-light-600);
+  border-top-width: 0.3mm;
+}
+
+hr.separator-bold {
+  border-top-color: var(--svemy-dark-300);
+  border-top-width: 0.5mm;
+}
+
+hr.separator-accent {
+  border-top-color: var(--svemy-primary-500);
+  border-top-width: 0.3mm;
+}
+
+/* ===============================
+CODE BLOCKS
+=============================== */
+pre {
+  font-family:
+    "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+  font-size: 9pt;
+  line-height: 1.5;
+  background: var(--svemy-light-300);
+  border: 0.2mm solid var(--svemy-light-500);
+  border-radius: 2px;
+  padding: 3mm 4mm;
+  margin: 4mm 0;
+  overflow-x: auto;
+  page-break-inside: avoid;
+}
+
+pre code {
+  font-family: inherit;
+  font-size: inherit;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+/* ===============================
+HIGHLIGHTED TEXT
+=============================== */
+.text-highlight {
+  background: var(--svemy-primary-300);
+  color: var(--svemy-dark-500);
+  padding: 0.1mm 0.5mm;
+  border-radius: 1px;
+  font-weight: 400;
+}
+
+.text-highlight-success {
+  background: var(--svemy-success-50);
+  color: var(--svemy-success-500);
+}
+
+.text-highlight-warning {
+  background: var(--svemy-warning-400);
+  color: var(--svemy-dark-600);
+}
+
+.text-highlight-danger {
+  background: var(--svemy-danger-50);
+  color: var(--svemy-danger-500);
+}
+
+.text-highlight-info {
+  background: var(--svemy-info-300);
+  color: var(--svemy-info-400);
+}
+
+/* ===============================
+REFERENCES / CITATIONS
+=============================== */
+.reference-label {
+  font-weight: 400;
+  color: var(--svemy-dark-700);
+  text-decoration: none;
+}
+
+.reference-label:hover {
+  color: var(--svemy-primary-500);
+}
+
+.reference-list {
+  list-style: none;
+  padding: 0;
+  margin: 4mm 0;
+  counter-reset: reference-counter;
+}

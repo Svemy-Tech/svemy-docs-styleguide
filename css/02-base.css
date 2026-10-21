@@ -1,0 +1,192 @@
+/* ===============================
+BASE SCREEN STYLES
+=============================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+::selection {
+  background: var(--svemy-primary-300);
+  color: var(--svemy-dark-500);
+}
+
+::-moz-selection {
+  background: var(--svemy-primary-300);
+  color: var(--svemy-dark-500);
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--base-font-size);
+  line-height: var(--base-line-height);
+  background: var(
+    --svemy-dark-400
+  ); /* Dark background around page for screen preview */
+  color: var(--svemy-dark-600);
+  padding: 20px 0;
+}
+
+a {
+  color: var(--svemy-primary-500);
+}
+
+/* ===============================
+PRINT: Letter format and margins
+=============================== */
+@page {
+  size: Letter; /* 8.5in x 11in */
+  margin: 0;
+}
+
+/* ===============================
+AUTOMATIC PAGE NUMBERING
+=============================== */
+/* Page counter: cover page not counted, starts from 2 */
+body {
+  counter-reset: page-counter 1;
+}
+
+/* Each page (except cover) increments the counter */
+.page:not(.page-cover) {
+  counter-increment: page-counter;
+}
+
+/* Page number in footer generated automatically */
+.page-number::before {
+  content: counter(page-counter);
+}
+
+/* ===============================
+GENERAL PAGE VIEW FOR SCREEN
+=============================== */
+.page {
+  width: 216mm; /* Letter width (~8.5in) */
+  min-height: 279mm; /* Letter height (~11in) */
+  margin: 0 auto 20px auto;
+  background: var(--svemy-white);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.35); /* Using rgba for shadow opacity */
+  padding: 16mm 16mm 10mm 16mm;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Cover: logo top, center middle, meta-info bottom */
+.page-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  padding: 15mm 16mm 10mm 16mm;
+  box-sizing: border-box;
+  min-height: 279mm; /* Letter height (~11in) */
+  position: relative;
+}
+
+/* Logo pinned to top (default) */
+.page-cover .cover-logo {
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo at top - explicit class */
+.page-cover .cover-logo-top {
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Center block (title + subtitle) - vertically centered (default when logo is at top) */
+.page-cover .cover-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: calc(100% - 32mm);
+  margin: 0;
+  z-index: 2;
+}
+
+/* When logo is centered, use flexbox with spacer elements */
+.page-cover:has(.cover-logo-center) {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Logo centered - in flex flow above title */
+.page-cover .cover-logo-center {
+  flex-shrink: 0;
+  width: 100%;
+  margin: 0;
+  margin-bottom: 6mm;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: 1;
+  transform: translateY(-100%);
+}
+
+/* When logo is centered, cover-center should be in flex flow, not absolute */
+.page-cover:has(.cover-logo-center) .cover-center {
+  position: relative;
+  top: auto;
+  left: auto;
+  transform: none;
+  width: 100%;
+  margin: 0;
+  z-index: 1;
+  flex-shrink: 0;
+  order: 2;
+  /* Compensate for logo height (approx 70px) + 6mm margin to keep title visually centered */
+  margin-top: calc(-70px - 6mm);
+}
+
+/* When logo is centered, meta should still be at bottom */
+.page-cover:has(.cover-logo-center) .cover-meta {
+  position: absolute;
+  bottom: 10mm;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32mm);
+  margin: 0;
+  z-index: 1;
+}
+
+/* Meta-info pinned to bottom */
+.page-cover .cover-meta {
+  flex-shrink: 0;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* Inner container for regular pages */
+.page-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  flex: 1;
+}
+
+.page-inner main {
+  flex: 1;
+}

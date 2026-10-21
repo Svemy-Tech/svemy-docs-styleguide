@@ -1,0 +1,70 @@
+/* ==========================================
+CSS VARIABLES - SVEMY THEME (main palette and fonts)
+========================================== */
+:root {
+  /* Document fonts */
+  --font-display: "DINish Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Geist", Arial, sans-serif;
+
+  /* Document base font size and line height */
+  --base-font-size: 11pt;
+  --base-line-height: 1.4;
+  --image-border-radius: 6px;
+  --image-border: 0.25mm solid var(--svemy-light-500);
+  --shadow-color-rgb: 0 0 0;
+  --image-shadow: 0px 1px 10px 0px rgb(var(--shadow-color-rgb) / 30%);
+
+  /* Base colors */
+  --svemy-white: #ffffff;
+  --svemy-black: #000000;
+
+  /* Brand colors - primary (50-200 are soft tints for callouts and fills) */
+  --svemy-primary-50: #fffceb;
+  --svemy-primary-100: #fff6cc;
+  --svemy-primary-200: #ffec99;
+  --svemy-primary-300: #ffdb4f;
+  --svemy-primary-400: #fed01f;
+  --svemy-primary-500: #e6a500;
+
+  /* Brand colors - dark palette */
+  --svemy-dark-200: #5a5a5d;
+  --svemy-dark-300: #49494d;
+  --svemy-dark-400: #3a3a3c;
+  --svemy-dark-500: #29292b;
+  --svemy-dark-600: #1f1f21;
+  --svemy-dark-700: #151517;
+
+  /* Brand colors - light palette */
+  --svemy-light-200: #fafafa;
+  --svemy-light-300: #f3f3f3;
+  --svemy-light-400: #e5e5e5;
+  --svemy-light-500: #c4c4c4;
+  --svemy-light-600: #a3a3a3;
+  --svemy-light-700: #828282;
+
+  /* Status colors - success (checkbox tick = 400) */
+  --svemy-success-50: #ecfcee;
+  --svemy-success-100: #d6f7db;
+  --svemy-success-200: #b4edbd;
+  --svemy-success-300: #6bca80;
+  --svemy-success-400: #16a34a;
+  --svemy-success-500: #0b7332;
+
+  /* Status colors - danger */
+  --svemy-danger-50: #fef4f3;
+  --svemy-danger-100: #fee7e3;
+  --svemy-danger-200: #fed0c9;
+  --svemy-danger-300: #ff7d70;
+  --svemy-danger-400: #dc2626;
+  --svemy-danger-500: #991114;
+
+  /* Warning colors */
+  --svemy-warning-300: #fffbeb;
+  --svemy-warning-400: #fed01f;
+  --svemy-warning-500: #92400e;
+
+  /* Info colors */
+  --svemy-info-300: #e5f0ff;
+  --svemy-info-400: #1e40af;
+  --svemy-info-500: #1e3a8a;
+}

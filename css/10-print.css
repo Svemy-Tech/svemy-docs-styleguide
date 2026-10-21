@@ -1,0 +1,374 @@
+/* ===============================
+PRINT MEDIA QUERIES (Always at the end!)
+=============================== */
+/* ===============================
+PRINT RULES (Ctrl+P)
+=============================== */
+@media print {
+  /* Critical: html and body must have height: 100% 
+    for proper percentage height calculation in print mode */
+  html,
+  body {
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body {
+    background: var(--svemy-white) !important;
+  }
+
+  /* .page must occupy full available page height */
+  .page {
+    display: flex !important;
+    flex-direction: column !important;
+    width: auto !important;
+    min-height: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    page-break-after: always;
+    break-after: page;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+
+  /* Cover: logo top, center middle, meta-info bottom */
+  .page-cover {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    text-align: center !important;
+    padding: 15mm 16mm 10mm 16mm !important;
+    box-sizing: border-box !important;
+    min-height: 100% !important;
+    height: 100% !important;
+    position: relative !important;
+  }
+
+  /* Logo pinned to top (default) */
+  .page-cover .cover-logo {
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* Logo at top - explicit class */
+  .page-cover .cover-logo-top {
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* Center block (title + subtitle) - vertically centered (default when logo is at top) */
+  .page-cover .cover-center {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: calc(100% - 32mm) !important;
+    margin: 0 !important;
+    z-index: 2 !important;
+  }
+
+  /* When logo is centered, use flexbox with spacer elements */
+  .page-cover:has(.cover-logo-center) {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* Logo centered - in flex flow above title */
+  .page-cover .cover-logo-center {
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    margin-bottom: 6mm !important;
+    position: relative !important;
+    z-index: 1 !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    order: 1 !important;
+  }
+
+  /* When logo is centered, cover-center should be in flex flow, not absolute */
+  .page-cover:has(.cover-logo-center) .cover-center {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    z-index: 1 !important;
+    flex-shrink: 0 !important;
+    order: 2 !important;
+    /* Compensate for logo height (approx 70px) + 6mm margin to keep title visually centered */
+    margin-top: calc(-70px - 6mm) !important;
+  }
+
+  /* When logo is centered, meta should still be at bottom */
+  .page-cover:has(.cover-logo-center) .cover-meta {
+    position: absolute !important;
+    bottom: 10mm !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: calc(100% - 32mm) !important;
+    margin: 0 !important;
+    z-index: 1 !important;
+  }
+
+  /* Meta-info pinned to bottom */
+  .page-cover .cover-meta {
+    flex-shrink: 0 !important;
+    width: 100% !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* .page-inner must be flex container occupying full .page height */
+  .page-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100% !important;
+    height: 100% !important;
+    flex: 1 1 auto !important;
+    margin: 0 !important;
+    padding: 15mm 16mm 10mm 16mm !important;
+    box-sizing: border-box !important;
+  }
+
+  /* main must occupy available space, pushing footer down */
+  .page-inner main {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* footer pinned to bottom via margin-top: auto */
+  .page-footer {
+    margin-top: auto !important;
+    flex-shrink: 0 !important;
+  }
+
+  /* Important blocks should not break - if they don't fit, move entirely */
+  .subsection,
+  article.subsection,
+  .section-header,
+  article,
+  .callout,
+  table,
+  pre,
+  blockquote,
+  .card {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Headers should not remain alone at bottom of page */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  /* Guarantee colors preserved in PDF */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--svemy-dark-300) !important;
+  }
+
+  .text-link {
+    color: var(--svemy-dark-300) !important;
+    text-decoration-color: var(--svemy-dark-300) !important;
+  }
+
+  /* Main navigation text in print mode */
+  .document-navigation > li > a {
+    color: var(--svemy-dark-500) !important;
+  }
+
+  .document-navigation > li > a .nav-text {
+    color: var(--svemy-dark-500) !important;
+  }
+
+  /* Sublists in print mode */
+  .document-navigation li > ul > li > a {
+    color: var(--svemy-dark-400) !important;
+  }
+
+  .document-navigation li > ul > li > a .nav-text {
+    color: var(--svemy-dark-400) !important;
+  }
+
+  /* Guarantee grid and flexbox work in print */
+  .document-navigation li {
+    display: grid !important;
+  }
+
+  .document-navigation a {
+    display: flex !important;
+  }
+}
+
+/* ================================================
+AUTOMATIC PAGINATION ENHANCEMENTS
+================================================
+
+Purpose: Enable automatic content splitting across pages
+        with proper headers, footers, and page numbering.
+
+Features:
+- Prevents content overflow beyond page boundaries
+- Maintains headers and footers on all pages
+- Updates navigation page references automatically
+- Works in HTML preview, print, and PDF export
+================================================ */
+
+/* Disable CSS counter - JavaScript handles all page numbering
+to prevent duplication (e.g., "15151515" instead of "1515") */
+.page-number::before {
+  content: none !important;
+}
+
+/* Prevent splitting of important content blocks */
+.subsection,
+article,
+.callout,
+table,
+pre,
+blockquote,
+.card,
+.color-palette,
+.color-group,
+figure,
+.document-section {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Keep list items together */
+li {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+/* Prevent image splitting */
+img,
+svg {
+  page-break-inside: avoid;
+  break-inside: avoid;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Remove top margin from first element in main content */
+.page-inner main > *:first-child {
+  margin-top: 0;
+}
+
+/* Typography: prevent orphans and widows */
+p {
+  orphans: 3;
+  widows: 3;
+}
+
+/* Loading indicator during pagination process */
+body:not(.auto-paginated)::before {
+  content: "Preparing document for pagination...";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--svemy-primary-400);
+  color: var(--svemy-dark-500);
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 14pt;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  z-index: 9999;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.auto-paginated::before {
+  display: none;
+}
+
+/* Print-specific enhancements */
+@media print {
+  /* Repeat table headers on each page */
+  thead {
+    display: table-header-group;
+  }
+
+  tfoot {
+    display: table-footer-group;
+  }
+
+  /* Prevent headers from being orphaned at page bottom */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    page-break-after: avoid;
+    break-after: avoid;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  .section-header {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Hide loading indicator in print */
+  body::before {
+    display: none !important;
+  }
+
+  /* Ensure paginated pages maintain proper height */
+  .auto-paginated .page {
+    min-height: 100%;
+  }
+
+  .auto-paginated .page-inner main {
+    padding-top: 0;
+  }
+}
+
+/* Screen-only: visual separation between pages */
+@media screen {
+  .auto-paginated .page + .page {
+    margin-top: 20px;
+  }
+}

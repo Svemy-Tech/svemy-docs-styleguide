@@ -1,0 +1,140 @@
+/* ===============================
+TYPOGRAPHY
+=============================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--svemy-dark-500);
+  font-size: 10pt;
+  margin-bottom: 2mm;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: 34pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  margin-bottom: 2mm;
+}
+
+/* h2 Title Case, h3 Sentence case: typed as written, no transform */
+h2 {
+  font-family: var(--font-display);
+  font-size: 24pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-bottom: 2mm;
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-size: 18pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-bottom: 3mm;
+  margin-top: 0;
+}
+
+h4 {
+  font-family: var(--font-body);
+  font-size: 14pt;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+h4 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h4 a:hover {
+  color: var(--svemy-primary-500);
+}
+
+/* h5/h6 are not in the type scale: set as labels */
+h5 {
+  font-family: var(--font-display);
+  color: var(--svemy-dark-500);
+  font-size: 12pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2mm;
+}
+
+h6 {
+  font-family: var(--font-display);
+  color: var(--svemy-dark-500);
+  font-size: 10pt;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 2mm;
+}
+
+p {
+  margin-bottom: 3mm;
+}
+
+.text-muted {
+  color: var(--svemy-light-700);
+  margin-bottom: 5mm;
+}
+.text-small {
+  font-size: 9pt;
+}
+.text-large {
+  font-size: 13pt;
+}
+
+.text-highlight {
+  background: var(--svemy-primary-300);
+  padding: 0 1mm;
+}
+
+.text-code {
+  font-family:
+    "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+  font-size: 9pt;
+  background: var(--svemy-light-300);
+  padding: 0.3mm 1.5mm;
+  border-radius: 2px;
+}
+
+.text-link {
+  color: var(--svemy-primary-500);
+  text-decoration: underline;
+  text-decoration-color: var(--svemy-primary-500);
+  text-decoration-thickness: 0.6px;
+}
+
+.text-link:hover {
+  color: var(--svemy-primary-500);
+}
+
+.text-strike {
+  text-decoration: line-through;
+}
+.text-underline {
+  text-decoration: underline;
+}
+.text-italic {
+  font-style: italic;
+}
+strong,
+b,
+.text-bold {
+  font-weight: 600;
+}
+em,
+i {
+  font-style: italic;
+  font-weight: 400;
+}

@@ -18,3 +18,6 @@ node_modules/
 reports/
 research_notes/
 old_versions/
+
+# Build output
+dist/
