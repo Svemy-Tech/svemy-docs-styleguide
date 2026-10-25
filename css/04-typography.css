@@ -82,6 +82,13 @@ p {
   margin-bottom: 3mm;
 }
 
+/* Body paragraphs at full text width are justified. Narrow or structured
+   text (cards, tables, callouts, captions, lists, specimens) stays left */
+main > p,
+main > .subsection > p {
+  text-align: justify;
+}
+
 .text-muted {
   color: var(--svemy-light-700);
   margin-bottom: 5mm;
@@ -143,74 +150,77 @@ i {
 }
 
 /* ===============================
-TYPE SCALE (design system)
-One class per element of the SVEMY Documents type scale.
-Sizes in pt, leading exact, margins = space before / after.
-Colours use the current palette until it is aligned with the
-design system: text = dark-600, secondary and muted = dark-200.
+TYPE SCALE (Typography System page)
+One class per style, matching the styles used in this styleguide:
+title = .cover-title, subtitle = .cover-subtitle, H1 = section header,
+H2 = subsection title, H3 / H4 = base h3 / h4, body = body text,
+small = .text-small.text-muted, caption = .image-caption-meta.
+Lead, caption label, label small and table text follow the design
+system. Leading 1.4 unless a style sets its own.
 =============================== */
 .type-doc-title {
   font-family: var(--font-display);
-  font-size: 40pt;
-  line-height: 40pt;
+  font-size: 34pt;
+  line-height: 1.4;
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
-  color: var(--svemy-dark-600);
-  margin: 18pt 0 6pt;
+  color: var(--svemy-dark-500);
+  margin: 0 0 4mm;
 }
 
+/* Subtitle typed as written, no transform */
 .type-doc-subtitle {
   font-family: var(--font-display);
-  font-size: 15pt;
-  line-height: 19pt;
+  font-size: 24pt;
+  line-height: 1.4;
   font-weight: 500;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
-  color: var(--svemy-dark-600);
+  color: var(--svemy-dark-200);
   margin: 0;
 }
 
 .type-h1 {
   font-family: var(--font-display);
-  font-size: 20pt;
-  line-height: 24pt;
-  font-weight: 700;
-  letter-spacing: 0;
+  font-size: 18pt;
+  line-height: 1.4;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--svemy-dark-600);
-  margin: 30pt 0 10pt;
+  color: var(--svemy-dark-500);
+  margin: 0 0 2mm;
 }
 
-/* H2 Title Case and H3 sentence case: typed as written, no transform */
 .type-h2 {
   font-family: var(--font-display);
   font-size: 14pt;
-  line-height: 18pt;
+  line-height: 1.4;
   font-weight: 700;
-  letter-spacing: 0;
-  color: var(--svemy-dark-600);
-  margin: 20pt 0 6pt;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--svemy-dark-500);
+  margin: 0 0 4mm;
 }
 
+/* H3 sentence case: typed as written, no transform */
 .type-h3 {
   font-family: var(--font-display);
-  font-size: 11.5pt;
-  line-height: 15pt;
+  font-size: 18pt;
+  line-height: 1.4;
   font-weight: 700;
   letter-spacing: 0;
-  color: var(--svemy-dark-600);
-  margin: 14pt 0 4pt;
+  color: var(--svemy-dark-500);
+  margin: 0 0 3mm;
 }
 
 .type-h4 {
   font-family: var(--font-body);
-  font-size: 10pt;
-  line-height: 15pt;
+  font-size: 14pt;
+  line-height: 1.4;
   font-weight: 600;
   letter-spacing: 0;
-  color: var(--svemy-dark-600);
-  margin: 10pt 0 2pt;
+  color: var(--svemy-dark-500);
+  margin: 0 0 2mm;
 }
 
 .type-lead {
@@ -224,29 +234,30 @@ design system: text = dark-600, secondary and muted = dark-200.
 
 .type-body {
   font-family: var(--font-body);
-  font-size: 10pt;
-  line-height: 15pt;
+  font-size: 11pt;
+  line-height: 1.4;
   font-weight: 400;
   color: var(--svemy-dark-600);
-  margin: 0 0 8pt;
+  text-align: justify;
+  margin: 0 0 3mm;
 }
 
 .type-small {
   font-family: var(--font-body);
-  font-size: 8.5pt;
-  line-height: 12pt;
+  font-size: 9pt;
+  line-height: 1.4;
   font-weight: 400;
-  color: var(--svemy-dark-200);
-  margin: 0 0 6pt;
+  color: var(--svemy-light-700);
+  margin: 0 0 3mm;
 }
 
 .type-caption {
   font-family: var(--font-body);
   font-size: 8.5pt;
-  line-height: 12pt;
+  line-height: 1.35;
   font-weight: 400;
-  color: var(--svemy-dark-200);
-  margin: 6pt 0 16pt;
+  color: var(--svemy-light-700);
+  margin: 2mm 0 0;
 }
 
 /* Run-in label at the start of a caption: FIGURE 01 + en space */
@@ -255,6 +266,7 @@ design system: text = dark-600, secondary and muted = dark-200.
   font-size: 9pt;
   line-height: 12pt;
   font-weight: 700;
+  font-style: normal;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--svemy-dark-200);
@@ -351,10 +363,6 @@ Sample on the left, spec on the right, rows split by hairlines
   font-family: var(--font-body);
 }
 
-.type-family .type-small {
-  margin: 0;
-}
-
 /* Rows are top aligned. Text boxes are trimmed to the cap height and the
    baseline, so cap tops of sample and spec line up and every row has the
    same space above and below its text, whatever the font size. */
@@ -363,10 +371,15 @@ Sample on the left, spec on the right, rows split by hairlines
   grid-template-columns: minmax(0, 1fr) 62mm;
   column-gap: 18pt;
   align-items: start;
-  padding: 9pt 0;
+  padding: 7pt 0;
   border-bottom: 0.5pt solid var(--svemy-light-400);
   break-inside: avoid;
   page-break-inside: avoid;
+}
+
+/* Titles and headings: large sizes need more air between rows */
+.type-specimen.is-spacious .type-specimen-row {
+  padding: 12pt 0;
 }
 
 /* In the specimen the space before/after is listed, not applied */
@@ -379,7 +392,12 @@ Sample on the left, spec on the right, rows split by hairlines
   margin: 0;
 }
 
-.type-specimen-spec .type-small {
+/* Spec column and typeface notes: fixed 8.5 / 12 pt, not the Small style */
+.type-specimen-spec .type-small,
+.type-family .type-small {
+  font-size: 8.5pt;
+  line-height: 12pt;
+  color: var(--svemy-dark-200);
   margin: 0;
 }
 
