@@ -31,11 +31,10 @@ hr {
   border-top-color: var(--svemy-primary-400);
 }
 
+/* Flat grey block: no border, square corners */
 .card {
-  border: 0.2mm solid var(--svemy-light-500);
-  border-radius: 3px;
-  padding: 4mm;
-  background: var(--svemy-light-200);
+  padding: 4mm 5mm;
+  background: var(--svemy-light-300);
 }
 
 .card > *:last-child {
@@ -292,6 +291,31 @@ main > .section-header:first-child,
   font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+}
+
+/* Subsection title with a short note on the right (Layout & Grid page) */
+.subsection-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4mm;
+  margin-bottom: 4mm;
+}
+
+.subsection-head > h4 {
+  margin: 0;
+}
+
+/* Notes beside the title and under the example, in small muted text */
+.subsection-head-note,
+.layout-note {
+  font-size: 9pt;
+  color: var(--svemy-light-700);
+  margin: 0;
+}
+
+.layout-note {
+  margin-top: 2mm;
 }
 
 .section-header-index {
