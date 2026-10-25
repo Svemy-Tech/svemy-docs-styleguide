@@ -117,8 +117,9 @@ DATA TABLE
   padding: 5pt 6pt;
 }
 
-/* Spanning header over a column group: hairline under its label */
+/* Spanning header over a column group: centred, hairline under its label */
 .table-data thead th[colspan] {
+  text-align: center;
   border-bottom: 0.5pt solid var(--svemy-dark-200);
 }
 
