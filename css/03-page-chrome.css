@@ -358,7 +358,6 @@ COVER PAGE (PAGE 1)
   color: var(--svemy-dark-200);
   font-weight: 500 !important;
   letter-spacing: 0.02em;
-  text-transform: uppercase;
 }
 
 .cover-meta {
