@@ -89,9 +89,11 @@ GRID / LAYOUT
   width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+/* Drawings, sketches and screenshots on white get a hairline; photos none */
+.image-figure-bordered img {
   border: var(--image-border);
-  border-radius: var(--image-border-radius);
-  box-shadow: var(--image-shadow);
 }
 
 .image-feature img {
@@ -127,9 +129,6 @@ GRID / LAYOUT
 
 .project-gallery-tile {
   overflow: hidden;
-  border: var(--image-border);
-  border-radius: var(--image-border-radius);
-  box-shadow: var(--image-shadow);
   background: var(--svemy-light-300);
   margin: 0;
   page-break-inside: avoid;
@@ -224,16 +223,15 @@ GRID / LAYOUT
   grid-row: 5;
 }
 
+/* Caption below the figure: FIGURE 01 run-in (.type-caption-label),
+   en space, caption text */
 .image-caption {
-  border-left: 0.8mm solid var(--svemy-primary-400);
-  padding: 0 0 0 3mm;
   margin-top: 2mm;
 }
 
 .image-caption-meta {
   display: block;
   font-size: 8.5pt;
-  font-style: italic;
   color: var(--svemy-light-700);
   line-height: 1.35;
 }

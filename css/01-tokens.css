@@ -9,10 +9,7 @@ CSS VARIABLES - SVEMY THEME (main palette and fonts)
   /* Document base font size and line height */
   --base-font-size: 11pt;
   --base-line-height: 1.4;
-  --image-border-radius: 6px;
-  --image-border: 0.25mm solid var(--svemy-light-500);
-  --shadow-color-rgb: 0 0 0;
-  --image-shadow: 0px 1px 10px 0px rgb(var(--shadow-color-rgb) / 30%);
+  --image-border: 0.5pt solid var(--svemy-light-400);
 
   /* Base colors */
   --svemy-white: #ffffff;
