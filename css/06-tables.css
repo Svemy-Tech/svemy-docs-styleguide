@@ -1,42 +1,75 @@
 /* ===============================
 TABLES
+Design system: every table is a SimpleTable (lines only, no fill);
+add .table-data for numbers (black header, zebra, group and totals rows).
+Colours use the current palette until it is aligned with the design
+system: brand-black = dark-600, grey-200 = light-400,
+grey-100 = light-300, grey-600 = dark-200.
 =============================== */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 6mm;
+  margin: 0;
   page-break-inside: auto;
-  font-size: 10pt;
+  font-family: var(--font-body);
+  font-size: 9pt;
+  line-height: 13pt;
+  font-variant-numeric: tabular-nums lining-nums;
+  color: var(--svemy-dark-600);
+}
+
+/* Table title space before: 16 pt after running text */
+p + table {
+  margin-top: 16pt;
 }
 
 thead {
   display: table-header-group;
-  background: var(--svemy-dark-500);
-  color: var(--svemy-light-600);
+}
+
+tfoot {
+  display: table-footer-group;
 }
 
 th,
 td {
-  border: 0.2mm solid var(--svemy-light-500);
-  padding: 2mm 3mm;
+  padding: 4pt 6pt;
   text-align: left;
   vertical-align: top;
+  border-bottom: 0.5pt solid var(--svemy-light-400);
+}
+
+/* Header cells use SV Label */
+th {
+  font-family: var(--font-display);
+  font-size: 9pt;
+  line-height: 12pt;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--svemy-dark-600);
 }
 
 thead th {
-  background: #fed01f;
-  border: 0.2mm solid var(--svemy-primary-500);
-  color: var(--svemy-dark-600);
-  font-weight: 600;
+  padding-top: 5pt;
+  padding-bottom: 5pt;
+  vertical-align: bottom;
+  border-bottom: 0.75pt solid var(--svemy-dark-600);
 }
 
-th {
-  font-family: var(--font-display);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 9pt;
-  color: var(--svemy-dark-600);
+/* Simple table: first and last column flush with the text edge */
+table:not(.table-data) :is(th, td):first-child {
+  padding-left: 0;
+}
+
+table:not(.table-data) :is(th, td):last-child {
+  padding-right: 0;
+}
+
+/* Numbers and their headers are right aligned */
+th.numeric,
+td.numeric {
+  text-align: right;
 }
 
 tr {
@@ -44,112 +77,72 @@ tr {
   break-inside: avoid;
 }
 
-.table-striped tbody tr:nth-child(odd) {
-  background: var(--svemy-white);
-}
-
-.table-striped tbody tr:nth-child(even) {
-  background: var(--svemy-light-200);
-}
-
-.table-bordered {
-  border: 0.3mm solid var(--svemy-light-500);
-}
-
-.table-header-accent thead {
-  background: transparent;
-  border-bottom: 0.2mm solid var(--svemy-light-500);
-}
-
-.table-header-accent thead th {
-  color: var(--svemy-dark-600);
-  font-weight: 600;
-}
-
-/* Ensure consistent border colors throughout table */
-.table-header-accent tbody tr:last-child td {
-  border-bottom: 0.2mm solid var(--svemy-light-500);
-}
-
-.table-header-accent tfoot td {
-  border-bottom: 0.2mm solid var(--svemy-light-500);
-}
-
-.table-numeric td.numeric {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Table with merged cells */
-.table-merged th[rowspan],
-.table-merged td[rowspan] {
-  vertical-align: middle;
-}
-
-.table-merged th[colspan],
-.table-merged td[colspan] {
-  text-align: center;
-}
-
-.table-merged th:first-child,
-.table-merged td:first-child {
-  width: 25%;
-}
-
-.table-merged th:nth-child(2),
-.table-merged td:nth-child(2),
-.table-merged th:nth-child(3),
-.table-merged td:nth-child(3),
-.table-merged th:nth-child(4),
-.table-merged td:nth-child(4) {
-  width: 25%;
-}
-
-/* Table captions - styled as regular text */
+/* Table title above the table: TABLE 01 in grey, em space, title */
 table caption {
-  font-family: var(--font-body);
-  color: var(--svemy-dark-600);
-  font-size: var(--base-font-size);
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: normal;
-  text-align: left;
-  margin-bottom: 4mm;
   caption-side: top;
-  line-height: var(--base-line-height);
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 10pt;
+  line-height: 13pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--svemy-dark-600);
+  padding-bottom: 6pt;
 }
 
-tfoot {
-  display: table-footer-group;
+.table-title-number {
+  color: var(--svemy-dark-200);
 }
 
-tfoot tr {
-  background: transparent;
+/* Source or notes under the table, in SV Small */
+.table-note {
+  font-size: 8.5pt;
+  line-height: 12pt;
+  color: var(--svemy-dark-200);
+  margin: 4pt 0 0;
 }
 
-/* Summary row in tfoot: bold with top and bottom borders */
-tfoot td {
-  font-weight: 600;
-  letter-spacing: 0;
-  font-size: 9pt;
-  border-left: 0.2mm solid var(--svemy-light-500);
-  border-right: 0.2mm solid var(--svemy-light-500);
-  border-top: 0.2mm solid var(--svemy-light-500);
-  border-bottom: 0.2mm solid var(--svemy-light-500);
-}
-
-/* Empty cells in tfoot: no bottom and side borders */
-tfoot td:empty,
-tfoot td:first-child {
-  border-left: none;
-  border-right: none;
+/* ===============================
+DATA TABLE
+=============================== */
+.table-data th,
+.table-data td {
   border-bottom: none;
 }
 
-tfoot td.numeric {
-  color: var(--svemy-dark-500);
+.table-data thead th {
+  background: var(--svemy-dark-600);
+  color: var(--svemy-white);
+  padding: 5pt 6pt;
 }
 
-tfoot td:not(.numeric) {
-  color: var(--svemy-dark-300);
+/* Spanning header over a column group: hairline under its label */
+.table-data thead th[colspan] {
+  border-bottom: 0.5pt solid var(--svemy-dark-200);
+}
+
+/* Zebra: even data rows filled; restarts in every tbody after a group row */
+.table-data tbody tr:nth-child(even of :not(.table-group)) {
+  background: var(--svemy-light-300);
+}
+
+.table-data .table-group th {
+  background: var(--svemy-light-400);
+  padding: 4pt 6pt;
+}
+
+/* Totals row: no fill, strong rule above, bold label, semibold value */
+.table-data tfoot th,
+.table-data tfoot td {
+  border-top: 0.75pt solid var(--svemy-dark-600);
+}
+
+.table-data tfoot th {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.table-data tfoot td {
+  font-weight: 600;
 }

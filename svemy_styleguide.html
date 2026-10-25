@@ -876,155 +876,196 @@
             <h4 id="tables-simple" class="subsection-title">
               <a href="#toc">Simple table</a>
             </h4>
+            <p class="type-small">
+              The default table for text-led content with no totals:
+              requirements and responses, inspection items, roles. Lines only,
+              no fill and no zebra.
+            </p>
 
-            <table class="table-striped table-header-accent mb-8">
+            <table>
               <caption>
-                The following table shows a simple layout with four columns for
-                metric, unit, value, and notes.
+                <span class="table-title-number">Table 01</span>&emsp;Inspection
+                results
               </caption>
               <thead>
                 <tr>
-                  <th>Metric</th>
-                  <th>Unit</th>
-                  <th class="numeric">Value</th>
-                  <th>Comment</th>
+                  <th>Item</th>
+                  <th>Requirement</th>
+                  <th>Observation</th>
+                  <th>Result</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Width</td>
-                  <td>mm</td>
-                  <td class="numeric">2,400</td>
-                  <td>Overall</td>
+                  <td>Crane pad</td>
+                  <td>Bearing capacity 150 kPa minimum</td>
+                  <td>Plate load test 185 kPa</td>
+                  <td>Accepted</td>
                 </tr>
                 <tr>
-                  <td>Depth</td>
-                  <td>mm</td>
-                  <td class="numeric">1,200</td>
-                  <td>Overall</td>
+                  <td>Formwork</td>
+                  <td>Level within 3 mm over 3 m</td>
+                  <td>2 mm deviation at grid C4</td>
+                  <td>Accepted</td>
                 </tr>
                 <tr>
-                  <td>Thickness</td>
-                  <td>mm</td>
-                  <td class="numeric">150</td>
-                  <td>Nominal</td>
+                  <td>Rebar cover</td>
+                  <td>50 mm to soffit</td>
+                  <td>40 mm at the north edge</td>
+                  <td>Rework</td>
+                </tr>
+                <tr>
+                  <td>Drainage</td>
+                  <td>Fall to outlet, 1% minimum</td>
+                  <td>As specified</td>
+                  <td>Accepted</td>
                 </tr>
               </tbody>
             </table>
+            <p class="table-note">
+              Source: site inspection by SVEMY Construction Ltd., September 9,
+              2026.
+            </p>
+          </article>
+
+          <article class="subsection">
+            <h4 id="tables-data" class="subsection-title">
+              <a href="#toc">Data table</a>
+            </h4>
+            <p class="type-small">
+              For costs, quantities and schedules: black header, zebra rows,
+              optional group rows and a totals row. Numbers are right aligned
+              with units in the header; negatives in parentheses.
+            </p>
+
+            <table class="table-data">
+              <caption>
+                <span class="table-title-number">Table 02</span>&emsp;Cost
+                summary
+              </caption>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Unit</th>
+                  <th class="numeric">Qty</th>
+                  <th class="numeric">Rate (CAD)</th>
+                  <th class="numeric">Amount (CAD)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="table-group">
+                  <th colspan="5" scope="colgroup">Site preparation</th>
+                </tr>
+                <tr>
+                  <td>Clearing and grubbing</td>
+                  <td>m²</td>
+                  <td class="numeric">3,000</td>
+                  <td class="numeric">4.50</td>
+                  <td class="numeric">13,500.00</td>
+                </tr>
+                <tr>
+                  <td>Granular crane pad</td>
+                  <td>m³</td>
+                  <td class="numeric">420</td>
+                  <td class="numeric">68.00</td>
+                  <td class="numeric">28,560.00</td>
+                </tr>
+                <tr>
+                  <td>Silt fence</td>
+                  <td>m</td>
+                  <td class="numeric">240</td>
+                  <td class="numeric">12.25</td>
+                  <td class="numeric">2,940.00</td>
+                </tr>
+              </tbody>
+              <tbody>
+                <tr class="table-group">
+                  <th colspan="5" scope="colgroup">Structure</th>
+                </tr>
+                <tr>
+                  <td>Precast girders</td>
+                  <td>ea</td>
+                  <td class="numeric">6</td>
+                  <td class="numeric">48,500.00</td>
+                  <td class="numeric">291,000.00</td>
+                </tr>
+                <tr>
+                  <td>Cast-in-place deck</td>
+                  <td>m³</td>
+                  <td class="numeric">185</td>
+                  <td class="numeric">1,150.00</td>
+                  <td class="numeric">212,750.00</td>
+                </tr>
+                <tr>
+                  <td>Credit: reused formwork</td>
+                  <td>ls</td>
+                  <td class="numeric">1</td>
+                  <td class="numeric">(12,500.00)</td>
+                  <td class="numeric">(12,500.00)</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th colspan="4" scope="row">Total</th>
+                  <td class="numeric">536,250.00</td>
+                </tr>
+              </tfoot>
+            </table>
+            <p class="table-note">Amounts exclude GST.</p>
           </article>
 
           <article class="subsection">
             <h4 id="tables-merged-cells" class="subsection-title">
               <a href="#toc">Merged cells</a>
             </h4>
+            <p class="type-small">
+              When columns share a heading, use a data table with a spanning
+              header: the shared label sits over its columns with a hairline
+              below. Row headers span bottom aligned.
+            </p>
 
-            <table class="table-striped table-header-accent table-merged mb-6">
+            <table class="table-data">
               <caption>
-                The following table demonstrates merged cells with budget
-                allocation across different project phases.
+                <span class="table-title-number">Table 03</span>&emsp;Budget
+                by phase
               </caption>
               <thead>
                 <tr>
-                  <th rowspan="2">Project Phase</th>
-                  <th colspan="3">Budget</th>
+                  <th rowspan="2">Phase</th>
+                  <th colspan="3" class="numeric">Budget (CAD)</th>
                 </tr>
                 <tr>
-                  <th>Planned</th>
-                  <th>Actual</th>
-                  <th>Status</th>
+                  <th class="numeric">Planned</th>
+                  <th class="numeric">Actual</th>
+                  <th class="numeric">Variance</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Design</td>
-                  <td class="numeric">250,000</td>
-                  <td class="numeric">245,000</td>
-                  <td>
-                    <span class="badge badge-success">Completed</span>
-                  </td>
+                  <td class="numeric">250,000.00</td>
+                  <td class="numeric">245,000.00</td>
+                  <td class="numeric">5,000.00</td>
                 </tr>
                 <tr>
                   <td>Construction</td>
-                  <td class="numeric">800,000</td>
-                  <td class="numeric">720,000</td>
-                  <td>
-                    <span class="badge badge-primary">In Progress</span>
-                  </td>
+                  <td class="numeric">800,000.00</td>
+                  <td class="numeric">720,000.00</td>
+                  <td class="numeric">80,000.00</td>
                 </tr>
                 <tr>
                   <td>Finalization</td>
-                  <td class="numeric">150,000</td>
-                  <td class="numeric">85,000</td>
-                  <td>
-                    <span class="badge badge-neutral">Pending</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </article>
-
-          <article class="subsection">
-            <h4 id="tables-summary" class="subsection-title">
-              <a href="#toc">Summary Tables</a>
-            </h4>
-
-            <table class="table-striped table-header-accent mb-8">
-              <caption>
-                The following table provides a detailed breakdown of financial
-                data with summary totals.
-              </caption>
-              <thead>
-                <tr>
-                  <th>Category</th>
-                  <th class="numeric">Q1</th>
-                  <th class="numeric">Q2</th>
-                  <th class="numeric">Q3</th>
-                  <th class="numeric">Q4</th>
-                  <th class="numeric">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Materials</td>
-                  <td class="numeric">125,000</td>
-                  <td class="numeric">145,000</td>
-                  <td class="numeric">180,000</td>
-                  <td class="numeric">165,000</td>
-                  <td class="numeric">615,000</td>
-                </tr>
-                <tr>
-                  <td>Labor</td>
-                  <td class="numeric">95,000</td>
-                  <td class="numeric">110,000</td>
-                  <td class="numeric">135,000</td>
-                  <td class="numeric">120,000</td>
-                  <td class="numeric">460,000</td>
-                </tr>
-                <tr>
-                  <td>Equipment</td>
-                  <td class="numeric">45,000</td>
-                  <td class="numeric">52,000</td>
-                  <td class="numeric">48,000</td>
-                  <td class="numeric">50,000</td>
-                  <td class="numeric">195,000</td>
-                </tr>
-                <tr>
-                  <td>Overhead</td>
-                  <td class="numeric">35,000</td>
-                  <td class="numeric">38,000</td>
-                  <td class="numeric">42,000</td>
-                  <td class="numeric">40,000</td>
-                  <td class="numeric">155,000</td>
+                  <td class="numeric">150,000.00</td>
+                  <td class="numeric">165,000.00</td>
+                  <td class="numeric">(15,000.00)</td>
                 </tr>
               </tbody>
               <tfoot>
                 <tr>
-                  <td></td>
-                  <td class="numeric">300,000</td>
-                  <td class="numeric">345,000</td>
-                  <td class="numeric">405,000</td>
-                  <td class="numeric">375,000</td>
-                  <td class="numeric">1,425,000</td>
+                  <th scope="row">Total</th>
+                  <td class="numeric">1,200,000.00</td>
+                  <td class="numeric">1,130,000.00</td>
+                  <td class="numeric">70,000.00</td>
                 </tr>
               </tfoot>
             </table>
@@ -1696,51 +1737,56 @@
               <a href="#toc">Budget Performance Analysis</a>
             </h4>
 
-            <table class="table-striped table-header-accent table-merged mb-8">
+            <p>
+              The following table provides a detailed breakdown of budget
+              allocation and actual spending across project phases.
+            </p>
+
+            <table class="table-data">
               <caption>
-                The following table provides a detailed breakdown of budget
-                allocation and actual spending across project phases:
+                <span class="table-title-number">Table 04</span>&emsp;Budget
+                allocation by phase
               </caption>
               <thead>
                 <tr>
                   <th rowspan="2">Project Phase</th>
-                  <th colspan="3">Budget Allocation</th>
+                  <th colspan="3">Budget allocation (CAD)</th>
                 </tr>
                 <tr>
-                  <th>Planned</th>
-                  <th>Actual</th>
+                  <th class="numeric">Planned</th>
+                  <th class="numeric">Actual</th>
                   <th>Status</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Site Preparation</td>
-                  <td class="numeric">$185,000</td>
-                  <td class="numeric">$178,500</td>
+                  <td class="numeric">185,000.00</td>
+                  <td class="numeric">178,500.00</td>
                   <td>
                     <span class="badge badge-success">Completed</span>
                   </td>
                 </tr>
                 <tr>
                   <td>Foundation & Structure</td>
-                  <td class="numeric">$1,250,000</td>
-                  <td class="numeric">$1,198,000</td>
+                  <td class="numeric">1,250,000.00</td>
+                  <td class="numeric">1,198,000.00</td>
                   <td>
                     <span class="badge badge-success">Completed</span>
                   </td>
                 </tr>
                 <tr>
                   <td>MEP Systems</td>
-                  <td class="numeric">$850,000</td>
-                  <td class="numeric">$612,000</td>
+                  <td class="numeric">850,000.00</td>
+                  <td class="numeric">612,000.00</td>
                   <td>
                     <span class="badge badge-primary">In Progress</span>
                   </td>
                 </tr>
                 <tr>
                   <td>Interior Finishing</td>
-                  <td class="numeric">$420,000</td>
-                  <td class="numeric">$95,000</td>
+                  <td class="numeric">420,000.00</td>
+                  <td class="numeric">95,000.00</td>
                   <td>
                     <span class="badge badge-neutral">Pending</span>
                   </td>
@@ -1748,9 +1794,9 @@
               </tbody>
               <tfoot>
                 <tr>
-                  <td></td>
-                  <td class="numeric">$2,705,000</td>
-                  <td class="numeric">$2,083,500</td>
+                  <th scope="row">Total</th>
+                  <td class="numeric">2,705,000.00</td>
+                  <td class="numeric">2,083,500.00</td>
                   <td></td>
                 </tr>
               </tfoot>
