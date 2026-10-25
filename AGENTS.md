@@ -29,7 +29,7 @@ CSS files load in prefix order and the cascade depends on it. Do not reorder fil
 - **English only**: code, comments, file names and commit messages. No Cyrillic anywhere.
 - **One branch**: work on `feature/new-design-upgrade`. Do not create branches or worktrees, do not merge, do not push.
 - **Parallel work**: several agents may work in this folder at the same time. Each task names the files you own. Edit only those files.
-- **Commits**: commit only your files, using explicit paths (`git add css/06-tables.css`). Never use `git add -A` or `git add .`. Never stash, reset or check out files you do not own.
+- **Commits**: commit only your files, using explicit paths (`git add css/06-tables.css`). Never use `git add -A` or `git add .`. Never stash, reset or check out files you do not own. Do not add `Co-Authored-By` trailers or any other AI attribution to commit messages.
 - **Live server**: browser-sync already runs on http://localhost:3001 and reloads on changes to `*.html`, `css/`, `js/`, `fonts/` and `assets/`. Do not start, stop or restart it.
 - **Ignored folders**: `context/` and `dist/` are git-ignored. Do not commit them.
 
