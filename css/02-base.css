@@ -28,8 +28,9 @@ body {
   padding: 20px 0;
 }
 
+/* Links are never colored: they take the text color */
 a {
-  color: var(--svemy-primary-500);
+  color: inherit;
 }
 
 /* ===============================

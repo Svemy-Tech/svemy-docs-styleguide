@@ -18,10 +18,10 @@ CSS VARIABLES - SVEMY THEME (main palette and fonts)
   /* ------------------------------------------
      TIER 1 - SCALES. One hue per meaning. Status scales share three
      steps: 50 = fill, 400 = rule and mark (3:1 on white and on its fill),
-     500 = strong colour (white text on it passes 4.5:1).
+     500 = strong color (white text on it passes 4.5:1).
      ------------------------------------------ */
 
-  /* Brand - SVEMY yellow. Accent only, never a status colour */
+  /* Brand - SVEMY yellow. Accent only, never a status color */
   --svemy-primary-300: #ffdb4f;
   --svemy-primary-400: #fed01f;
   --svemy-primary-500: #e6a500;
@@ -63,7 +63,7 @@ CSS VARIABLES - SVEMY THEME (main palette and fonts)
   --svemy-warning-500: #7a5414;
 
   /* ------------------------------------------
-     TIER 2 - COMPONENT COLOURS. References to the scales only, no HEX
+     TIER 2 - COMPONENT COLORS. References to the scales only, no HEX
      ------------------------------------------ */
 
   /* Badges - strong step of the scale, white text */

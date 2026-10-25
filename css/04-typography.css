@@ -54,7 +54,7 @@ h4 a {
 }
 
 h4 a:hover {
-  color: var(--svemy-primary-500);
+  text-decoration: underline;
 }
 
 /* h5/h6 are not in the type scale: set as labels */
@@ -106,7 +106,7 @@ main > .subsection > p {
 }
 
 /* Inline styles are not in the type scale; they follow the design system
-   rules: no yellow or coloured text, grey fill only, square corners */
+   rules: no yellow or colored text, gray fill only, square corners */
 .text-code {
   font-family:
     "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
@@ -305,6 +305,60 @@ system. Leading 1.4 unless a style sets its own.
   margin: 0;
 }
 
+/* Table title = table caption: number in gray, em space, title */
+.type-table-title {
+  font-family: var(--font-display);
+  font-size: 10pt;
+  line-height: 13pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--svemy-dark-600);
+  margin: 0;
+}
+
+/* Page furniture and components, as used in this styleguide */
+.type-toc-1,
+.type-toc-2 {
+  font-family: var(--font-display);
+  font-size: 14pt;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.type-toc-1 {
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--svemy-dark-500);
+}
+
+.type-toc-2 {
+  font-weight: 400;
+  color: var(--svemy-dark-400);
+}
+
+.type-callout-title {
+  font-family: var(--font-body);
+  font-size: 11pt;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--svemy-dark-600);
+  margin: 0 0 1mm;
+}
+
+.type-footer {
+  font-family: var(--font-display);
+  font-size: 7.5pt;
+  line-height: 10pt;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--svemy-dark-200);
+  margin: 0;
+}
+
+
 /* ===============================
 TYPE SPECIMEN (Typography System page)
 Sample on the left, spec on the right, rows split by hairlines
@@ -324,8 +378,8 @@ Sample on the left, spec on the right, rows split by hairlines
 }
 
 .type-family-sample {
-  font-size: 44pt;
-  line-height: 40pt;
+  font-size: 36pt;
+  line-height: 32pt;
   color: var(--svemy-dark-600);
 }
 
@@ -364,14 +418,14 @@ Sample on the left, spec on the right, rows split by hairlines
 }
 
 /* Rows are top aligned. Text boxes are trimmed to the cap height and the
-   baseline, so cap tops of sample and spec line up and every row has the
-   same space above and below its text, whatever the font size. */
+   baseline, so cap tops of sample and spec line up. The bottom padding is
+   2 pt larger to make room for descenders, so the space looks even. */
 .type-specimen-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 62mm;
   column-gap: 18pt;
   align-items: start;
-  padding: 7pt 0;
+  padding: 7.5pt 0 9.5pt;
   border-bottom: 0.5pt solid var(--svemy-light-400);
   break-inside: avoid;
   page-break-inside: avoid;
@@ -379,13 +433,18 @@ Sample on the left, spec on the right, rows split by hairlines
 
 /* Titles and headings: large sizes need more air between rows */
 .type-specimen.is-spacious .type-specimen-row {
-  padding: 12pt 0;
+  padding: 8.5pt 0 10.5pt;
 }
 
 /* In the specimen the space before/after is listed, not applied */
 .type-specimen-sample > * {
   margin: 0;
   text-box: trim-both cap alphabetic;
+}
+
+/* Samples with two lines, such as a contents entry and its sub-entry */
+.type-specimen-sample > * + * {
+  margin-top: 6pt;
 }
 
 .type-specimen-spec .type-label-small {
