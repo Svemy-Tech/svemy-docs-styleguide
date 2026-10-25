@@ -479,6 +479,17 @@ DOCUMENT NAVIGATION (PAGE 2)
   counter-increment: nav-counter 0;
 }
 
+/* Section continued from the previous ToC page: sub-entries only, the
+   section line and its number are not repeated */
+.document-navigation > li.nav-continued {
+  counter-increment: nav-counter 0;
+}
+
+/* !important: the print rules force display: flex on every ToC link */
+.document-navigation > li.nav-continued > a {
+  display: none !important;
+}
+
 /* Subsections with indentation */
 .document-navigation li > ul {
   list-style: none;

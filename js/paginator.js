@@ -44,10 +44,11 @@ const warn = window.SVEMY_WARN;
 
     // Approximate component heights (measured from actual rendering)
     HEADER_HEIGHT_MM: 14, // .section-header or .page-header
-    FOOTER_HEIGHT_MM: 10, // .page-footer
+    FOOTER_HEIGHT_MM: 7, // .page-footer (6 pt padding + 10 pt line)
 
-    // Safety buffer to prevent edge-case overflow
-    BUFFER_PX: 32,
+    // Safety buffer to prevent edge-case overflow. Kept small: pagination
+    // now waits for the web fonts, so measured heights are exact
+    BUFFER_PX: 8,
 
     // Conversion factor: millimeters to pixels at 96 DPI
     MM_TO_PX: 3.7795275591,
@@ -300,6 +301,54 @@ const warn = window.SVEMY_WARN;
    * @param {number} maxHeight - Maximum height per page
    * @returns {Array<Array<HTMLElement>>} Array of page content arrays
    */
+  /**
+   * Split a ToC section entry between its sub-entries so that the part that
+   * fits stays on the current page. The rest continues on the next page
+   * without repeating the section line and keeps its numbering.
+   * @param {HTMLElement} navItem - Top-level ToC <li> with a sub-list
+   * @param {number} availableHeight - Space left on the current page in px
+   * @returns {Object|null} { head, tail, headCount, headHeight } or null
+   */
+  function splitNavItem(navItem, availableHeight) {
+    const subList = navItem.querySelector(":scope > ul");
+    if (!subList) return null;
+    const subItems = Array.from(subList.querySelectorAll(":scope > li"));
+    if (subItems.length < 3) return null;
+
+    const subHeights = subItems.map((li) => getElementHeight(li));
+    const subTotal = subHeights.reduce((sum, h) => sum + h, 0);
+    const headLineHeight = getElementHeight(navItem) - subTotal;
+
+    // Keep the section line with at least two sub-entries, and move at
+    // least one sub-entry to the next page
+    let used = headLineHeight;
+    let fit = 0;
+    while (
+      fit < subItems.length - 1 &&
+      used + subHeights[fit] <= availableHeight
+    ) {
+      used += subHeights[fit];
+      fit++;
+    }
+    if (fit < 2) return null;
+
+    const head = navItem.cloneNode(true);
+    head
+      .querySelectorAll(":scope > ul > li")
+      .forEach((li, idx) => idx >= fit && li.remove());
+
+    const tail = navItem.cloneNode(true);
+    tail.classList.add("nav-continued");
+    tail.style.counterReset = `sub-nav-counter ${fit}`;
+    tail
+      .querySelectorAll(":scope > ul > li")
+      .forEach((li, idx) => idx < fit && li.remove());
+    // The tail is not in the DOM yet, so store its height for the next page
+    tail.svemyNavHeight = subTotal - (used - headLineHeight);
+
+    return { head, tail, headCount: fit, headHeight: used };
+  }
+
   function splitNavigationIntoPages(mainElement, navElement, maxHeight) {
     const pages = [];
     const navItems = Array.from(
@@ -382,13 +431,56 @@ const warn = window.SVEMY_WARN;
       currentPage.push(el.cloneNode(true));
     });
 
-    // Process navigation items (treat each <li> as a separate element)
-    for (let i = 0; i < navItems.length; i++) {
-      const navItem = navItems[i];
-      const navItemHeight = getElementHeight(navItem);
+    // Close the current ToC page with the nav items collected so far
+    const flushNavPage = () => {
+      const navClone = navElement.cloneNode(false);
+      navClone.className = navElement.className;
+      navClone.setAttribute(
+        "data-toc-auto",
+        navElement.getAttribute("data-toc-auto") || "",
+      );
+
+      // Add all collected nav items (clone each item to avoid DOM conflicts)
+      currentNavItems.forEach((item, itemIdx) => {
+        const clonedItem = item.cloneNode(true);
+        navClone.appendChild(clonedItem);
+        log(
+          `[Split Nav]   Added nav item ${itemIdx + 1} to page (has ${
+            clonedItem.querySelectorAll('a[href^="#"]').length
+          } links)`,
+        );
+      });
+
+      // Add nav to current page
+      currentPage.push(navClone);
+      pages.push(currentPage);
+      log(
+        `[Split Nav] Created page with ${
+          currentNavItems.length
+        } nav items (${Math.round(currentHeight)}px)`,
+      );
+
+      // Start new page (no beforeNav on continuation pages)
+      currentPage = [];
+      currentHeight = 0;
+      currentNavItems = [];
+    };
+
+    // Process navigation items (treat each <li> as a separate element).
+    // A section that does not fit is split between its sub-entries, so the
+    // page is filled instead of leaving a gap at the bottom.
+    const queue = navItems.slice();
+    let itemNumber = 0;
+    while (queue.length > 0) {
+      const navItem = queue.shift();
+      itemNumber++;
+      const navItemHeight =
+        navItem.svemyNavHeight !== undefined
+          ? navItem.svemyNavHeight
+          : getElementHeight(navItem);
 
       log(
-        `[Split Nav] Item ${i + 1}/${navItems.length}: ${Math.round(
+        `[Split Nav] Item ${itemNumber}: ${Math.round(
           navItemHeight,
         )}px (current: ${Math.round(currentHeight)}px)`,
       );
@@ -398,42 +490,18 @@ const warn = window.SVEMY_WARN;
         currentHeight + navItemHeight > maxHeight &&
         currentNavItems.length > 0
       ) {
-        // Create nav container for current page
-        const navClone = navElement.cloneNode(false);
-        navClone.className = navElement.className;
-        navClone.setAttribute(
-          "data-toc-auto",
-          navElement.getAttribute("data-toc-auto") || "",
-        );
-
-        // Add all collected nav items (clone each item to avoid DOM conflicts)
-        currentNavItems.forEach((item, itemIdx) => {
-          const clonedItem = item.cloneNode(true);
-          navClone.appendChild(clonedItem);
+        const parts = splitNavItem(navItem, maxHeight - currentHeight);
+        if (parts) {
           log(
-            `[Split Nav]   Added nav item ${itemIdx + 1} to page (has ${
-              clonedItem.querySelectorAll('a[href^="#"]').length
-            } links)`,
+            `[Split Nav] Split section between sub-entries: ${parts.headCount} here, rest on next page`,
           );
-        });
-
-        // Add nav to current page
-        currentPage.push(navClone);
-
-        // Add afterNav only to last page of navigation
-        // (we'll add it later to the final page)
-
-        pages.push(currentPage);
-        log(
-          `[Split Nav] Created page with ${
-            currentNavItems.length
-          } nav items (${Math.round(currentHeight)}px)`,
-        );
-
-        // Start new page (no beforeNav on continuation pages)
-        currentPage = [];
-        currentHeight = 0;
-        currentNavItems = [];
+          currentNavItems.push(parts.head);
+          currentHeight += parts.headHeight;
+          flushNavPage();
+          queue.unshift(parts.tail);
+          continue;
+        }
+        flushNavPage();
       }
 
       // Add nav item to current collection
@@ -1743,7 +1811,7 @@ const warn = window.SVEMY_WARN;
                     );
                     if (nav) {
                       const numberedItems = nav.querySelectorAll(
-                        ":scope > li:not(.nav-no-number)",
+                        ":scope > li:not(.nav-no-number):not(.nav-continued)",
                       );
                       accumulatedNavItemsCount += numberedItems.length;
                     }
@@ -1856,12 +1924,38 @@ const warn = window.SVEMY_WARN;
   // INITIALIZATION
   // ================================================
 
-  // Run pagination when DOM is ready
+  // Run pagination when the DOM is ready AND the web fonts are loaded.
+  // Measuring with fallback fonts gives other heights, so page breaks
+  // would change from one load to the next.
+  const DOCUMENT_FONTS = [
+    '400 1em "DINish Condensed"',
+    '500 1em "DINish Condensed"',
+    '600 1em "DINish Condensed"',
+    '700 1em "DINish Condensed"',
+    '400 1em "Geist"',
+    'italic 400 1em "Geist"',
+    '600 1em "Geist"',
+    '700 1em "Geist"',
+  ];
+
+  function startPagination() {
+    if (!document.fonts || typeof document.fonts.load !== "function") {
+      paginateDocument();
+      return;
+    }
+    Promise.all(DOCUMENT_FONTS.map((font) => document.fonts.load(font)))
+      .then(() => document.fonts.ready)
+      .then(paginateDocument, (error) => {
+        warn("[Pagination] Font loading failed, paginating anyway:", error);
+        paginateDocument();
+      });
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", paginateDocument);
+    document.addEventListener("DOMContentLoaded", startPagination);
   } else {
-    // DOM already loaded, run immediately
-    paginateDocument();
+    // DOM already loaded, run as soon as the fonts are ready
+    startPagination();
   }
 
   // Ensure pagination runs before printing
