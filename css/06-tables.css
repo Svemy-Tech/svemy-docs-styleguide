@@ -72,6 +72,12 @@ td.numeric {
   text-align: right;
 }
 
+/* Status column (badges) and its header are centred */
+th.status,
+td.status {
+  text-align: center;
+}
+
 tr {
   page-break-inside: avoid;
   break-inside: avoid;
