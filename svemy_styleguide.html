@@ -238,207 +238,268 @@
 
         <main role="main">
           <p class="text-muted mb-6">
-            The SVEMY color palette consists of three brand scales (Primary,
-            Dark, Light) and a set of status colors. Status colors are reserved
-            for alerts, callouts, approval marks and other state indicators.
+            One hue per meaning: brand yellow for accents, dark and light
+            neutrals for text, lines and fills, and four status hues. Components
+            such as badges and callouts use steps of these scales, never their
+            own HEX values. Roles under a swatch show where it is used.
           </p>
 
-          <div class="color-palette">
-            <div class="color-group color-group-6">
-              <h4>SVEMY Primary</h4>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-primary-50">
-                  <p class="color-swatch-code color-text-dark">50</p>
-                  <p class="color-swatch-hex color-text-dark">#FFFCEB</p>
-                </div>
+          <article class="subsection">
+            <h4 id="palette-brand" class="subsection-title">
+              <a href="#toc">Brand</a>
+            </h4>
+            <p class="color-note">SVEMY yellow is an accent only: logo, accent rules and selection. It is never used for status.</p>
+            <div class="color-group color-group-3">
+              <div class="color-group-header">
+                <h5 class="color-group-title">Primary</h5>
+                <span class="color-group-token">--svemy-primary-*</span>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-primary-100">
-                  <p class="color-swatch-code color-text-dark">100</p>
-                  <p class="color-swatch-hex color-text-dark">#FFF6CC</p>
-                </div>
+                <div class="color-swatch-box color-bg-primary-300"></div>
+                <p class="color-swatch-step">300</p>
+                <p class="color-swatch-hex">#FFDB4F</p>
+                <p class="color-swatch-role">Text selection</p>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-primary-200">
-                  <p class="color-swatch-code color-text-dark">200</p>
-                  <p class="color-swatch-hex color-text-dark">#FFEC99</p>
-                </div>
+                <div class="color-swatch-box color-bg-primary-400"></div>
+                <p class="color-swatch-step">400</p>
+                <p class="color-swatch-hex">#FED01F</p>
+                <p class="color-swatch-role">Brand accent</p>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-primary-300">
-                  <p class="color-swatch-code color-text-dark">300</p>
-                  <p class="color-swatch-hex color-text-dark">#FFDB4F</p>
-                </div>
-              </div>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-primary-400">
-                  <p class="color-swatch-code color-text-dark">400</p>
-                  <p class="color-swatch-hex color-text-dark">#FED01F</p>
-                </div>
-              </div>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-primary-500">
-                  <p class="color-swatch-code color-text-dark">500</p>
-                  <p class="color-swatch-hex color-text-dark">#E6A500</p>
-                </div>
+                <div class="color-swatch-box color-bg-primary-500"></div>
+                <p class="color-swatch-step">500</p>
+                <p class="color-swatch-hex">#E6A500</p>
+                <p class="color-swatch-role">Links, accent rule</p>
               </div>
             </div>
-            <div class="color-group color-group-6">
-              <h4>SVEMY Dark</h4>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-dark-200">
-                  <p class="color-swatch-code color-text-light">200</p>
-                  <p class="color-swatch-hex color-text-light">#5A5A5D</p>
-                </div>
+          </article>
+
+          <article class="subsection">
+            <h4 id="palette-neutrals" class="subsection-title">
+              <a href="#toc">Neutrals</a>
+            </h4>
+            <p class="color-note">Dark steps carry text and strong rules; light steps carry fills, hairlines and muted text.</p>
+            <div class="color-group">
+              <div class="color-group-header">
+                <h5 class="color-group-title">Dark</h5>
+                <span class="color-group-token">--svemy-dark-*</span>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-dark-300">
-                  <p class="color-swatch-code color-text-light">300</p>
-                  <p class="color-swatch-hex color-text-light">#49494D</p>
-                </div>
+                <div class="color-swatch-box color-bg-dark-200"></div>
+                <p class="color-swatch-step">200</p>
+                <p class="color-swatch-hex">#5A5A5D</p>
+                <p class="color-swatch-role">Secondary text, neutral badge</p>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-dark-400">
-                  <p class="color-swatch-code color-text-light">400</p>
-                  <p class="color-swatch-hex color-text-light">#3A3A3C</p>
-                </div>
+                <div class="color-swatch-box color-bg-dark-300"></div>
+                <p class="color-swatch-step">300</p>
+                <p class="color-swatch-hex">#49494D</p>
+                <p class="color-swatch-role">Header rules</p>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-dark-500">
-                  <p class="color-swatch-code color-text-light">500</p>
-                  <p class="color-swatch-hex color-text-light">#29292B</p>
-                </div>
+                <div class="color-swatch-box color-bg-dark-400"></div>
+                <p class="color-swatch-step">400</p>
+                <p class="color-swatch-hex">#3A3A3C</p>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-dark-600">
-                  <p class="color-swatch-code color-text-light">600</p>
-                  <p class="color-swatch-hex color-text-light">#1F1F21</p>
-                </div>
+                <div class="color-swatch-box color-bg-dark-500"></div>
+                <p class="color-swatch-step">500</p>
+                <p class="color-swatch-hex">#29292B</p>
+                <p class="color-swatch-role">Headings</p>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-dark-700">
-                  <p class="color-swatch-code color-text-light">700</p>
-                  <p class="color-swatch-hex color-text-light">#151517</p>
-                </div>
-              </div>
-            </div>
-            <div class="color-group color-group-6">
-              <h4>SVEMY Light</h4>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-light-200">
-                  <p class="color-swatch-code color-text-dark">200</p>
-                  <p class="color-swatch-hex color-text-dark">#FAFAFA</p>
-                </div>
+                <div class="color-swatch-box color-bg-dark-600"></div>
+                <p class="color-swatch-step">600</p>
+                <p class="color-swatch-hex">#1F1F21</p>
+                <p class="color-swatch-role">Body text, table header</p>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-light-300">
-                  <p class="color-swatch-code color-text-dark">300</p>
-                  <p class="color-swatch-hex color-text-dark">#F3F3F3</p>
-                </div>
-              </div>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-light-400">
-                  <p class="color-swatch-code color-text-dark">400</p>
-                  <p class="color-swatch-hex color-text-dark">#E5E5E5</p>
-                </div>
-              </div>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-light-500">
-                  <p class="color-swatch-code color-text-dark">500</p>
-                  <p class="color-swatch-hex color-text-dark">#C4C4C4</p>
-                </div>
-              </div>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-light-600">
-                  <p class="color-swatch-code color-text-dark">600</p>
-                  <p class="color-swatch-hex color-text-dark">#A3A3A3</p>
-                </div>
-              </div>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-light-700">
-                  <p class="color-swatch-code color-text-dark">700</p>
-                  <p class="color-swatch-hex color-text-dark">#828282</p>
-                </div>
+                <div class="color-swatch-box color-bg-dark-700"></div>
+                <p class="color-swatch-step">700</p>
+                <p class="color-swatch-hex">#151517</p>
               </div>
             </div>
-            <div class="color-group color-group-6">
-              <h4>Status Colors</h4>
-              <h5>Success</h5>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-success-50">
-                  <p class="color-swatch-code color-text-dark">50</p>
-                  <p class="color-swatch-hex color-text-dark">#ECFCEE</p>
-                </div>
+            <div class="color-group">
+              <div class="color-group-header">
+                <h5 class="color-group-title">Light</h5>
+                <span class="color-group-token">--svemy-light-*</span>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-success-100">
-                  <p class="color-swatch-code color-text-dark">100</p>
-                  <p class="color-swatch-hex color-text-dark">#D6F7DB</p>
-                </div>
+                <div class="color-swatch-box color-bg-light-200"></div>
+                <p class="color-swatch-step">200</p>
+                <p class="color-swatch-hex">#FAFAFA</p>
+                <p class="color-swatch-role">Card, callout fill</p>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-success-200">
-                  <p class="color-swatch-code color-text-dark">200</p>
-                  <p class="color-swatch-hex color-text-dark">#B4EDBD</p>
-                </div>
+                <div class="color-swatch-box color-bg-light-300"></div>
+                <p class="color-swatch-step">300</p>
+                <p class="color-swatch-hex">#F3F3F3</p>
+                <p class="color-swatch-role">Zebra, code fill</p>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-success-300">
-                  <p class="color-swatch-code color-text-dark">300</p>
-                  <p class="color-swatch-hex color-text-dark">#6BCA80</p>
-                </div>
+                <div class="color-swatch-box color-bg-light-400"></div>
+                <p class="color-swatch-step">400</p>
+                <p class="color-swatch-hex">#E5E5E5</p>
+                <p class="color-swatch-role">Hairlines</p>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-success-400">
-                  <p class="color-swatch-code color-text-light">400</p>
-                  <p class="color-swatch-hex color-text-light">#16A34A</p>
-                </div>
+                <div class="color-swatch-box color-bg-light-500"></div>
+                <p class="color-swatch-step">500</p>
+                <p class="color-swatch-hex">#C4C4C4</p>
+                <p class="color-swatch-role">Borders</p>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-success-500">
-                  <p class="color-swatch-code color-text-light">500</p>
-                  <p class="color-swatch-hex color-text-light">#0B7332</p>
-                </div>
-              </div>
-              <h5>Danger</h5>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-danger-50">
-                  <p class="color-swatch-code color-text-dark">50</p>
-                  <p class="color-swatch-hex color-text-dark">#FEF4F3</p>
-                </div>
+                <div class="color-swatch-box color-bg-light-600"></div>
+                <p class="color-swatch-step">600</p>
+                <p class="color-swatch-hex">#A3A3A3</p>
               </div>
               <div class="color-swatch">
-                <div class="color-swatch-box color-bg-danger-100">
-                  <p class="color-swatch-code color-text-dark">100</p>
-                  <p class="color-swatch-hex color-text-dark">#FEE7E3</p>
-                </div>
-              </div>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-danger-200">
-                  <p class="color-swatch-code color-text-dark">200</p>
-                  <p class="color-swatch-hex color-text-dark">#FED0C9</p>
-                </div>
-              </div>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-danger-300">
-                  <p class="color-swatch-code color-text-dark">300</p>
-                  <p class="color-swatch-hex color-text-dark">#FF7D70</p>
-                </div>
-              </div>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-danger-400">
-                  <p class="color-swatch-code color-text-light">400</p>
-                  <p class="color-swatch-hex color-text-light">#DC2626</p>
-                </div>
-              </div>
-              <div class="color-swatch">
-                <div class="color-swatch-box color-bg-danger-500">
-                  <p class="color-swatch-code color-text-light">500</p>
-                  <p class="color-swatch-hex color-text-light">#991114</p>
-                </div>
+                <div class="color-swatch-box color-bg-light-700"></div>
+                <p class="color-swatch-step">700</p>
+                <p class="color-swatch-hex">#767676</p>
+                <p class="color-swatch-role">Muted text</p>
               </div>
             </div>
-          </div>
+          </article>
+
+          <article class="subsection">
+            <h4 id="palette-status" class="subsection-title">
+              <a href="#toc">Status</a>
+            </h4>
+            <p class="color-note">Every status hue has the same three steps: 50 fill, 400 rule and mark, 500 strong colour for badges and text on the fill.</p>
+            <div class="color-group color-group-split">
+              <div class="color-group-header">
+                <h5 class="color-group-title">Success</h5>
+                <span class="color-group-token">--svemy-success-*</span>
+              </div>
+              <div class="color-group-header">
+                <h5 class="color-group-title">Danger</h5>
+                <span class="color-group-token">--svemy-danger-*</span>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-success-50"></div>
+                <p class="color-swatch-step">50</p>
+                <p class="color-swatch-hex">#EDF3EF</p>
+                <p class="color-swatch-role">Callout fill</p>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-success-400"></div>
+                <p class="color-swatch-step">400</p>
+                <p class="color-swatch-hex">#4F7A5E</p>
+                <p class="color-swatch-role">Check mark, callout rule</p>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-success-500"></div>
+                <p class="color-swatch-step">500</p>
+                <p class="color-swatch-hex">#355B43</p>
+                <p class="color-swatch-role">Badge, text on fill</p>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-danger-50"></div>
+                <p class="color-swatch-step">50</p>
+                <p class="color-swatch-hex">#F7ECEC</p>
+                <p class="color-swatch-role">Callout fill</p>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-danger-400"></div>
+                <p class="color-swatch-step">400</p>
+                <p class="color-swatch-hex">#B04A52</p>
+                <p class="color-swatch-role">Cross mark, callout rule</p>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-danger-500"></div>
+                <p class="color-swatch-step">500</p>
+                <p class="color-swatch-hex">#8A3038</p>
+                <p class="color-swatch-role">Badge, text on fill</p>
+              </div>
+            </div>
+            <div class="color-group color-group-split">
+              <div class="color-group-header">
+                <h5 class="color-group-title">Info</h5>
+                <span class="color-group-token">--svemy-info-*</span>
+              </div>
+              <div class="color-group-header">
+                <h5 class="color-group-title">Warning</h5>
+                <span class="color-group-token">--svemy-warning-*</span>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-info-50"></div>
+                <p class="color-swatch-step">50</p>
+                <p class="color-swatch-hex">#ECF0F4</p>
+                <p class="color-swatch-role">Callout fill</p>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-info-400"></div>
+                <p class="color-swatch-step">400</p>
+                <p class="color-swatch-hex">#4C6072</p>
+                <p class="color-swatch-role">Callout rule, secondary badge</p>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-info-500"></div>
+                <p class="color-swatch-step">500</p>
+                <p class="color-swatch-hex">#263D53</p>
+                <p class="color-swatch-role">Primary badge, text on fill</p>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-warning-50"></div>
+                <p class="color-swatch-step">50</p>
+                <p class="color-swatch-hex">#FAF3E4</p>
+                <p class="color-swatch-role">Callout fill</p>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-warning-400"></div>
+                <p class="color-swatch-step">400</p>
+                <p class="color-swatch-hex">#B07A1E</p>
+                <p class="color-swatch-role">Callout rule</p>
+              </div>
+              <div class="color-swatch">
+                <div class="color-swatch-box color-bg-warning-500"></div>
+                <p class="color-swatch-step">500</p>
+                <p class="color-swatch-hex">#7A5414</p>
+                <p class="color-swatch-role">Badge, text on fill</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="subsection">
+            <h4 id="palette-badges" class="subsection-title">
+              <a href="#toc">Badges</a>
+            </h4>
+            <p class="color-note">The strong step of a scale with white text; badges add no colours of their own.</p>
+            <div class="color-badges">
+              <div class="color-badge-row">
+                <div><span class="badge badge-success">Completed</span></div>
+                <p class="color-badge-value"><span class="color-badge-key">BG</span>success-500 #355B43</p>
+                <p class="color-badge-value"><span class="color-badge-key">Text</span>white</p>
+                <p class="color-badge-use">Completed tasks and successful outcomes.</p>
+              </div>
+              <div class="color-badge-row">
+                <div><span class="badge badge-danger">Critical</span></div>
+                <p class="color-badge-value"><span class="color-badge-key">BG</span>danger-500 #8A3038</p>
+                <p class="color-badge-value"><span class="color-badge-key">Text</span>white</p>
+                <p class="color-badge-use">Critical issues requiring immediate attention.</p>
+              </div>
+              <div class="color-badge-row">
+                <div><span class="badge badge-primary">Primary</span></div>
+                <p class="color-badge-value"><span class="color-badge-key">BG</span>info-500 #263D53</p>
+                <p class="color-badge-value"><span class="color-badge-key">Text</span>white</p>
+                <p class="color-badge-use">Main categories and classifications.</p>
+              </div>
+              <div class="color-badge-row">
+                <div><span class="badge badge-secondary">Secondary</span></div>
+                <p class="color-badge-value"><span class="color-badge-key">BG</span>info-400 #4C6072</p>
+                <p class="color-badge-value"><span class="color-badge-key">Text</span>white</p>
+                <p class="color-badge-use">Supporting information and categories.</p>
+              </div>
+              <div class="color-badge-row">
+                <div><span class="badge badge-neutral">Neutral</span></div>
+                <p class="color-badge-value"><span class="color-badge-key">BG</span>dark-200 #5A5A5D</p>
+                <p class="color-badge-value"><span class="color-badge-key">Text</span>white</p>
+                <p class="color-badge-use">General labels and classifications.</p>
+              </div>
+            </div>
+          </article>
         </main>
 
         <footer class="page-footer" role="contentinfo">

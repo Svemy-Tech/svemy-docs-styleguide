@@ -1,5 +1,6 @@
 /* ===============================
 CALLOUT BLOCKS / COMPONENTS
+Status callouts: 50 fill with the 400 rule of the same scale
 =============================== */
 .callout {
   border-left: 1mm solid var(--svemy-light-500);
@@ -19,7 +20,7 @@ CALLOUT BLOCKS / COMPONENTS
 
 .callout-info {
   border-left-color: var(--svemy-info-400);
-  background: var(--svemy-info-300);
+  background: var(--svemy-info-50);
 }
 
 .callout-success {
@@ -28,8 +29,8 @@ CALLOUT BLOCKS / COMPONENTS
 }
 
 .callout-warning {
-  border-left-color: var(--svemy-primary-400);
-  background: var(--svemy-warning-300);
+  border-left-color: var(--svemy-warning-400);
+  background: var(--svemy-warning-50);
 }
 
 .callout-danger {
@@ -68,8 +69,8 @@ BADGES / TAGS
 }
 
 .badge-warning {
-  background: var(--svemy-primary-400);
-  color: var(--svemy-dark-500);
+  background: var(--svemy-badge-warning-bg);
+  color: var(--svemy-badge-warning-text);
 }
 
 .badge-danger {
@@ -134,7 +135,8 @@ pre code {
 /* ===============================
 HIGHLIGHTED TEXT
 =============================== */
-/* Design system: yellow is never a highlight; grey fill, square corners */
+/* Design system: yellow is never a highlight; grey fill, square corners.
+   Status highlights: 50 fill with 500 text of the same scale */
 .text-highlight {
   background: var(--svemy-light-300);
   color: var(--svemy-dark-500);
@@ -148,8 +150,8 @@ HIGHLIGHTED TEXT
 }
 
 .text-highlight-warning {
-  background: var(--svemy-warning-400);
-  color: var(--svemy-dark-600);
+  background: var(--svemy-warning-50);
+  color: var(--svemy-warning-500);
 }
 
 .text-highlight-danger {
@@ -158,8 +160,8 @@ HIGHLIGHTED TEXT
 }
 
 .text-highlight-info {
-  background: var(--svemy-info-300);
-  color: var(--svemy-info-400);
+  background: var(--svemy-info-50);
+  color: var(--svemy-info-500);
 }
 
 /* ===============================

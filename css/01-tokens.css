@@ -15,15 +15,18 @@ CSS VARIABLES - SVEMY THEME (main palette and fonts)
   --svemy-white: #ffffff;
   --svemy-black: #000000;
 
-  /* Brand colors - primary (50-200 are soft tints for callouts and fills) */
-  --svemy-primary-50: #fffceb;
-  --svemy-primary-100: #fff6cc;
-  --svemy-primary-200: #ffec99;
+  /* ------------------------------------------
+     TIER 1 - SCALES. One hue per meaning. Status scales share three
+     steps: 50 = fill, 400 = rule and mark (3:1 on white and on its fill),
+     500 = strong colour (white text on it passes 4.5:1).
+     ------------------------------------------ */
+
+  /* Brand - SVEMY yellow. Accent only, never a status colour */
   --svemy-primary-300: #ffdb4f;
   --svemy-primary-400: #fed01f;
   --svemy-primary-500: #e6a500;
 
-  /* Brand colors - dark palette */
+  /* Neutrals - dark: text, headings, strong rules */
   --svemy-dark-200: #5a5a5d;
   --svemy-dark-300: #49494d;
   --svemy-dark-400: #3a3a3c;
@@ -31,49 +34,49 @@ CSS VARIABLES - SVEMY THEME (main palette and fonts)
   --svemy-dark-600: #1f1f21;
   --svemy-dark-700: #151517;
 
-  /* Brand colors - light palette */
+  /* Neutrals - light: fills, hairlines, borders, muted text (700 = 4.5:1) */
   --svemy-light-200: #fafafa;
   --svemy-light-300: #f3f3f3;
   --svemy-light-400: #e5e5e5;
   --svemy-light-500: #c4c4c4;
   --svemy-light-600: #a3a3a3;
-  --svemy-light-700: #828282;
+  --svemy-light-700: #767676;
 
-  /* Status colors - success (checkbox tick = 400) */
-  --svemy-success-50: #ecfcee;
-  --svemy-success-100: #d6f7db;
-  --svemy-success-200: #b4edbd;
-  --svemy-success-300: #6bca80;
-  --svemy-success-400: #16a34a;
-  --svemy-success-500: #0b7332;
+  /* Status - success (green) */
+  --svemy-success-50: #edf3ef;
+  --svemy-success-400: #4f7a5e;
+  --svemy-success-500: #355b43;
 
-  /* Status colors - danger */
-  --svemy-danger-50: #fef4f3;
-  --svemy-danger-100: #fee7e3;
-  --svemy-danger-200: #fed0c9;
-  --svemy-danger-300: #ff7d70;
-  --svemy-danger-400: #dc2626;
-  --svemy-danger-500: #991114;
+  /* Status - danger (red) */
+  --svemy-danger-50: #f7ecec;
+  --svemy-danger-400: #b04a52;
+  --svemy-danger-500: #8a3038;
 
-  /* Warning colors */
-  --svemy-warning-300: #fffbeb;
-  --svemy-warning-400: #fed01f;
-  --svemy-warning-500: #92400e;
+  /* Status - info (navy) */
+  --svemy-info-50: #ecf0f4;
+  --svemy-info-400: #4c6072;
+  --svemy-info-500: #263d53;
 
-  /* Info colors */
-  --svemy-info-300: #e5f0ff;
-  --svemy-info-400: #1e40af;
-  --svemy-info-500: #1e3a8a;
+  /* Status - warning (amber), kept apart from the brand yellow */
+  --svemy-warning-50: #faf3e4;
+  --svemy-warning-400: #b07a1e;
+  --svemy-warning-500: #7a5414;
 
-  /* Badge colors - solid backgrounds with white text */
-  --svemy-badge-success-bg: #355b43;
-  --svemy-badge-success-text: #ffffff;
-  --svemy-badge-danger-bg: #8a3038;
-  --svemy-badge-danger-text: #ffffff;
-  --svemy-badge-primary-bg: #263d53;
-  --svemy-badge-primary-text: #ffffff;
-  --svemy-badge-secondary-bg: #4c6072;
-  --svemy-badge-secondary-text: #ffffff;
-  --svemy-badge-neutral-bg: #555555;
-  --svemy-badge-neutral-text: #ffffff;
+  /* ------------------------------------------
+     TIER 2 - COMPONENT COLOURS. References to the scales only, no HEX
+     ------------------------------------------ */
+
+  /* Badges - strong step of the scale, white text */
+  --svemy-badge-success-bg: var(--svemy-success-500);
+  --svemy-badge-success-text: var(--svemy-white);
+  --svemy-badge-danger-bg: var(--svemy-danger-500);
+  --svemy-badge-danger-text: var(--svemy-white);
+  --svemy-badge-warning-bg: var(--svemy-warning-500);
+  --svemy-badge-warning-text: var(--svemy-white);
+  --svemy-badge-primary-bg: var(--svemy-info-500);
+  --svemy-badge-primary-text: var(--svemy-white);
+  --svemy-badge-secondary-bg: var(--svemy-info-400);
+  --svemy-badge-secondary-text: var(--svemy-white);
+  --svemy-badge-neutral-bg: var(--svemy-dark-200);
+  --svemy-badge-neutral-text: var(--svemy-white);
 }
