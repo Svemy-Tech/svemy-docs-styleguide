@@ -64,4 +64,16 @@ CSS VARIABLES - SVEMY THEME (main palette and fonts)
   --svemy-info-300: #e5f0ff;
   --svemy-info-400: #1e40af;
   --svemy-info-500: #1e3a8a;
+
+  /* Badge colors - solid backgrounds with white text */
+  --svemy-badge-success-bg: #355b43;
+  --svemy-badge-success-text: #ffffff;
+  --svemy-badge-danger-bg: #8a3038;
+  --svemy-badge-danger-text: #ffffff;
+  --svemy-badge-primary-bg: #263d53;
+  --svemy-badge-primary-text: #ffffff;
+  --svemy-badge-secondary-bg: #4c6072;
+  --svemy-badge-secondary-text: #ffffff;
+  --svemy-badge-neutral-bg: #555555;
+  --svemy-badge-neutral-text: #ffffff;
 }

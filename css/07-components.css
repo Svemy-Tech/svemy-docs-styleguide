@@ -53,18 +53,18 @@ BADGES / TAGS
 }
 
 .badge-primary {
-  background: var(--svemy-primary-400);
-  color: var(--svemy-dark-500);
+  background: var(--svemy-badge-primary-bg);
+  color: var(--svemy-badge-primary-text);
 }
 
 .badge-secondary {
-  background: var(--svemy-dark-500);
-  color: var(--svemy-light-300);
+  background: var(--svemy-badge-secondary-bg);
+  color: var(--svemy-badge-secondary-text);
 }
 
 .badge-success {
-  background: var(--svemy-success-400);
-  color: var(--svemy-white);
+  background: var(--svemy-badge-success-bg);
+  color: var(--svemy-badge-success-text);
 }
 
 .badge-warning {
@@ -73,13 +73,13 @@ BADGES / TAGS
 }
 
 .badge-danger {
-  background: var(--svemy-danger-400);
-  color: var(--svemy-white);
+  background: var(--svemy-badge-danger-bg);
+  color: var(--svemy-badge-danger-text);
 }
 
 .badge-neutral {
-  background: var(--svemy-light-400);
-  color: var(--svemy-dark-500);
+  background: var(--svemy-badge-neutral-bg);
+  color: var(--svemy-badge-neutral-text);
 }
 
 /* ===============================
