@@ -100,44 +100,6 @@ so light swatches stay visible. Backgrounds come from the tokens.
   margin: 1pt 0 0;
 }
 
-/* Badge rows: badge, BG, text, usage in fixed columns; hairlines between rows */
-.color-badge-row {
-  display: grid;
-  grid-template-columns: 32mm 46mm 22mm minmax(0, 1fr);
-  column-gap: 6mm;
-  align-items: center;
-  padding: 2mm 0;
-  border-bottom: 0.5pt solid var(--svemy-light-400);
-}
-
-.color-badge-value,
-.color-badge-use {
-  font-size: 8.5pt;
-  line-height: 12pt;
-  margin: 0;
-}
-
-.color-badge-value {
-  font-variant-numeric: tabular-nums;
-  color: var(--svemy-dark-600);
-}
-
-/* BG / TEXT keys before each value */
-.color-badge-key {
-  display: inline-block;
-  margin-right: 1.5mm;
-  font-family: var(--font-display);
-  font-size: 7.5pt;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--svemy-light-700);
-}
-
-.color-badge-use {
-  color: var(--svemy-dark-400);
-}
-
 /* Swatch backgrounds */
 .color-bg-primary-300 {
   background-color: var(--svemy-primary-300);
@@ -248,10 +210,9 @@ so light swatches stay visible. Backgrounds come from the tokens.
 }
 
 .reference-list li {
-  font-size: 10pt;
   color: var(--svemy-dark-400);
   margin-bottom: 2mm;
-  padding-left: 6mm;
+  padding-left: 8mm;
   position: relative;
 }
 

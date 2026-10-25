@@ -53,6 +53,24 @@ BADGES / TAGS
   line-height: 1.4;
 }
 
+/* Badge with its description: fixed badge column so descriptions align */
+.badge-row {
+  display: grid;
+  grid-template-columns: 22mm minmax(0, 1fr);
+  align-items: center;
+  column-gap: 3mm;
+  margin-bottom: 3mm;
+}
+
+.badge-row .badge {
+  justify-self: start;
+}
+
+/* The description is .text-muted, which adds 5 mm below; not in a row */
+.badge-row > .text-muted {
+  margin: 0;
+}
+
 .badge-primary {
   background: var(--svemy-badge-primary-bg);
   color: var(--svemy-badge-primary-text);
@@ -135,7 +153,7 @@ pre code {
 /* ===============================
 HIGHLIGHTED TEXT
 =============================== */
-/* Design system: yellow is never a highlight; grey fill, square corners.
+/* Design system: yellow is never a highlight; gray fill, square corners.
    Status highlights: 50 fill with 500 text of the same scale */
 .text-highlight {
   background: var(--svemy-light-300);
@@ -174,7 +192,7 @@ REFERENCES / CITATIONS
 }
 
 .reference-label:hover {
-  color: var(--svemy-primary-500);
+  text-decoration: underline;
 }
 
 .reference-list {
