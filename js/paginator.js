@@ -233,8 +233,12 @@ const warn = window.SVEMY_WARN;
           continue;
         }
 
-        // CASE 2: Adding element would overflow current page
-        if (currentHeight + childHeight > maxHeight) {
+        // CASE 2: Adding element would overflow current page.
+        // Its bottom margin does not count: if the element ends the page,
+        // that space would fall below the content area anyway.
+        const childMarginBottom =
+          parseFloat(window.getComputedStyle(child).marginBottom) || 0;
+        if (currentHeight + childHeight - childMarginBottom > maxHeight) {
           log(
             `[Split]   → Would overflow (${Math.round(
               currentHeight,
