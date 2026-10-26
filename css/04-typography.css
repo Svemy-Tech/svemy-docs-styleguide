@@ -161,7 +161,7 @@ system. Leading 1.4 unless a style sets its own.
 .type-doc-title {
   font-family: var(--font-display);
   font-size: 34pt;
-  line-height: 1.4;
+  line-height: 36pt;
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -173,7 +173,7 @@ system. Leading 1.4 unless a style sets its own.
 .type-doc-subtitle {
   font-family: var(--font-display);
   font-size: 24pt;
-  line-height: 1.4;
+  line-height: 28pt;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--svemy-dark-200);
@@ -245,10 +245,10 @@ system. Leading 1.4 unless a style sets its own.
 .type-small {
   font-family: var(--font-body);
   font-size: 9pt;
-  line-height: 1.4;
+  line-height: 12.5pt;
   font-weight: 400;
-  color: var(--svemy-light-700);
-  margin: 0 0 3mm;
+  color: var(--svemy-dark-200);
+  margin: 0;
 }
 
 .type-caption {
@@ -286,13 +286,13 @@ system. Leading 1.4 unless a style sets its own.
 
 .type-label-small {
   font-family: var(--font-display);
-  font-size: 7.5pt;
-  line-height: 10pt;
+  font-size: 8pt;
+  line-height: 10.5pt;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--svemy-dark-200);
-  margin: 2pt 0 0;
+  margin: 0;
 }
 
 .type-table-text {
@@ -425,7 +425,7 @@ Sample on the left, spec on the right, rows split by hairlines
   grid-template-columns: minmax(0, 1fr) 62mm;
   column-gap: 18pt;
   align-items: start;
-  padding: 7.5pt 0 9.5pt;
+  padding: 8.25pt 0 10.25pt;
   border-bottom: 0.5pt solid var(--svemy-light-400);
   break-inside: avoid;
   page-break-inside: avoid;
@@ -433,7 +433,12 @@ Sample on the left, spec on the right, rows split by hairlines
 
 /* Titles and headings: large sizes need more air between rows */
 .type-specimen.is-spacious .type-specimen-row {
-  padding: 8.5pt 0 10.5pt;
+  padding: 9.5pt 0 11.5pt;
+}
+
+/* Last block above the page footer: no rule under its last row */
+.type-specimen.no-end-rule .type-specimen-row:last-child {
+  border-bottom: none;
 }
 
 /* In the specimen the space before/after is listed, not applied */
@@ -447,12 +452,7 @@ Sample on the left, spec on the right, rows split by hairlines
   margin-top: 6pt;
 }
 
-.type-specimen-spec .type-label-small {
-  margin: 0;
-}
-
-/* Spec column and typeface notes: fixed 8.5 / 12 pt, not the Small style */
-.type-specimen-spec .type-small,
+/* Typeface notes: fixed 8.5 / 12 pt, not the Small style */
 .type-family .type-small {
   font-size: 8.5pt;
   line-height: 12pt;

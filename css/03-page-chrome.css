@@ -342,6 +342,7 @@ COVER PAGE (PAGE 1)
 .cover-title {
   font-family: var(--font-display);
   font-size: 34pt;
+  line-height: 36pt;
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -349,8 +350,10 @@ COVER PAGE (PAGE 1)
   color: var(--svemy-dark-500);
 }
 
+/* Display sizes take a tight leading so title and subtitle read as one block */
 .cover-subtitle {
   font-family: var(--font-display);
+  line-height: 28pt;
   margin-bottom: 0;
   color: var(--svemy-dark-200);
   font-weight: 500 !important;
