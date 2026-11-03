@@ -84,9 +84,6 @@ CSS VARIABLES - SVEMY THEME (main palette and fonts)
   --svemy-badge-primary-bg: var(--svemy-info-100);
   --svemy-badge-primary-text: var(--svemy-info-500);
   --svemy-badge-primary-dot: var(--svemy-info-500);
-  --svemy-badge-secondary-bg: var(--svemy-info-100);
-  --svemy-badge-secondary-text: var(--svemy-info-400);
-  --svemy-badge-secondary-dot: var(--svemy-info-400);
   --svemy-badge-neutral-bg: var(--svemy-light-400);
   --svemy-badge-neutral-text: var(--svemy-dark-200);
   --svemy-badge-neutral-dot: var(--svemy-dark-200);

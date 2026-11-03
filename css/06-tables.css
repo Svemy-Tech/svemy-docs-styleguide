@@ -1,7 +1,6 @@
 /* ===============================
 TABLES
-Design system: every table is a SimpleTable (lines only, no fill);
-add .table-data for numbers (black header, zebra, group and totals rows).
+One table style: black header, zebra, optional group and totals rows.
 Colours use the current palette until it is aligned with the design
 system: brand-black = dark-600, grey-200 = light-400,
 grey-100 = light-300, grey-600 = dark-200.
@@ -36,7 +35,6 @@ td {
   padding: 4pt 6pt;
   text-align: left;
   vertical-align: top;
-  border-bottom: 0.5pt solid var(--svemy-light-400);
 }
 
 /* Header cells use SV Label */
@@ -51,19 +49,7 @@ th {
 }
 
 thead th {
-  padding-top: 5pt;
-  padding-bottom: 5pt;
   vertical-align: bottom;
-  border-bottom: 0.75pt solid var(--svemy-dark-600);
-}
-
-/* Simple table: first and last column flush with the text edge */
-table:not(.table-data) :is(th, td):first-child {
-  padding-left: 0;
-}
-
-table:not(.table-data) :is(th, td):last-child {
-  padding-right: 0;
 }
 
 /* Numbers and their headers are right aligned */
@@ -110,38 +96,33 @@ table caption {
 }
 
 /* ===============================
-DATA TABLE
+HEADER, ZEBRA, GROUP AND TOTALS ROWS
 =============================== */
-.table-data th,
-.table-data td {
-  border-bottom: none;
-}
-
-.table-data thead th {
+thead th {
   background: var(--svemy-dark-600);
   color: var(--svemy-white);
   padding: 5pt 6pt;
 }
 
 /* Spanning header over a column group: centred, hairline under its label */
-.table-data thead th[colspan] {
+thead th[colspan] {
   text-align: center;
   border-bottom: 0.5pt solid var(--svemy-dark-200);
 }
 
 /* Zebra: even data rows filled; restarts in every tbody after a group row */
-.table-data tbody tr:nth-child(even of :not(.table-group)) {
+tbody tr:nth-child(even of :not(.table-group)) {
   background: var(--svemy-light-300);
 }
 
-.table-data .table-group th {
+.table-group th {
   background: var(--svemy-light-400);
   padding: 4pt 6pt;
 }
 
 /* Totals row: no fill, strong rule above; label and values both in
    Table Text SemiBold, so the row reads as one line */
-.table-data tfoot th {
+tfoot th {
   font-family: var(--font-body);
   font-size: 9pt;
   line-height: 13pt;
@@ -150,11 +131,11 @@ DATA TABLE
   text-transform: none;
 }
 
-.table-data tfoot th,
-.table-data tfoot td {
+tfoot th,
+tfoot td {
   border-top: 0.75pt solid var(--svemy-dark-600);
 }
 
-.table-data tfoot td {
+tfoot td {
   font-weight: 600;
 }

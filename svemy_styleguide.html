@@ -396,15 +396,15 @@
                 <p class="color-swatch-step">50</p>
                 <p class="color-swatch-hex">#ECF0F4</p>
               </div>
-              <div class="color-swatch color-bg-info-100" title="Primary and secondary badge fill">
+              <div class="color-swatch color-bg-info-100" title="Badge fill">
                 <p class="color-swatch-step">100</p>
                 <p class="color-swatch-hex">#D6E3F0</p>
               </div>
-              <div class="color-swatch color-bg-info-400 is-dark" title="Callout rule, secondary badge text and dot">
+              <div class="color-swatch color-bg-info-400 is-dark" title="Callout rule">
                 <p class="color-swatch-step">400</p>
                 <p class="color-swatch-hex">#4C6072</p>
               </div>
-              <div class="color-swatch color-bg-info-500 is-dark" title="Primary badge text and dot, text on fill">
+              <div class="color-swatch color-bg-info-500 is-dark" title="Badge text and dot, text on fill">
                 <p class="color-swatch-step">500</p>
                 <p class="color-swatch-hex">#263D53</p>
               </div>
@@ -659,8 +659,8 @@
               <div class="type-specimen-row">
                 <div class="type-specimen-sample">
                   <p class="type-table-title">
-                    <span class="table-title-number">Table 01</span>&emsp;Inspection
-                    results
+                    <span class="table-title-number">Table 01</span>&emsp;Cost
+                    summary
                   </p>
                 </div>
                 <div class="type-specimen-spec">
@@ -899,80 +899,24 @@
           <a href="#toc">
             <span class="section-header-index">04</span>
             <span class="section-header-index-dot">.</span>
-            <h2>Data Tables</h2>
+            <h2>Tables</h2>
           </a>
         </div>
 
         <main role="main">
           <article class="subsection">
-            <h3 id="tables-simple" class="subsection-title">
-              <a href="#toc">Simple table</a>
-            </h3>
-            <p class="text-small">
-              The default table for text-led content with no totals:
-              requirements and responses, inspection items, roles. Lines only,
-              no fill and no zebra.
-            </p>
-
-            <table>
-              <caption>
-                <span class="table-title-number">Table 01</span>&emsp;Inspection
-                results
-              </caption>
-              <thead>
-                <tr>
-                  <th>Item</th>
-                  <th>Requirement</th>
-                  <th>Observation</th>
-                  <th>Result</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Crane pad</td>
-                  <td>Bearing capacity 150 kPa minimum</td>
-                  <td>Plate load test 185 kPa</td>
-                  <td>Accepted</td>
-                </tr>
-                <tr>
-                  <td>Formwork</td>
-                  <td>Level within 3 mm over 3 m</td>
-                  <td>2 mm deviation at grid C4</td>
-                  <td>Accepted</td>
-                </tr>
-                <tr>
-                  <td>Rebar cover</td>
-                  <td>50 mm to soffit</td>
-                  <td>40 mm at the north edge</td>
-                  <td>Rework</td>
-                </tr>
-                <tr>
-                  <td>Drainage</td>
-                  <td>Fall to outlet, 1% minimum</td>
-                  <td>As specified</td>
-                  <td>Accepted</td>
-                </tr>
-              </tbody>
-            </table>
-            <p class="table-note">
-              Source: site inspection by SVEMY Construction Ltd., September 9,
-              2026.
-            </p>
-          </article>
-
-          <article class="subsection">
             <h3 id="tables-data" class="subsection-title">
-              <a href="#toc">Data table</a>
+              <a href="#toc">Basic table</a>
             </h3>
             <p class="text-small">
-              For costs, quantities and schedules: black header, zebra rows,
+              For text, costs, quantities and schedules: black header, zebra rows,
               optional group rows and a totals row. Numbers are right aligned
               with units in the header; negatives in parentheses.
             </p>
 
-            <table class="table-data">
+            <table>
               <caption>
-                <span class="table-title-number">Table 02</span>&emsp;Cost
+                <span class="table-title-number">Table 01</span>&emsp;Cost
                 summary
               </caption>
               <thead>
@@ -1051,14 +995,14 @@
               <a href="#toc">Merged cells</a>
             </h3>
             <p class="text-small">
-              When columns share a heading, use a data table with a spanning
+              When columns share a heading, use a table with a spanning
               header: the shared label sits over its columns with a hairline
               below. Row headers span bottom aligned.
             </p>
 
-            <table class="table-data">
+            <table>
               <caption>
-                <span class="table-title-number">Table 03</span>&emsp;Budget
+                <span class="table-title-number">Table 02</span>&emsp;Budget
                 by phase
               </caption>
               <thead>
@@ -1123,67 +1067,6 @@
         </div>
 
         <main role="main">
-          <article class="subsection">
-            <h3 id="components-cards" class="subsection-title">
-              <a href="#toc">Cards</a>
-            </h3>
-            <p class="text-small">
-              For short grouped content such as a summary or key facts. Gray fill,
-              no border.
-            </p>
-
-            <div class="card">
-              <div class="card-title">Example</div>
-              <div class="card-meta">Example metadata text.</div>
-              <p>
-                Example paragraph text demonstrating layout structure and
-                spacing.
-              </p>
-            </div>
-          </article>
-
-          <article class="subsection">
-            <h3 id="components-code-blocks" class="subsection-title">
-              <a href="#toc">Code blocks</a>
-            </h3>
-
-            <p class="text-small">
-              For file names, parameters and structured data. Monospace 9 pt on a
-              gray fill.
-            </p>
-
-            <pre><code>function calculateBudget(planned, actual) {
-  const variance = actual - planned;
-  const percentage = (variance / planned) * 100;
-  return { variance, percentage };
-}</code></pre>
-          </article>
-
-          <article class="subsection">
-            <h3 id="components-separators" class="subsection-title">
-              <a href="#toc">Separators</a>
-            </h3>
-            <p class="text-small">
-              For dividing content within a page. Choose the weight by the size of
-              the break.
-            </p>
-
-            <p class="text-small">Title accent line under the document title or subtitle:</p>
-            <hr class="separator-title" />
-
-            <p class="text-small">Accent separator with brand color:</p>
-            <hr class="separator-accent" />
-
-            <p class="text-small">Bold separator for major divisions:</p>
-            <hr class="separator-bold" />
-
-            <p class="text-small">Medium separator for standard sections:</p>
-            <hr class="separator-medium" />
-
-            <p class="text-small">Light separator for subtle divisions:</p>
-            <hr class="separator-light" />
-          </article>
-
           <article class="subsection">
             <h3 id="components-callouts" class="subsection-title">
               <a href="#toc">Callout blocks</a>
@@ -1250,6 +1133,75 @@
           </article>
 
           <article class="subsection">
+            <h3 id="components-code-blocks" class="subsection-title">
+              <a href="#toc">Code blocks</a>
+            </h3>
+
+            <p class="text-small">
+              For file names, parameters and structured data. Monospace 9 pt on a
+              gray fill.
+            </p>
+
+            <pre><code>function calculateBudget(planned, actual) {
+  const variance = actual - planned;
+  const percentage = (variance / planned) * 100;
+  return { variance, percentage };
+}</code></pre>
+          </article>
+
+          <article class="subsection">
+            <h3 id="components-cards" class="subsection-title">
+              <a href="#toc">Cards</a>
+            </h3>
+            <p class="text-small">
+              For short grouped content such as a summary or key facts. Gray fill,
+              no border.
+            </p>
+
+            <div class="card">
+              <div class="card-title">Example</div>
+              <div class="card-meta">Example metadata text.</div>
+              <p>
+                Example paragraph text demonstrating layout structure and
+                spacing.
+              </p>
+            </div>
+          </article>
+
+          <article class="subsection">
+            <h3 id="components-separators" class="subsection-title">
+              <a href="#toc">Separators</a>
+            </h3>
+            <p class="text-small">
+              For dividing content within a page. Choose the weight by the size of
+              the break.
+            </p>
+
+            <div class="separator-examples">
+              <div>
+                <p class="text-small">Title accent line under the document title or subtitle:</p>
+                <hr class="separator-title" />
+              </div>
+              <div>
+                <p class="text-small">Accent separator with brand color:</p>
+                <hr class="separator-accent" />
+              </div>
+              <div>
+                <p class="text-small">Bold separator for major divisions:</p>
+                <hr class="separator-bold" />
+              </div>
+              <div>
+                <p class="text-small">Medium separator for standard sections:</p>
+                <hr class="separator-medium" />
+              </div>
+              <div>
+                <p class="text-small">Light separator for subtle divisions:</p>
+                <hr class="separator-light" />
+              </div>
+            </div>
+          </article>
+
+          <article class="subsection">
             <h3 id="components-badges" class="subsection-title">
               <a href="#toc">Badges</a>
             </h3>
@@ -1268,17 +1220,16 @@
             </p>
 
             <p class="badge-row">
-              <span class="badge badge-warning">At risk</span>
+              <span class="badge badge-warning">Pending</span>
               <span class="text-small text-muted">
-                Use for items at risk of delay, on hold, or waiting for a
-                decision.
+                Use for items not started, on hold, or waiting for a decision.
               </span>
             </p>
 
             <p class="badge-row">
-              <span class="badge badge-danger">Critical</span>
+              <span class="badge badge-danger">Delayed</span>
               <span class="text-small text-muted">
-                Use for critical issues, errors, or items requiring immediate
+                Use for items behind schedule, blocked, or requiring immediate
                 attention.
               </span>
             </p>
@@ -1292,20 +1243,31 @@
             </p>
 
             <p class="badge-row">
-              <span class="badge badge-secondary">Secondary</span>
-              <span class="text-small text-muted">
-                Use for additional categories, supplementary information, or
-                alternative classifications.
-              </span>
-            </p>
-
-            <p class="badge-row">
               <span class="badge badge-neutral">Neutral</span>
               <span class="text-small text-muted">
-                Use for standard information, default tags, or neutral
-                classifications.
+                Use for standard information, default tags, or additional
+                categories.
               </span>
             </p>
+          </article>
+
+          <article class="subsection">
+            <h3 id="components-checkboxes" class="subsection-title">
+              <a href="#toc">Checkboxes</a>
+            </h3>
+            <p class="text-small">
+              For options in forms. 9&nbsp;pt box, 0.75&nbsp;pt outline, check mark
+              when checked, 2&nbsp;mm before the label in Body.
+            </p>
+            <div class="checkbox-group">
+              <span class="checkbox">For your approval</span>
+              <span class="checkbox is-checked">Revised</span>
+              <span class="checkbox">For your info / records</span>
+              <span class="checkbox">As-built</span>
+              <span class="checkbox">Preliminary</span>
+              <span class="checkbox">Other</span>
+            </div>
+            <p class="text-small">Select all applicable options.</p>
           </article>
         </main>
 
@@ -1787,9 +1749,9 @@
               allocation and actual spending across project phases.
             </p>
 
-            <table class="table-data">
+            <table>
               <caption>
-                <span class="table-title-number">Table 04</span>&emsp;Budget
+                <span class="table-title-number">Table 03</span>&emsp;Budget
                 allocation by phase
               </caption>
               <thead>
@@ -1833,7 +1795,7 @@
                   <td class="numeric">420,000.00</td>
                   <td class="numeric">95,000.00</td>
                   <td class="status">
-                    <span class="badge badge-neutral">Pending</span>
+                    <span class="badge badge-warning">Pending</span>
                   </td>
                 </tr>
               </tbody>

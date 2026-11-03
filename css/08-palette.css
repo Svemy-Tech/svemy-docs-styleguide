@@ -1,7 +1,7 @@
 /* ===============================
 COLOR PALETTE
 Step and HEX sit inside the swatch, its role in the title attribute;
-square corners and a hairline so light swatches stay visible. Backgrounds
+square corners, no border. Backgrounds
 come from the tokens.
 =============================== */
 .color-group {
@@ -61,7 +61,6 @@ come from the tokens.
   display: flex;
   flex-direction: column;
   padding: 2.5mm;
-  border: 0.5pt solid var(--svemy-light-400);
   color: var(--svemy-dark-700);
 }
 
