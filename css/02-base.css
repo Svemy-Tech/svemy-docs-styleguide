@@ -97,16 +97,6 @@ GENERAL PAGE VIEW FOR SCREEN
   z-index: 1;
 }
 
-/* Logo at top - explicit class */
-.page-cover .cover-logo-top {
-  flex-shrink: 0;
-  width: 100%;
-  margin-top: 0;
-  margin-bottom: 0;
-  position: relative;
-  z-index: 1;
-}
-
 /* Center block (title + subtitle) - vertically centered (default when logo is at top) */
 .page-cover .cover-center {
   position: absolute;
@@ -120,53 +110,6 @@ GENERAL PAGE VIEW FOR SCREEN
   width: calc(100% - 32mm);
   margin: 0;
   z-index: 2;
-}
-
-/* When logo is centered, use flexbox with spacer elements */
-.page-cover:has(.cover-logo-center) {
-  justify-content: center;
-  align-items: center;
-}
-
-/* Logo centered - in flex flow above title */
-.page-cover .cover-logo-center {
-  flex-shrink: 0;
-  width: 100%;
-  margin: 0;
-  margin-bottom: 6mm;
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  order: 1;
-  transform: translateY(-100%);
-}
-
-/* When logo is centered, cover-center should be in flex flow, not absolute */
-.page-cover:has(.cover-logo-center) .cover-center {
-  position: relative;
-  top: auto;
-  left: auto;
-  transform: none;
-  width: 100%;
-  margin: 0;
-  z-index: 1;
-  flex-shrink: 0;
-  order: 2;
-  /* Compensate for logo height (approx 70px) + 6mm margin to keep title visually centered */
-  margin-top: calc(-70px - 6mm);
-}
-
-/* When logo is centered, meta should still be at bottom */
-.page-cover:has(.cover-logo-center) .cover-meta {
-  position: absolute;
-  bottom: 10mm;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 32mm);
-  margin: 0;
-  z-index: 1;
 }
 
 /* Meta-info pinned to bottom */
