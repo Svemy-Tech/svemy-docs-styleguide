@@ -5,8 +5,7 @@ h1,
 h2,
 h3,
 h4,
-h5,
-h6 {
+h5 {
   font-family: var(--font-display);
   font-weight: 700;
   color: var(--svemy-dark-500);
@@ -14,6 +13,7 @@ h6 {
   margin-bottom: 2mm;
 }
 
+/* One h1 per document: the title. Heading levels never skip */
 h1 {
   font-family: var(--font-display);
   font-size: 34pt;
@@ -23,86 +23,76 @@ h1 {
   margin-bottom: 2mm;
 }
 
-/* h2 Title Case, h3 Sentence case: typed as written, no transform */
+/* Section heading (.page-title sets Bold for unnumbered page titles) */
 h2 {
   font-family: var(--font-display);
-  font-size: 24pt;
-  font-weight: 700;
-  letter-spacing: 0;
-  margin-bottom: 2mm;
+  font-size: 18pt;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
+/* Subsection heading */
 h3 {
   font-family: var(--font-display);
-  font-size: 18pt;
-  font-weight: 700;
-  letter-spacing: 0;
-  margin-bottom: 3mm;
-  margin-top: 0;
-}
-
-h4 {
-  font-family: var(--font-body);
   font-size: 14pt;
-  font-weight: 600;
-  letter-spacing: 0;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 4mm;
 }
 
-h4 a {
+h3 a {
   color: inherit;
   text-decoration: none;
 }
 
-h4 a:hover {
+h3 a:hover {
   text-decoration: underline;
 }
 
-/* h5/h6 are not in the type scale: set as labels */
-h5 {
+/* Topic heading: sentence case, typed as written */
+h4 {
   font-family: var(--font-display);
-  color: var(--svemy-dark-500);
   font-size: 12pt;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 2mm;
+  font-weight: 700;
+  letter-spacing: 0;
+  margin-bottom: 3mm;
 }
 
-h6 {
-  font-family: var(--font-display);
-  color: var(--svemy-dark-500);
-  font-size: 10pt;
+/* Minor heading above a paragraph */
+h5 {
+  font-family: var(--font-body);
+  font-size: 11pt;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 2mm;
+  letter-spacing: 0;
 }
 
 p {
   margin-bottom: 3mm;
 }
 
-/* Body paragraphs at full text width are justified. Narrow or structured
-   text (cards, tables, callouts, captions, lists, specimens) stays left */
-main > p,
-main > .subsection > p {
+/* Reading text at full text width is justified. Small text, notes and
+   structured text (cards, tables, callouts, captions, lists, specimens)
+   stay left: at small sizes justification opens uneven gaps between words */
+main > p:not(.text-small, .layout-note, .table-note, .badge-row),
+main > .subsection > p:not(.text-small, .layout-note, .table-note, .badge-row) {
   text-align: justify;
 }
 
+/* Styleguide only: section intros on these pages. Documents use Lead */
 .text-muted {
   color: var(--svemy-light-700);
   margin-bottom: 5mm;
 }
 .text-small {
   font-size: 9pt;
+  line-height: 12.5pt;
+  color: var(--svemy-dark-200);
+  margin-bottom: 4mm;
 }
 .text-large {
   font-size: 13pt;
-}
-
-.text-highlight {
-  background: var(--svemy-primary-300);
-  padding: 0 1mm;
 }
 
 /* Inline styles are not in the type scale; they follow the design system
@@ -152,9 +142,9 @@ i {
 /* ===============================
 TYPE SCALE (Typography System page)
 One class per style, matching the styles used in this styleguide:
-title = .cover-title, subtitle = .cover-subtitle, H1 = section header,
-H2 = subsection title, H3 / H4 = base h3 / h4, body = body text,
-small = .text-small.text-muted, caption = .image-caption-meta.
+H1 = .cover-title, subtitle = .cover-subtitle, H2 = section header,
+H3 = subsection title, H4 / H5 = base h4 / h5, body = body text,
+small = .text-small, caption = .image-caption-meta and .table-note.
 Lead, caption label, label small and table text follow the design
 system. Leading 1.4 unless a style sets its own.
 =============================== */
@@ -180,7 +170,7 @@ system. Leading 1.4 unless a style sets its own.
   margin: 0;
 }
 
-.type-h1 {
+.type-h2 {
   font-family: var(--font-display);
   font-size: 18pt;
   line-height: 1.4;
@@ -191,7 +181,7 @@ system. Leading 1.4 unless a style sets its own.
   margin: 0 0 2mm;
 }
 
-.type-h2 {
+.type-h3 {
   font-family: var(--font-display);
   font-size: 14pt;
   line-height: 1.4;
@@ -202,10 +192,10 @@ system. Leading 1.4 unless a style sets its own.
   margin: 0 0 4mm;
 }
 
-/* H3 sentence case: typed as written, no transform */
-.type-h3 {
+/* H4 sentence case: typed as written, no transform */
+.type-h4 {
   font-family: var(--font-display);
-  font-size: 18pt;
+  font-size: 12pt;
   line-height: 1.4;
   font-weight: 700;
   letter-spacing: 0;
@@ -213,9 +203,9 @@ system. Leading 1.4 unless a style sets its own.
   margin: 0 0 3mm;
 }
 
-.type-h4 {
+.type-h5 {
   font-family: var(--font-body);
-  font-size: 14pt;
+  font-size: 11pt;
   line-height: 1.4;
   font-weight: 600;
   letter-spacing: 0;
@@ -229,7 +219,7 @@ system. Leading 1.4 unless a style sets its own.
   line-height: 18pt;
   font-weight: 400;
   color: var(--svemy-dark-600);
-  margin: 0 0 14pt;
+  margin: 0 0 5mm;
 }
 
 .type-body {

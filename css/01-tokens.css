@@ -16,9 +16,10 @@ CSS VARIABLES - SVEMY THEME (main palette and fonts)
   --svemy-black: #000000;
 
   /* ------------------------------------------
-     TIER 1 - SCALES. One hue per meaning. Status scales share three
-     steps: 50 = fill, 400 = rule and mark (3:1 on white and on its fill),
-     500 = strong color (white text on it passes 4.5:1).
+     TIER 1 - SCALES. One hue per meaning. Status scales share four
+     steps: 50 = callout fill, 100 = badge fill, 400 = rule and mark (3:1 on
+     white and on its 50 fill), 500 = strong color (white text on it and it
+     on the 50 and 100 fills pass 4.5:1).
      ------------------------------------------ */
 
   /* Brand - SVEMY yellow. Accent only, never a status color */
@@ -44,21 +45,25 @@ CSS VARIABLES - SVEMY THEME (main palette and fonts)
 
   /* Status - success (green) */
   --svemy-success-50: #edf3ef;
+  --svemy-success-100: #d5ebdc;
   --svemy-success-400: #4f7a5e;
   --svemy-success-500: #355b43;
 
   /* Status - danger (red) */
   --svemy-danger-50: #f7ecec;
+  --svemy-danger-100: #f8d9dc;
   --svemy-danger-400: #b04a52;
   --svemy-danger-500: #8a3038;
 
   /* Status - info (navy) */
   --svemy-info-50: #ecf0f4;
+  --svemy-info-100: #d6e3f0;
   --svemy-info-400: #4c6072;
   --svemy-info-500: #263d53;
 
   /* Status - warning (amber), kept apart from the brand yellow */
   --svemy-warning-50: #faf3e4;
+  --svemy-warning-100: #fbe6b8;
   --svemy-warning-400: #b07a1e;
   --svemy-warning-500: #7a5414;
 
@@ -66,17 +71,23 @@ CSS VARIABLES - SVEMY THEME (main palette and fonts)
      TIER 2 - COMPONENT COLORS. References to the scales only, no HEX
      ------------------------------------------ */
 
-  /* Badges - strong step of the scale, white text */
-  --svemy-badge-success-bg: var(--svemy-success-500);
-  --svemy-badge-success-text: var(--svemy-white);
-  --svemy-badge-danger-bg: var(--svemy-danger-500);
-  --svemy-badge-danger-text: var(--svemy-white);
-  --svemy-badge-warning-bg: var(--svemy-warning-500);
-  --svemy-badge-warning-text: var(--svemy-white);
-  --svemy-badge-primary-bg: var(--svemy-info-500);
-  --svemy-badge-primary-text: var(--svemy-white);
-  --svemy-badge-secondary-bg: var(--svemy-info-400);
-  --svemy-badge-secondary-text: var(--svemy-white);
-  --svemy-badge-neutral-bg: var(--svemy-dark-200);
-  --svemy-badge-neutral-text: var(--svemy-white);
+  /* Badges - light fill, strong text and a dot from one scale */
+  --svemy-badge-success-bg: var(--svemy-success-100);
+  --svemy-badge-success-text: var(--svemy-success-500);
+  --svemy-badge-success-dot: var(--svemy-success-400);
+  --svemy-badge-danger-bg: var(--svemy-danger-100);
+  --svemy-badge-danger-text: var(--svemy-danger-500);
+  --svemy-badge-danger-dot: var(--svemy-danger-400);
+  --svemy-badge-warning-bg: var(--svemy-warning-100);
+  --svemy-badge-warning-text: var(--svemy-warning-500);
+  --svemy-badge-warning-dot: var(--svemy-warning-400);
+  --svemy-badge-primary-bg: var(--svemy-info-100);
+  --svemy-badge-primary-text: var(--svemy-info-500);
+  --svemy-badge-primary-dot: var(--svemy-info-500);
+  --svemy-badge-secondary-bg: var(--svemy-info-100);
+  --svemy-badge-secondary-text: var(--svemy-info-400);
+  --svemy-badge-secondary-dot: var(--svemy-info-400);
+  --svemy-badge-neutral-bg: var(--svemy-light-400);
+  --svemy-badge-neutral-text: var(--svemy-dark-200);
+  --svemy-badge-neutral-dot: var(--svemy-dark-200);
 }

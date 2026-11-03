@@ -48,7 +48,8 @@ hr {
 
 .card-meta {
   font-size: 9pt;
-  color: var(--svemy-light-700);
+  line-height: 12.5pt;
+  color: var(--svemy-dark-200);
   margin-bottom: 2mm;
 }
 
@@ -281,16 +282,9 @@ main > .section-header:first-child,
   margin-bottom: 0;
 }
 
-.subsection > h4 {
+.subsection > h3 {
   margin-top: 0;
   margin-bottom: 4mm;
-}
-
-.subsection-title {
-  font-family: var(--font-display);
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
 }
 
 /* Subsection title with a short note on the right (Layout & Grid page) */
@@ -302,7 +296,7 @@ main > .section-header:first-child,
   margin-bottom: 4mm;
 }
 
-.subsection-head > h4 {
+.subsection-head > h3 {
   margin: 0;
 }
 
@@ -310,7 +304,8 @@ main > .section-header:first-child,
 .subsection-head-note,
 .layout-note {
   font-size: 9pt;
-  color: var(--svemy-light-700);
+  line-height: 12.5pt;
+  color: var(--svemy-dark-200);
   margin: 0;
 }
 
@@ -324,7 +319,7 @@ main > .section-header:first-child,
   font-weight: 600;
   letter-spacing: 0.02em;
   text-transform: uppercase;
-  color: var(--svemy-dark-500); /* same as .section-header a h3 */
+  color: var(--svemy-dark-500); /* same as .section-header a h2 */
   text-decoration: none;
 }
 
@@ -345,15 +340,9 @@ main > .section-header:first-child,
   gap: 0;
 }
 
-.section-header a h3 {
+.section-header a h2 {
   color: var(--svemy-dark-500);
   margin-bottom: 2mm;
-}
-
-.section-header h3 {
-  font-weight: 600;
-  letter-spacing: 0.02em;
-  text-transform: uppercase;
 }
 
 .chip {

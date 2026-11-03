@@ -74,12 +74,10 @@ ul.checklist,
 }
 
 .checklist li::before {
-  content: "✓";
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--svemy-success-400);
-  font-weight: 700;
 }
 
 /* Checklist with cross marks - override default list margins */
@@ -96,12 +94,10 @@ ul.checklist-cross,
 }
 
 .checklist-cross li::before {
-  content: "✗";
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--svemy-danger-400);
-  font-weight: 700;
 }
 
 /* Checklist with mixed marks - override default list margins */
@@ -118,21 +114,34 @@ ul.checklist-mixed,
 }
 
 .checklist-mixed li.check::before {
-  content: "✓";
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--svemy-success-400);
-  font-weight: 700;
 }
 
 .checklist-mixed li.cross::before {
-  content: "✗";
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--svemy-danger-400);
-  font-weight: 700;
+}
+
+/* Check and cross marks are drawn, so they do not depend on system fonts.
+   Stroke colors: --svemy-success-400 and --svemy-danger-400 */
+.checklist li::before,
+.checklist-cross li::before,
+.checklist-mixed li.check::before,
+.checklist-mixed li.cross::before {
+  width: 9pt;
+  height: 1.4em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 6.5 5 10 10.5 2' fill='none' stroke='%234F7A5E' stroke-width='1.6'/%3E%3C/svg%3E")
+    center / contain no-repeat;
+}
+
+.checklist-cross li::before,
+.checklist-mixed li.cross::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 2.5 9.5 9.5M9.5 2.5 2.5 9.5' fill='none' stroke='%23B04A52' stroke-width='1.6'/%3E%3C/svg%3E");
 }
 
 dl {

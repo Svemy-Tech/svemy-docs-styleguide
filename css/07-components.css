@@ -5,7 +5,7 @@ Status callouts: 50 fill with the 400 rule of the same scale
 .callout {
   border-left: 1mm solid var(--svemy-light-500);
   padding: 3mm 4mm;
-  margin-bottom: 4mm;
+  margin-bottom: 3mm;
   background: var(--svemy-light-200);
 }
 
@@ -41,16 +41,31 @@ Status callouts: 50 fill with the 400 rule of the same scale
 /* ===============================
 BADGES / TAGS
 =============================== */
+/* Fixed for every badge, whatever its text: 5 mm high, 2.5 mm side padding,
+   1.5 mm dot, 1.2 mm gap. Text is typed in sentence case */
 .badge {
-  display: inline-block;
-  padding: 0.4mm 2mm;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.2mm;
+  height: 5mm;
+  padding: 0 2.5mm;
   font-family: var(--font-display);
-  font-size: 8pt;
+  font-size: 9pt;
+  line-height: 12pt;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  vertical-align: middle;
   border-radius: 2px;
-  line-height: 1.4;
+}
+
+.badge::before {
+  content: "";
+  flex: none;
+  width: 1.5mm;
+  height: 1.5mm;
+  border-radius: 50%;
+  background: var(--badge-dot);
 }
 
 /* Badge with its description: fixed badge column so descriptions align */
@@ -59,7 +74,11 @@ BADGES / TAGS
   grid-template-columns: 22mm minmax(0, 1fr);
   align-items: center;
   column-gap: 3mm;
-  margin-bottom: 3mm;
+  margin-bottom: 2mm;
+}
+
+.badge-row:last-child {
+  margin-bottom: 0;
 }
 
 .badge-row .badge {
@@ -74,31 +93,37 @@ BADGES / TAGS
 .badge-primary {
   background: var(--svemy-badge-primary-bg);
   color: var(--svemy-badge-primary-text);
+  --badge-dot: var(--svemy-badge-primary-dot);
 }
 
 .badge-secondary {
   background: var(--svemy-badge-secondary-bg);
   color: var(--svemy-badge-secondary-text);
+  --badge-dot: var(--svemy-badge-secondary-dot);
 }
 
 .badge-success {
   background: var(--svemy-badge-success-bg);
   color: var(--svemy-badge-success-text);
+  --badge-dot: var(--svemy-badge-success-dot);
 }
 
 .badge-warning {
   background: var(--svemy-badge-warning-bg);
   color: var(--svemy-badge-warning-text);
+  --badge-dot: var(--svemy-badge-warning-dot);
 }
 
 .badge-danger {
   background: var(--svemy-badge-danger-bg);
   color: var(--svemy-badge-danger-text);
+  --badge-dot: var(--svemy-badge-danger-dot);
 }
 
 .badge-neutral {
   background: var(--svemy-badge-neutral-bg);
   color: var(--svemy-badge-neutral-text);
+  --badge-dot: var(--svemy-badge-neutral-dot);
 }
 
 /* ===============================

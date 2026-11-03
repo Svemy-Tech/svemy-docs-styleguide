@@ -199,12 +199,7 @@ PRINT RULES (Ctrl+P)
 
   a {
     text-decoration: none;
-    color: var(--svemy-dark-300) !important;
-  }
-
-  .text-link {
-    color: var(--svemy-dark-300) !important;
-    text-decoration-color: var(--svemy-dark-300) !important;
+    color: inherit;
   }
 
   /* Main navigation text in print mode */

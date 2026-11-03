@@ -2,7 +2,7 @@
 // GLOBAL DEBUG CONFIGURATION
 // ================================================
 // Set to true to enable debug logging, false for production
-window.SVEMY_DEBUG = true; // TEMPORARILY ENABLED FOR DEBUGGING
+window.SVEMY_DEBUG = false;
 
 /**
  * Debug logger - only logs when DEBUG is true
@@ -44,7 +44,10 @@ const warn = window.SVEMY_WARN;
 
     // Approximate component heights (measured from actual rendering)
     HEADER_HEIGHT_MM: 14, // .section-header or .page-header
-    FOOTER_HEIGHT_MM: 7, // .page-footer (6 pt padding + 10 pt line)
+    FOOTER_HEIGHT_MM: 7, // .page-footer (2 mm padding + 10 pt line)
+
+    // Minimum clear space between the page content and the footer line
+    FOOTER_CLEARANCE_MM: 4,
 
     // Safety buffer to prevent edge-case overflow. Kept small: pagination
     // now waits for the web fonts, so measured heights are exact
@@ -60,7 +63,8 @@ const warn = window.SVEMY_WARN;
       CONFIG.PADDING_TOP_MM -
       CONFIG.PADDING_BOTTOM_MM -
       CONFIG.HEADER_HEIGHT_MM -
-      CONFIG.FOOTER_HEIGHT_MM) *
+      CONFIG.FOOTER_HEIGHT_MM -
+      CONFIG.FOOTER_CLEARANCE_MM) *
       CONFIG.MM_TO_PX -
     CONFIG.BUFFER_PX;
 
@@ -1028,7 +1032,7 @@ const warn = window.SVEMY_WARN;
 
         // Determine section title from first page
         const header =
-          page.querySelector(".section-header h3") ||
+          page.querySelector(".section-header h2") ||
           page.querySelector(".section-header .page-title") ||
           page.querySelector(".page-header .page-title");
 
@@ -1058,7 +1062,7 @@ const warn = window.SVEMY_WARN;
           const main = sectionPage.querySelector("main");
           if (main) {
             const subsectionHeadings = main.querySelectorAll(
-              "h4.subsection-title[id], .subsection-title[id]",
+              ".subsection-title[id]",
             );
 
             subsectionHeadings.forEach((subHeading) => {
@@ -1188,7 +1192,7 @@ const warn = window.SVEMY_WARN;
 
         // Find all elements with IDs that are subsection titles
         const subsectionsInContent = contentMain.querySelectorAll(
-          "h4.subsection-title[id], .subsection-title[id]",
+          ".subsection-title[id]",
         );
 
         subsectionsInContent.forEach((el) => {

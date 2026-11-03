@@ -18,9 +18,9 @@ table {
   color: var(--svemy-dark-600);
 }
 
-/* Table title space before: 16 pt after running text */
+/* Table title space before: 6 mm after running text */
 p + table {
-  margin-top: 16pt;
+  margin-top: 6mm;
 }
 
 thead {
@@ -94,19 +94,19 @@ table caption {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--svemy-dark-600);
-  padding-bottom: 6pt;
+  padding-bottom: 2mm;
 }
 
 .table-title-number {
   color: var(--svemy-dark-200);
 }
 
-/* Source or notes under the table, in SV Small */
+/* Source or notes under the table, in the Caption style */
 .table-note {
   font-size: 8.5pt;
-  line-height: 12pt;
-  color: var(--svemy-dark-200);
-  margin: 4pt 0 0;
+  line-height: 1.35;
+  color: var(--svemy-light-700);
+  margin: 2mm 0 0;
 }
 
 /* ===============================
@@ -139,15 +139,20 @@ DATA TABLE
   padding: 4pt 6pt;
 }
 
-/* Totals row: no fill, strong rule above, bold label, semibold value */
+/* Totals row: no fill, strong rule above; label and values both in
+   Table Text SemiBold, so the row reads as one line */
+.table-data tfoot th {
+  font-family: var(--font-body);
+  font-size: 9pt;
+  line-height: 13pt;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .table-data tfoot th,
 .table-data tfoot td {
   border-top: 0.75pt solid var(--svemy-dark-600);
-}
-
-.table-data tfoot th {
-  font-weight: 700;
-  letter-spacing: 0.04em;
 }
 
 .table-data tfoot td {

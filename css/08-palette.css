@@ -3,12 +3,6 @@ COLOR PALETTE
 Swatch on top, step, HEX and role below; square corners and a hairline
 so light swatches stay visible. Backgrounds come from the tokens.
 =============================== */
-.color-note {
-  font-size: 9pt;
-  color: var(--svemy-light-700);
-  margin-bottom: 4mm;
-}
-
 .color-group {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -29,8 +23,13 @@ so light swatches stay visible. Backgrounds come from the tokens.
   margin-bottom: 2mm;
 }
 
+/* Status: two scales side by side, four steps each */
+.color-group-split {
+  grid-template-columns: repeat(8, 1fr);
+}
+
 .color-group-split .color-group-header {
-  grid-column: span 3;
+  grid-column: span 4;
 }
 
 /* Brand: three wide swatches across the full row, same height as the rest */
@@ -165,6 +164,10 @@ so light swatches stay visible. Backgrounds come from the tokens.
   background-color: var(--svemy-success-50);
 }
 
+.color-bg-success-100 {
+  background-color: var(--svemy-success-100);
+}
+
 .color-bg-success-400 {
   background-color: var(--svemy-success-400);
 }
@@ -175,6 +178,10 @@ so light swatches stay visible. Backgrounds come from the tokens.
 
 .color-bg-danger-50 {
   background-color: var(--svemy-danger-50);
+}
+
+.color-bg-danger-100 {
+  background-color: var(--svemy-danger-100);
 }
 
 .color-bg-danger-400 {
@@ -189,6 +196,10 @@ so light swatches stay visible. Backgrounds come from the tokens.
   background-color: var(--svemy-info-50);
 }
 
+.color-bg-info-100 {
+  background-color: var(--svemy-info-100);
+}
+
 .color-bg-info-400 {
   background-color: var(--svemy-info-400);
 }
@@ -199,6 +210,10 @@ so light swatches stay visible. Backgrounds come from the tokens.
 
 .color-bg-warning-50 {
   background-color: var(--svemy-warning-50);
+}
+
+.color-bg-warning-100 {
+  background-color: var(--svemy-warning-100);
 }
 
 .color-bg-warning-400 {
