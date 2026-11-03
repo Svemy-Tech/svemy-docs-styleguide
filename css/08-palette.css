@@ -1,6 +1,6 @@
 /* ===============================
 COLOR PALETTE
-Swatch on top, step, HEX and role below; square corners and a hairline
+Step, HEX and role sit inside the swatch; square corners and a hairline
 so light swatches stay visible. Backgrounds come from the tokens.
 =============================== */
 .color-group {
@@ -32,13 +32,9 @@ so light swatches stay visible. Backgrounds come from the tokens.
   grid-column: span 4;
 }
 
-/* Brand: three wide swatches across the full row, same height as the rest */
+/* Brand: three wide swatches across the full row */
 .color-group-3 .color-swatch {
   grid-column: span 2;
-}
-
-.color-group-3 .color-swatch-box {
-  aspect-ratio: 4.2;
 }
 
 .color-group-title {
@@ -63,13 +59,13 @@ so light swatches stay visible. Backgrounds come from the tokens.
 .color-swatch {
   display: flex;
   flex-direction: column;
+  padding: 1.5mm 2mm;
+  border: 0.5pt solid var(--svemy-light-400);
+  color: var(--svemy-dark-700);
 }
 
-.color-swatch-box {
-  width: 100%;
-  aspect-ratio: 2;
-  border: 0.5pt solid var(--svemy-light-400);
-  margin-bottom: 2mm;
+.color-swatch.is-dark {
+  color: var(--svemy-white);
 }
 
 .color-swatch-step {
@@ -78,7 +74,7 @@ so light swatches stay visible. Backgrounds come from the tokens.
   line-height: 12pt;
   font-weight: 600;
   letter-spacing: 0.06em;
-  color: var(--svemy-dark-500);
+  color: inherit;
   margin: 0;
 }
 
@@ -87,7 +83,7 @@ so light swatches stay visible. Backgrounds come from the tokens.
   font-size: 8.5pt;
   line-height: 12pt;
   font-variant-numeric: tabular-nums;
-  color: var(--svemy-dark-600);
+  color: inherit;
   margin: 0;
 }
 
@@ -95,7 +91,7 @@ so light swatches stay visible. Backgrounds come from the tokens.
   font-family: var(--font-body);
   font-size: 7.5pt;
   line-height: 10pt;
-  color: var(--svemy-light-700);
+  color: inherit;
   margin: 1pt 0 0;
 }
 
