@@ -34,7 +34,7 @@ th,
 td {
   padding: 4pt 6pt;
   text-align: left;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 /* Header cells use SV Label */
@@ -48,17 +48,18 @@ th {
   color: var(--svemy-dark-600);
 }
 
-thead th {
-  vertical-align: bottom;
-}
-
-/* Numbers and their headers are right aligned */
-th.numeric,
+/* Numbers are right aligned; the headers over them are centred */
 td.numeric {
   text-align: right;
 }
 
-/* Status column (badges) and its header are centred */
+th.numeric {
+  text-align: center;
+}
+
+/* Short labels (units, status badges) and their headers are centred */
+th.center,
+td.center,
 th.status,
 td.status {
   text-align: center;
@@ -110,7 +111,20 @@ thead th[colspan] {
   border-bottom: 0.5pt solid var(--svemy-dark-200);
 }
 
-/* Zebra: even data rows filled; restarts in every tbody after a group row */
+/* A header with sub-headers reads as one taller row, not two rows */
+thead th[colspan],
+thead th[rowspan] {
+  padding-top: 3pt;
+  padding-bottom: 2pt;
+}
+
+thead tr + tr th {
+  padding-top: 2pt;
+  padding-bottom: 3pt;
+}
+
+/* Zebra: white and light-300; restarts in every tbody after a group row.
+   Group rows sit one step darker, on light-400 */
 tbody tr:nth-child(even of :not(.table-group)) {
   background: var(--svemy-light-300);
 }

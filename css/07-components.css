@@ -130,7 +130,8 @@ BADGES / TAGS
 /* ===============================
 CHECKBOXES
 =============================== */
-/* Fixed for every checkbox: 9 pt box, 0.75 pt outline, no fill, 2 mm before
+/* Fixed for every checkbox: 9 pt box, 0.75 pt outline, 2 px corners as on
+   badges, no fill, 2 mm before
    the label. Checked adds a check mark, stroke color --svemy-dark-600. The
    label takes the surrounding text style */
 .checkbox {
@@ -146,6 +147,7 @@ CHECKBOXES
   width: 9pt;
   height: 9pt;
   border: 0.75pt solid var(--svemy-dark-600);
+  border-radius: 2px;
 }
 
 .checkbox.is-checked::before {
@@ -206,8 +208,6 @@ pre {
   font-size: 9pt;
   line-height: 1.5;
   background: var(--svemy-light-300);
-  border: 0.2mm solid var(--svemy-light-500);
-  border-radius: 2px;
   padding: 3mm 4mm;
   margin: 4mm 0;
   overflow-x: auto;
@@ -219,7 +219,6 @@ pre code {
   font-size: inherit;
   background: transparent;
   padding: 0;
-  border-radius: 0;
 }
 
 /* ===============================
@@ -232,26 +231,6 @@ HIGHLIGHTED TEXT
   color: var(--svemy-dark-500);
   padding: 0.1mm 0.5mm;
   font-weight: 400;
-}
-
-.text-highlight-success {
-  background: var(--svemy-success-50);
-  color: var(--svemy-success-500);
-}
-
-.text-highlight-warning {
-  background: var(--svemy-warning-50);
-  color: var(--svemy-warning-500);
-}
-
-.text-highlight-danger {
-  background: var(--svemy-danger-50);
-  color: var(--svemy-danger-500);
-}
-
-.text-highlight-info {
-  background: var(--svemy-info-50);
-  color: var(--svemy-info-500);
 }
 
 /* Separators page example: two columns, each caption with its line */

@@ -23,7 +23,7 @@ h1 {
   margin-bottom: 2mm;
 }
 
-/* Section heading (.page-title sets Bold for unnumbered page titles) */
+/* Section heading, also used for unnumbered page titles */
 h2 {
   font-family: var(--font-display);
   font-size: 18pt;
@@ -91,9 +91,6 @@ main > .subsection > p:not(.text-small, .layout-note, .table-note, .badge-row) {
   color: var(--svemy-dark-200);
   margin-bottom: 4mm;
 }
-.text-large {
-  font-size: 13pt;
-}
 
 /* Inline styles are not in the type scale; they follow the design system
    rules: no yellow or colored text, gray fill only, square corners */
@@ -106,28 +103,25 @@ main > .subsection > p:not(.text-small, .layout-note, .table-note, .badge-row) {
   padding: 0.3mm 1.5mm;
 }
 
+/* Text color, underline fades in on hover. The line is always there but
+   transparent, so it can fade and never prints */
 .text-link {
   color: inherit;
-  text-decoration: underline;
-  text-decoration-color: var(--svemy-dark-200);
-  text-decoration-thickness: 0.5pt;
+  text-decoration: underline transparent 0.5pt;
   text-underline-offset: 1.5pt;
+  transition: text-decoration-color 0.25s ease;
 }
 
 .text-link:hover {
   color: inherit;
+  text-decoration-color: currentColor;
 }
 
 .text-strike {
   text-decoration: line-through;
   color: var(--svemy-dark-200);
 }
-.text-underline {
-  text-decoration: underline;
-}
-.text-italic {
-  font-style: italic;
-}
+
 strong,
 b,
 .text-bold {
@@ -348,7 +342,6 @@ system. Leading 1.4 unless a style sets its own.
   margin: 0;
 }
 
-
 /* ===============================
 TYPE SPECIMEN (Typography System page)
 Sample on the left, spec on the right, rows split by hairlines
@@ -363,8 +356,6 @@ Sample on the left, spec on the right, rows split by hairlines
   display: flex;
   align-items: flex-start;
   gap: 12pt;
-  border-top: 0.75pt solid var(--svemy-dark-600);
-  padding-top: 8pt;
 }
 
 .type-family-sample {
@@ -407,6 +398,23 @@ Sample on the left, spec on the right, rows split by hairlines
   font-family: var(--font-body);
 }
 
+/* Each weight name is set in its own weight */
+.fw-400 {
+  font-weight: 400;
+}
+
+.fw-500 {
+  font-weight: 500;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-700 {
+  font-weight: 700;
+}
+
 /* Rows are top aligned. Text boxes are trimmed to the cap height and the
    baseline, so cap tops of sample and spec line up. The bottom padding is
    2 pt larger to make room for descenders, so the space looks even. */
@@ -415,7 +423,7 @@ Sample on the left, spec on the right, rows split by hairlines
   grid-template-columns: minmax(0, 1fr) 62mm;
   column-gap: 18pt;
   align-items: start;
-  padding: 8.25pt 0 10.25pt;
+  padding: 7pt 0 8.5pt;
   border-bottom: 0.5pt solid var(--svemy-light-400);
   break-inside: avoid;
   page-break-inside: avoid;

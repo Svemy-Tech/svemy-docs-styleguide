@@ -12,9 +12,19 @@ ul {
   list-style-type: square;
 }
 
-/* Nested unordered lists use disc bullets */
-ul ul {
-  list-style-type: disc;
+/* Ordered: 1., a., i. */
+ol ol {
+  list-style-type: lower-alpha;
+}
+
+ol ol ol {
+  list-style-type: lower-roman;
+}
+
+/* A nested list sits under its parent item at the parent's text indent */
+.list-ordered-decimal li > ol {
+  margin: 1.5mm 0 0;
+  padding-left: 5mm;
 }
 
 /* Top-level lists - remove only margin, keep padding for numbering */
@@ -30,41 +40,11 @@ li {
   margin-bottom: 1.5mm;
 }
 
-.list-unordered-disc ul {
-  list-style-type: disc;
-}
-.list-unordered-square ul {
-  list-style-type: square;
-}
-
-.list-unordered-dash ul {
-  list-style-type: none;
-  padding-left: 2mm;
-  margin-left: 0;
-}
-.list-unordered-dash li {
-  padding-left: 0;
-}
-.list-unordered-dash li::before {
-  content: "–";
-  margin-right: 2mm;
-}
-
-.list-ordered-decimal ol {
-  list-style-type: decimal;
-}
-.list-ordered-roman ol {
-  list-style-type: upper-roman;
-}
-.list-ordered-alpha ol {
-  list-style-type: upper-alpha;
-}
-
 /* Checklist lists - override default list margins with higher specificity */
 ul.checklist,
 .checklist {
   list-style: none;
-  padding-left: 9px;
+  padding-left: 0;
   margin-left: 0;
 }
 
@@ -84,7 +64,7 @@ ul.checklist,
 ul.checklist-cross,
 .checklist-cross {
   list-style: none;
-  padding-left: 9px;
+  padding-left: 0;
   margin-left: 0;
 }
 
@@ -104,7 +84,7 @@ ul.checklist-cross,
 ul.checklist-mixed,
 .checklist-mixed {
   list-style: none;
-  padding-left: 9px;
+  padding-left: 0;
   margin-left: 0;
 }
 

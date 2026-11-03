@@ -1050,6 +1050,7 @@ const warn = window.SVEMY_WARN;
         // Collect subsections from ALL pages of this section (including continuations)
         const subList = document.createElement("ul");
         const collectedSubIds = new Set(); // Avoid duplicate subsections
+        let currentSubItem = null; // Subsection that owns the next h4 entries
 
         // Find all pages belonging to this section (by id or data-section-id)
         allPages.forEach((sectionPage) => {
@@ -1061,8 +1062,9 @@ const warn = window.SVEMY_WARN;
 
           const main = sectionPage.querySelector("main");
           if (main) {
+            // h3 subsections are the second ToC level, h4 topics the third
             const subsectionHeadings = main.querySelectorAll(
-              ".subsection-title[id]",
+              ".subsection-title[id], h4[id]",
             );
 
             subsectionHeadings.forEach((subHeading) => {
@@ -1080,7 +1082,19 @@ const warn = window.SVEMY_WARN;
                 linkTextSource.textContent.trim();
 
               const subItem = createNavItem(subId, subTitle, {});
+
+              if (subHeading.tagName === "H4" && currentSubItem) {
+                let topicList = currentSubItem.querySelector(":scope > ul");
+                if (!topicList) {
+                  topicList = document.createElement("ul");
+                  currentSubItem.appendChild(topicList);
+                }
+                topicList.appendChild(subItem);
+                return;
+              }
+
               subList.appendChild(subItem);
+              currentSubItem = subItem;
             });
           }
         });
@@ -1212,7 +1226,7 @@ const warn = window.SVEMY_WARN;
       );
 
       // Get all navigation subsection items
-      const navSubItems = Array.from(subNav.querySelectorAll("li"));
+      const navSubItems = Array.from(subNav.querySelectorAll(":scope > li"));
 
       // Create map of ID to nav item
       const navItemMap = new Map();
@@ -1368,7 +1382,7 @@ const warn = window.SVEMY_WARN;
 
       // Also find links in nested subsections (ul > li > a)
       const nestedLinks = pageNav.querySelectorAll(
-        ':scope > li > ul > li > a[href^="#"]',
+        ':scope > li > ul > li > a[href^="#"], :scope > li > ul > li > ul > li > a[href^="#"]',
       );
 
       // Combine both sets

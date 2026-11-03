@@ -58,6 +58,13 @@ HEADER / FOOTER FOR INNER PAGES
 /* ===============================
 COVER PAGE (PAGE 1)
 =============================== */
+.cover-logo-mark {
+  display: block;
+  width: 170px;
+  max-width: 100%;
+  height: auto;
+}
+
 .cover-logo {
   padding: 0;
   background: transparent;
@@ -131,4 +138,16 @@ DESCRIPTION PAGE (PAGE 2)
 
 #description .subsection-title {
   margin-top: 8mm;
+}
+
+.description-credits {
+  margin-top: 8mm;
+}
+
+.description-credits p {
+  margin: 0 0 2mm;
+}
+
+.description-credits p:last-child {
+  margin-bottom: 0;
 }

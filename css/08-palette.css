@@ -213,7 +213,7 @@ come from the tokens.
 }
 
 .reference-list li {
-  color: var(--svemy-dark-400);
+  color: var(--svemy-dark-600);
   margin-bottom: 2mm;
   padding-left: 8mm;
   position: relative;
@@ -224,6 +224,4 @@ come from the tokens.
   counter-increment: reference-counter;
   position: absolute;
   left: 0;
-  font-weight: 600;
-  color: var(--svemy-dark-500);
 }
