@@ -237,9 +237,12 @@
         </div>
 
         <main role="main">
+          <!-- Each swatch title attribute states where the color is used -->
           <p class="text-muted mb-6">
-            One hue per meaning; components use steps of these scales, never
-            their own HEX values.
+            One hue per meaning: brand yellow for accents, dark and light neutrals
+            for text, lines and fills, and four status hues. Components such as
+            badges and callouts use steps of these scales, never their own HEX
+            values.
           </p>
           <article class="subsection">
             <h3 id="palette-brand" class="subsection-title">
@@ -251,20 +254,17 @@
                 <p class="color-group-title">Primary</p>
                 <span class="color-group-token">--svemy-primary-*</span>
               </div>
-              <div class="color-swatch color-bg-primary-300">
+              <div class="color-swatch color-bg-primary-300" title="Text selection (screen)">
                 <p class="color-swatch-step">300</p>
                 <p class="color-swatch-hex">#FFDB4F</p>
-                <p class="color-swatch-role">Text selection (screen)</p>
               </div>
-              <div class="color-swatch color-bg-primary-400">
+              <div class="color-swatch color-bg-primary-400" title="Title accent line, quote bar">
                 <p class="color-swatch-step">400</p>
                 <p class="color-swatch-hex">#FED01F</p>
-                <p class="color-swatch-role">Title accent line, quote bar</p>
               </div>
-              <div class="color-swatch color-bg-primary-500">
+              <div class="color-swatch color-bg-primary-500" title="Accent rule">
                 <p class="color-swatch-step">500</p>
                 <p class="color-swatch-hex">#E6A500</p>
-                <p class="color-swatch-role">Accent rule</p>
               </div>
             </div>
           </article>
@@ -279,35 +279,29 @@
                 <p class="color-group-title">Dark</p>
                 <span class="color-group-token">--svemy-dark-*</span>
               </div>
-              <div class="color-swatch color-bg-dark-200 is-dark">
+              <div class="color-swatch color-bg-dark-200 is-dark" title="Secondary text, footer, neutral badge">
                 <p class="color-swatch-step">200</p>
                 <p class="color-swatch-hex">#5A5A5D</p>
-                <p class="color-swatch-role">Secondary text, footer, badge</p>
               </div>
-              <div class="color-swatch color-bg-dark-300 is-dark">
+              <div class="color-swatch color-bg-dark-300 is-dark" title="Header rule, quote text">
                 <p class="color-swatch-step">300</p>
                 <p class="color-swatch-hex">#49494D</p>
-                <p class="color-swatch-role">Header rule, quote text</p>
               </div>
-              <div class="color-swatch color-bg-dark-400 is-dark">
+              <div class="color-swatch color-bg-dark-400 is-dark" title="Contents sub-entries, references">
                 <p class="color-swatch-step">400</p>
                 <p class="color-swatch-hex">#3A3A3C</p>
-                <p class="color-swatch-role">Contents sub-entries, references</p>
               </div>
-              <div class="color-swatch color-bg-dark-500 is-dark">
+              <div class="color-swatch color-bg-dark-500 is-dark" title="Headings">
                 <p class="color-swatch-step">500</p>
                 <p class="color-swatch-hex">#29292B</p>
-                <p class="color-swatch-role">Headings</p>
               </div>
-              <div class="color-swatch color-bg-dark-600 is-dark">
+              <div class="color-swatch color-bg-dark-600 is-dark" title="Body text, table header">
                 <p class="color-swatch-step">600</p>
                 <p class="color-swatch-hex">#1F1F21</p>
-                <p class="color-swatch-role">Body text, table header</p>
               </div>
-              <div class="color-swatch color-bg-dark-700 is-dark">
+              <div class="color-swatch color-bg-dark-700 is-dark" title="Reference numbers">
                 <p class="color-swatch-step">700</p>
                 <p class="color-swatch-hex">#151517</p>
-                <p class="color-swatch-role">Reference numbers</p>
               </div>
             </div>
             <div class="color-group">
@@ -315,35 +309,29 @@
                 <p class="color-group-title">Light</p>
                 <span class="color-group-token">--svemy-light-*</span>
               </div>
-              <div class="color-swatch color-bg-light-200">
+              <div class="color-swatch color-bg-light-200" title="Neutral callout fill">
                 <p class="color-swatch-step">200</p>
                 <p class="color-swatch-hex">#FAFAFA</p>
-                <p class="color-swatch-role">Neutral callout fill</p>
               </div>
-              <div class="color-swatch color-bg-light-300">
+              <div class="color-swatch color-bg-light-300" title="Card, zebra, code fill">
                 <p class="color-swatch-step">300</p>
                 <p class="color-swatch-hex">#F3F3F3</p>
-                <p class="color-swatch-role">Card, zebra, code fill</p>
               </div>
-              <div class="color-swatch color-bg-light-400">
+              <div class="color-swatch color-bg-light-400" title="Hairlines, group rows, neutral badge fill">
                 <p class="color-swatch-step">400</p>
                 <p class="color-swatch-hex">#E5E5E5</p>
-                <p class="color-swatch-role">Hairlines, group rows, badge</p>
               </div>
-              <div class="color-swatch color-bg-light-500">
+              <div class="color-swatch color-bg-light-500" title="Neutral callout rule, code border">
                 <p class="color-swatch-step">500</p>
                 <p class="color-swatch-hex">#C4C4C4</p>
-                <p class="color-swatch-role">Neutral callout rule, code border</p>
               </div>
-              <div class="color-swatch color-bg-light-600">
+              <div class="color-swatch color-bg-light-600" title="Medium rule">
                 <p class="color-swatch-step">600</p>
                 <p class="color-swatch-hex">#A3A3A3</p>
-                <p class="color-swatch-role">Medium rule</p>
               </div>
-              <div class="color-swatch color-bg-light-700 is-dark">
+              <div class="color-swatch color-bg-light-700 is-dark" title="Muted text">
                 <p class="color-swatch-step">700</p>
                 <p class="color-swatch-hex">#767676</p>
-                <p class="color-swatch-role">Muted text</p>
               </div>
             </div>
           </article>
@@ -352,7 +340,7 @@
             <h3 id="palette-status" class="subsection-title">
               <a href="#toc">Status</a>
             </h3>
-            <p class="text-small">Four steps per hue: 50 callout fill, 100 badge fill, 400 rule and mark, 500 badge text and text on fill.</p>
+            <p class="text-small">Four steps per hue: 50 callout fill, 100 badge fill, 400 rule, mark and badge dot, 500 badge text and text on fill.</p>
             <div class="color-group color-group-split">
               <div class="color-group-header">
                 <p class="color-group-title">Success</p>
@@ -362,45 +350,37 @@
                 <p class="color-group-title">Danger</p>
                 <span class="color-group-token">--svemy-danger-*</span>
               </div>
-              <div class="color-swatch color-bg-success-50">
+              <div class="color-swatch color-bg-success-50" title="Callout fill">
                 <p class="color-swatch-step">50</p>
                 <p class="color-swatch-hex">#EDF3EF</p>
-                <p class="color-swatch-role">Callout fill</p>
               </div>
-              <div class="color-swatch color-bg-success-100">
+              <div class="color-swatch color-bg-success-100" title="Badge fill">
                 <p class="color-swatch-step">100</p>
                 <p class="color-swatch-hex">#D5EBDC</p>
-                <p class="color-swatch-role">Badge fill</p>
               </div>
-              <div class="color-swatch color-bg-success-400 is-dark">
+              <div class="color-swatch color-bg-success-400 is-dark" title="Check mark, callout rule, badge dot">
                 <p class="color-swatch-step">400</p>
                 <p class="color-swatch-hex">#4F7A5E</p>
-                <p class="color-swatch-role">Mark, rule, badge dot</p>
               </div>
-              <div class="color-swatch color-bg-success-500 is-dark">
+              <div class="color-swatch color-bg-success-500 is-dark" title="Badge text, text on fill">
                 <p class="color-swatch-step">500</p>
                 <p class="color-swatch-hex">#355B43</p>
-                <p class="color-swatch-role">Badge, text on fill</p>
               </div>
-              <div class="color-swatch color-bg-danger-50">
+              <div class="color-swatch color-bg-danger-50" title="Callout fill">
                 <p class="color-swatch-step">50</p>
                 <p class="color-swatch-hex">#F7ECEC</p>
-                <p class="color-swatch-role">Callout fill</p>
               </div>
-              <div class="color-swatch color-bg-danger-100">
+              <div class="color-swatch color-bg-danger-100" title="Badge fill">
                 <p class="color-swatch-step">100</p>
                 <p class="color-swatch-hex">#F8D9DC</p>
-                <p class="color-swatch-role">Badge fill</p>
               </div>
-              <div class="color-swatch color-bg-danger-400 is-dark">
+              <div class="color-swatch color-bg-danger-400 is-dark" title="Cross mark, callout rule, badge dot">
                 <p class="color-swatch-step">400</p>
                 <p class="color-swatch-hex">#B04A52</p>
-                <p class="color-swatch-role">Mark, rule, badge dot</p>
               </div>
-              <div class="color-swatch color-bg-danger-500 is-dark">
+              <div class="color-swatch color-bg-danger-500 is-dark" title="Badge text, text on fill">
                 <p class="color-swatch-step">500</p>
                 <p class="color-swatch-hex">#8A3038</p>
-                <p class="color-swatch-role">Badge, text on fill</p>
               </div>
             </div>
             <div class="color-group color-group-split">
@@ -412,45 +392,37 @@
                 <p class="color-group-title">Warning</p>
                 <span class="color-group-token">--svemy-warning-*</span>
               </div>
-              <div class="color-swatch color-bg-info-50">
+              <div class="color-swatch color-bg-info-50" title="Callout fill">
                 <p class="color-swatch-step">50</p>
                 <p class="color-swatch-hex">#ECF0F4</p>
-                <p class="color-swatch-role">Callout fill</p>
               </div>
-              <div class="color-swatch color-bg-info-100">
+              <div class="color-swatch color-bg-info-100" title="Primary and secondary badge fill">
                 <p class="color-swatch-step">100</p>
                 <p class="color-swatch-hex">#D6E3F0</p>
-                <p class="color-swatch-role">Badge fill</p>
               </div>
-              <div class="color-swatch color-bg-info-400 is-dark">
+              <div class="color-swatch color-bg-info-400 is-dark" title="Callout rule, secondary badge text and dot">
                 <p class="color-swatch-step">400</p>
                 <p class="color-swatch-hex">#4C6072</p>
-                <p class="color-swatch-role">Rule, secondary badge</p>
               </div>
-              <div class="color-swatch color-bg-info-500 is-dark">
+              <div class="color-swatch color-bg-info-500 is-dark" title="Primary badge text and dot, text on fill">
                 <p class="color-swatch-step">500</p>
                 <p class="color-swatch-hex">#263D53</p>
-                <p class="color-swatch-role">Primary badge, text</p>
               </div>
-              <div class="color-swatch color-bg-warning-50">
+              <div class="color-swatch color-bg-warning-50" title="Callout fill">
                 <p class="color-swatch-step">50</p>
                 <p class="color-swatch-hex">#FAF3E4</p>
-                <p class="color-swatch-role">Callout fill</p>
               </div>
-              <div class="color-swatch color-bg-warning-100">
+              <div class="color-swatch color-bg-warning-100" title="Badge fill">
                 <p class="color-swatch-step">100</p>
                 <p class="color-swatch-hex">#FBE6B8</p>
-                <p class="color-swatch-role">Badge fill</p>
               </div>
-              <div class="color-swatch color-bg-warning-400">
+              <div class="color-swatch color-bg-warning-400" title="Callout rule, badge dot">
                 <p class="color-swatch-step">400</p>
                 <p class="color-swatch-hex">#B07A1E</p>
-                <p class="color-swatch-role">Rule, badge dot</p>
               </div>
-              <div class="color-swatch color-bg-warning-500 is-dark">
+              <div class="color-swatch color-bg-warning-500 is-dark" title="Badge text, text on fill">
                 <p class="color-swatch-step">500</p>
                 <p class="color-swatch-hex">#7A5414</p>
-                <p class="color-swatch-role">Badge, text on fill</p>
               </div>
             </div>
           </article>
