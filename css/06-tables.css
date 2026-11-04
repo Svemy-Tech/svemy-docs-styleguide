@@ -1,6 +1,6 @@
 /* ===============================
 TABLES
-One table style: black header, zebra, optional group and totals rows,
+One table style: dark header, zebra, optional group and totals rows,
 a light outline and column rules. Header rules light-500, column rules
 light-400, outline light-300.
 =============================== */
@@ -101,7 +101,7 @@ table caption {
 HEADER, ZEBRA, GROUP AND TOTALS ROWS
 =============================== */
 thead th {
-  background: var(--svemy-dark-600);
+  background: var(--svemy-dark-500);
   color: var(--svemy-white);
   padding: 5pt 6pt;
 }
