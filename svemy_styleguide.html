@@ -821,20 +821,14 @@
             <div class="grid-2 mb-6">
               <div class="list-ordered-decimal">
                 <p class="text-small text-muted">
-                  Up to three levels: 1., a., i.
+                  Up to two levels: 1., a.
                 </p>
                 <ol>
                   <li>
                     Define the project scope.
                     <ol>
                       <li>Confirm the site boundaries.</li>
-                      <li>
-                        List the deliverables.
-                        <ol>
-                          <li>Shop drawings.</li>
-                          <li>Inspection reports.</li>
-                        </ol>
-                      </li>
+                      <li>List the deliverables.</li>
                     </ol>
                   </li>
                   <li>Collect and validate all inputs.</li>
@@ -1187,7 +1181,9 @@
             </h3>
             <p class="text-small">
               For dividing content within a page. Choose the weight by the size of
-              the break.
+              the break. In documents, every separator runs the full width of its
+              block, except the title accent line, which keeps its short fixed
+              length.
             </p>
 
             <div class="separator-examples">
@@ -1220,7 +1216,7 @@
             </h3>
 
             <p class="text-small">
-              For short statuses. Fixed size: 5&nbsp;mm high, 2.5&nbsp;mm side
+              For short statuses. Fixed size: 5&nbsp;mm high, 2&nbsp;mm side
               padding, 1.5&nbsp;mm dot, 1.2&nbsp;mm gap. Sentence case.
             </p>
 
@@ -1273,12 +1269,12 @@
               when checked, 2&nbsp;mm before the label in Body.
             </p>
             <div class="checkbox-group">
-              <span class="checkbox">For your approval</span>
-              <span class="checkbox is-checked">Revised</span>
-              <span class="checkbox">For your info / records</span>
-              <span class="checkbox">As-built</span>
-              <span class="checkbox">Preliminary</span>
-              <span class="checkbox">Other</span>
+              <label class="checkbox"><input type="checkbox" checked />For your approval</label>
+              <label class="checkbox"><input type="checkbox" />Revised</label>
+              <label class="checkbox"><input type="checkbox" />For your info / records</label>
+              <label class="checkbox"><input type="checkbox" />As-built</label>
+              <label class="checkbox"><input type="checkbox" />Preliminary</label>
+              <label class="checkbox"><input type="checkbox" />Other</label>
             </div>
             <p class="text-small">Select all applicable options.</p>
           </article>

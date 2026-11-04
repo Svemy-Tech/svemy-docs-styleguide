@@ -7,7 +7,9 @@ grey-100 = light-300, grey-600 = dark-200.
 =============================== */
 table {
   width: 100%;
-  border-collapse: collapse;
+  /* Each cell draws its own rules, so rules that meet do not overlap */
+  border-collapse: separate;
+  border-spacing: 0;
   margin: 0;
   page-break-inside: auto;
   font-family: var(--font-body);
@@ -108,7 +110,7 @@ thead th {
 /* Spanning header over a column group: centred, hairline under its label */
 thead th[colspan] {
   text-align: center;
-  border-bottom: 0.5pt solid var(--svemy-dark-200);
+  border-bottom: 0.5pt solid var(--svemy-light-500);
 }
 
 /* A header with sub-headers reads as one taller row, not two rows */
@@ -121,6 +123,22 @@ thead th[rowspan] {
 thead tr + tr th {
   padding-top: 2pt;
   padding-bottom: 3pt;
+}
+
+/* Rules between header columns, in every table. Beside a cell spanning rows,
+   each row draws its own piece, so a spanning label joins its rules cleanly */
+thead th + th,
+thead tr:has(th[rowspan]:first-child) + tr th:first-child {
+  border-left: 0.5pt solid var(--svemy-light-500);
+}
+
+thead th[colspan] + th[rowspan]:last-child {
+  border-left: 0;
+}
+
+thead th[colspan]:has(+ th[rowspan]:last-child),
+thead tr:has(th[colspan] + th[rowspan]:last-child) + tr th:last-child {
+  border-right: 0.5pt solid var(--svemy-light-500);
 }
 
 /* Zebra: white and light-300; restarts in every tbody after a group row.

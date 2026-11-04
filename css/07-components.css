@@ -41,14 +41,17 @@ Status callouts: 50 fill with the 400 rule of the same scale
 /* ===============================
 BADGES / TAGS
 =============================== */
-/* Fixed for every badge, whatever its text: 5 mm high, 2.5 mm side padding,
+/* Fixed for every badge, whatever its text: 5 mm high, 2 mm side padding,
    1.5 mm dot, 1.2 mm gap. Text is typed in sentence case */
 .badge {
   display: inline-flex;
   align-items: center;
   gap: 1.2mm;
+  box-sizing: border-box;
   height: 5mm;
-  padding: 0 2.5mm;
+  /* Bottom padding lifts the text: sentence case reads low when centered by
+     its capitals */
+  padding: 0 2mm 0.3mm;
   font-family: var(--font-display);
   font-size: 9pt;
   line-height: 12pt;
@@ -67,7 +70,8 @@ BADGES / TAGS
   flex: none;
   width: 8px;
   height: 8px;
-  margin: 0 calc((1.5mm - 8px) / 2);
+  /* The top margin returns the dot to the center of the badge */
+  margin: 0.3mm calc((1.5mm - 8px) / 2) 0;
   background: radial-gradient(
     circle at center,
     var(--badge-dot) 0.75mm,
@@ -140,9 +144,10 @@ CHECKBOXES
   gap: 2mm;
 }
 
-.checkbox::before {
-  content: "";
+.checkbox input {
+  appearance: none;
   flex: none;
+  margin: 0;
   box-sizing: border-box;
   width: 9pt;
   height: 9pt;
@@ -150,7 +155,7 @@ CHECKBOXES
   border-radius: 2px;
 }
 
-.checkbox.is-checked::before {
+.checkbox input:checked {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath d='M1.5 4.2 3.3 6 6.5 2.1' fill='none' stroke='%231F1F21' stroke-width='0.8'/%3E%3C/svg%3E")
     center / 100% 100% no-repeat;
 }
