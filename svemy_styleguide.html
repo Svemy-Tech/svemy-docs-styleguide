@@ -589,8 +589,8 @@
                   <p class="type-footer">SVEMY Construction Ltd.</p>
                 </div>
                 <div class="type-specimen-spec">
-                  <p class="type-label-small">Footer · DINish Condensed Regular, caps</p>
-                  <p class="type-small">7.5 / 10 pt · +0.08 em · space 2 / 0 mm</p>
+                  <p class="type-label-small">Footer · DINish Regular caps, number Medium</p>
+                  <p class="type-small">8 / 10.5 pt · +0.08 em · space 2 / 0 mm</p>
                 </div>
               </div>
             </div>
@@ -728,17 +728,6 @@
               </div>
               <div class="type-specimen-row">
                 <div class="type-specimen-sample">
-                  <blockquote>
-                    “Girders are placed only after the pad is tested.”
-                  </blockquote>
-                </div>
-                <div class="type-specimen-spec">
-                  <p class="type-label-small">Quote · Geist Italic</p>
-                  <p class="type-small">Key messages · space 0 / 4 mm</p>
-                </div>
-              </div>
-              <div class="type-specimen-row">
-                <div class="type-specimen-sample">
                   <p class="type-body">
                     Details at
                     <a href="https://svemy.com" class="text-link">svemy.com</a>.
@@ -781,6 +770,17 @@
                 <div class="type-specimen-spec">
                   <p class="type-label-small">Strikethrough · secondary gray</p>
                   <p class="type-small">Superseded values in revisions</p>
+                </div>
+              </div>
+              <div class="type-specimen-row">
+                <div class="type-specimen-sample">
+                  <blockquote>
+                    “Girders are placed only after the pad is tested.”
+                  </blockquote>
+                </div>
+                <div class="type-specimen-spec">
+                  <p class="type-label-small">Quote · Geist Italic</p>
+                  <p class="type-small">Key messages · space 0 / 4 mm</p>
                 </div>
               </div>
             </div>
@@ -908,21 +908,66 @@
 
         <main role="main">
           <article class="subsection">
-            <h3 id="tables-data" class="subsection-title">
+            <h3 id="tables-basic" class="subsection-title">
               <a href="#toc">Basic Table</a>
             </h3>
             <p class="text-small">
-              For text, costs, quantities and schedules: dark header, zebra rows,
-              optional group rows and a totals row. Text left, numbers right, short
-              labels and status centered; headers over numbers centered. Units in
-              the header, negatives in parentheses. A light outline runs around the
-              body and totals rows, with column rules on the body rows only; the
-              totals row has none.
+              Dark header and zebra rows, with a light outline and column rules. The
+              totals row has no column rules.
+            </p>
+
+            <h4 id="tables-basic-text">Text table</h4>
+            <p class="text-small">
+              The default for text. Text left. Use it when no column needs totals.
             </p>
 
             <table>
               <caption>
-                <span class="table-title-number">Table 01</span>&emsp;Cost
+                <span class="table-title-number">Table 01</span>&emsp;Completion
+                evidence
+              </caption>
+              <thead>
+                <tr>
+                  <th>System</th>
+                  <th>Completion evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Structure and enclosure</td>
+                  <td>
+                    Required engineering reviews; completed bracing and connections;
+                    panel, flashing and seal checks; insulated doors operating
+                    correctly.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Slab and containment</td>
+                  <td>
+                    Completed 25 mm step, sealed joints and penetrations,
+                    barrier/insulation inspection records and concrete test results.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Heating and propane</td>
+                  <td>
+                    Required pressure/leak testing and inspection; both heaters started
+                    and checked; time-clock and manual operation demonstrated.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4 id="tables-basic-cost">Cost table</h4>
+            <p class="text-small">
+              For costs, quantities and schedules, with optional numbered group rows
+              and a totals row. Numbers right, short labels and status centered; headers
+              over numbers centered. Units in the header, negatives in parentheses.
+            </p>
+
+            <table>
+              <caption>
+                <span class="table-title-number">Table 02</span>&emsp;Cost
                 summary
               </caption>
               <thead>
@@ -1008,7 +1053,7 @@
 
             <table>
               <caption>
-                <span class="table-title-number">Table 02</span>&emsp;Budget
+                <span class="table-title-number">Table 03</span>&emsp;Budget
                 by phase
               </caption>
               <thead>
@@ -1763,7 +1808,7 @@
 
             <table>
               <caption>
-                <span class="table-title-number">Table 03</span>&emsp;Budget
+                <span class="table-title-number">Table 04</span>&emsp;Budget
                 allocation by phase
               </caption>
               <thead>

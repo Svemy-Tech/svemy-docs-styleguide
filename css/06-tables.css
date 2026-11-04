@@ -23,6 +23,17 @@ p + table {
   margin-top: 6mm;
 }
 
+/* The same 6 mm before a topic heading that follows a table */
+table + h4 {
+  margin-top: 6mm;
+}
+
+/* A two-column table reads as label and text: the label column stays wide
+   enough not to wrap on short labels */
+table:not(:has(td + td + td)) thead th:first-child {
+  width: 25%;
+}
+
 thead {
   display: table-header-group;
 }
@@ -197,27 +208,34 @@ tbody tr:nth-child(even of :not(.table-group)) {
   padding: 4pt 6pt;
 }
 
+/* Group rows number themselves: 01., 02. */
+table {
+  counter-reset: table-group;
+}
+
+.table-group {
+  counter-increment: table-group;
+}
+
+.table-group th::before {
+  content: counter(table-group, decimal-leading-zero) ". ";
+}
+
 .table-group th,
 tfoot th,
 tfoot td {
   background: var(--svemy-light-300);
 }
 
-/* Totals row: medium rule above; label and values both in
-   Table Text SemiBold, so the row reads as one line */
-tfoot th {
-  font-family: var(--font-body);
-  font-size: 9pt;
-  line-height: 13pt;
-  font-weight: 600;
-  letter-spacing: 0;
-  text-transform: none;
+/* Totals row: the column rule above it. The label takes the group row style,
+   without an index; the values stay in Table Text SemiBold */
+tfoot th,
+tfoot td {
+  border-top: 0.5pt solid var(--svemy-light-400);
 }
 
 /* A little more above than below centers the figures in the row */
-tfoot th,
 tfoot td {
-  border-top: 0.3mm solid var(--svemy-light-600);
   padding-top: 4.5pt;
   padding-bottom: 3.5pt;
 }
