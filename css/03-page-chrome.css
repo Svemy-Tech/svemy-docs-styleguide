@@ -10,6 +10,28 @@ HEADER / FOOTER FOR INNER PAGES
   margin-bottom: 8mm;
 }
 
+/* Document header: logo left, document type right; the rule runs across the
+   full page */
+.page-header-doc {
+  /* The type's baseline sits on the bottom edge of the logo */
+  align-items: baseline;
+  margin: -16mm -16mm 8mm;
+  padding: 10mm 16mm 3mm;
+  border-bottom: 0.5pt solid var(--svemy-light-400);
+}
+
+.page-header-doc svg {
+  display: block;
+  width: 53mm;
+  height: auto;
+}
+
+/* The document type is an H4 set in capitals */
+.page-header-type.type-h4 {
+  margin: 0;
+  text-transform: uppercase;
+}
+
 /* SV Footer: company left, page number centre, web address right.
    DINish Condensed Regular 8 / 10.5 pt, +0.08 em, UPPERCASE, muted grey;
    hairline above with 2 mm to the text */
@@ -83,8 +105,8 @@ COVER PAGE (PAGE 1)
 
 .cover-title {
   font-family: var(--font-display);
-  font-size: 34pt;
-  line-height: 36pt;
+  font-size: 36pt;
+  line-height: 38pt;
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -149,5 +171,35 @@ DESCRIPTION PAGE (PAGE 2)
 }
 
 .description-credits p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===============================
+INFO LIST
+Label and value in two columns, a hairline under each row. Labels use
+.type-label and values .type-body.
+=============================== */
+.info-list {
+  display: grid;
+  grid-template-columns: 44mm 1fr;
+  margin: 0 0 8mm;
+}
+
+.info-list dt.type-label,
+.info-list dd.type-body {
+  margin: 0;
+  padding: 2.2mm 0;
+  border-bottom: 0.5pt solid var(--svemy-light-400);
+  line-height: 15.4pt;
+  text-align: left;
+}
+
+/* Styleguide sample: inside a page the header cannot run to the page edges */
+.document-opening-sample .page-header-doc {
+  margin: 6mm 0 8mm;
+  padding: 0 0 3mm;
+}
+
+.document-opening-sample .info-list {
   margin-bottom: 0;
 }

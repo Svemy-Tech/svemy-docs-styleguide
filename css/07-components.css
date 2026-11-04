@@ -182,12 +182,12 @@ CHECKBOXES
 /* ===============================
 HORIZONTAL RULES / SEPARATORS
 =============================== */
-/* Title accent line: 72 pt x 3 pt brand yellow, square ends, under the
-   document title or subtitle; 14 pt above, 22 pt below */
+/* Title accent line: 72 pt x 2.5 pt brand yellow, square ends, under the
+   document title or subtitle; 14 pt above, 14 pt below */
 hr.separator-title {
   width: 72pt;
-  border-top: 3pt solid var(--svemy-primary-400);
-  margin: 14pt 0 22pt;
+  border-top: 2.5pt solid var(--svemy-primary-400);
+  margin: 14pt 0;
 }
 
 hr.separator-light {

@@ -19,6 +19,7 @@ Styleguide that AI agents use as a block library to generate branded SVEMY Const
 | `css/09-layout.css` | Quotes, cards, grids, image layouts, table of contents, document navigation |
 | `css/10-print.css` | Print media rules and pagination enhancements (must stay last) |
 | `js/paginator.js` | Automatic pagination and footer auto-fill |
+| `templates/` | Document templates, one HTML file per document type, built from the styleguide blocks |
 | `fonts/` | Self-hosted woff2 files and OFL licences |
 | `scripts/build_standalone.py` | Builds the single-file version |
 
