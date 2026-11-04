@@ -203,7 +203,7 @@ tfoot td {
   background: var(--svemy-light-300);
 }
 
-/* Totals row: strong rule above; label and values both in
+/* Totals row: medium rule above; label and values both in
    Table Text SemiBold, so the row reads as one line */
 tfoot th {
   font-family: var(--font-body);
@@ -217,7 +217,7 @@ tfoot th {
 /* A little more above than below centers the figures in the row */
 tfoot th,
 tfoot td {
-  border-top: 0.75pt solid var(--svemy-dark-600);
+  border-top: 0.3mm solid var(--svemy-light-600);
   padding-top: 4.5pt;
   padding-bottom: 3.5pt;
 }

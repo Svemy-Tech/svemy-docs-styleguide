@@ -310,55 +310,97 @@ const warn = window.SVEMY_WARN;
    * @returns {Array<Array<HTMLElement>>} Array of page content arrays
    */
   /**
-   * Split a ToC section entry between its sub-entries so that the part that
-   * fits stays on the current page. The rest continues on the next page
-   * without repeating the section line and keeps its numbering.
-   * @param {HTMLElement} navItem - Top-level ToC <li> with a sub-list
-   * @param {number} availableHeight - Space left on the current page in px
-   * @returns {Object|null} { head, tail, headCount, headHeight } or null
+   * Store each ToC entry's measured height on the element. Clones are not in
+   * the DOM and measure as 0, so a split reads these values instead.
+   * @param {HTMLElement} navElement - Navigation <ul> element
    */
-  function splitNavItem(navItem, availableHeight) {
-    const subList = navItem.querySelector(":scope > ul");
-    if (!subList) return null;
-    const subItems = Array.from(subList.querySelectorAll(":scope > li"));
-    if (subItems.length < 3) return null;
+  function measureNavItems(navElement) {
+    navElement.querySelectorAll("li").forEach((li) => {
+      const total = getElementHeight(li);
+      const children = li.querySelectorAll(":scope > ul > li");
+      let childrenTotal = 0;
+      children.forEach((child) => {
+        childrenTotal += getElementHeight(child);
+      });
+      li.dataset.navTotal = total;
+      li.dataset.navLine = total - childrenTotal;
+    });
+  }
 
-    const subHeights = subItems.map((li) => getElementHeight(li));
-    const subTotal = subHeights.reduce((sum, h) => sum + h, 0);
-    const headLineHeight = getElementHeight(navItem) - subTotal;
+  /**
+   * Split a ToC entry so that the part that fits stays on the current page
+   * and the rest continues on the next one, at any level. An entry stays with
+   * at least one of its sub-entries, so the gap is never more than one line.
+   * The continuation does not repeat the entry's line and keeps its numbering.
+   * @param {HTMLElement} navItem - ToC <li> with a sub-list
+   * @param {number} availableHeight - Space left on the current page in px
+   * @param {string} [counterName] - Counter that numbers this entry's children
+   * @returns {Object|null} { head, tail, headHeight } or null if it cannot split
+   */
+  function splitNavItem(
+    navItem,
+    availableHeight,
+    counterName = "sub-nav-counter",
+  ) {
+    const subItems = Array.from(navItem.querySelectorAll(":scope > ul > li"));
+    if (subItems.length === 0) return null;
 
-    // Keep the section line with at least two sub-entries, and move at
-    // least one sub-entry to the next page
-    let used = headLineHeight;
+    const lineHeight = Number(navItem.dataset.navLine);
+    let used = lineHeight;
+    if (used > availableHeight) return null;
+
     let fit = 0;
-    while (
-      fit < subItems.length - 1 &&
-      used + subHeights[fit] <= availableHeight
-    ) {
-      used += subHeights[fit];
+    let inner = null;
+    while (fit < subItems.length) {
+      const height = Number(subItems[fit].dataset.navTotal);
+      if (used + height > availableHeight) {
+        inner = splitNavItem(
+          subItems[fit],
+          availableHeight - used,
+          "topic-nav-counter",
+        );
+        break;
+      }
+      used += height;
       fit++;
     }
-    if (fit < 2) return null;
+    if (fit === subItems.length || (fit === 0 && !inner)) return null;
+
+    const pieces = (clone) =>
+      Array.from(clone.querySelectorAll(":scope > ul > li"));
 
     const head = navItem.cloneNode(true);
-    head
-      .querySelectorAll(":scope > ul > li")
-      .forEach((li, idx) => idx >= fit && li.remove());
+    pieces(head).forEach((li, idx) => {
+      if (inner && idx === fit) li.replaceWith(inner.head);
+      else if (idx >= fit) li.remove();
+    });
 
     const tail = navItem.cloneNode(true);
     tail.classList.add("nav-continued");
-    tail.style.counterReset = `sub-nav-counter ${fit}`;
-    tail
-      .querySelectorAll(":scope > ul > li")
-      .forEach((li, idx) => idx < fit && li.remove());
-    // The tail is not in the DOM yet, so store its height for the next page
-    tail.svemyNavHeight = subTotal - (used - headLineHeight);
+    // Numbering continues from the sub-entries already shown. A continued
+    // sub-entry was counted on its first page, so it does not count again.
+    const shown = subItems
+      .slice(0, inner ? fit + 1 : fit)
+      .filter((li) => !li.classList.contains("nav-continued")).length;
+    const counted = Number(navItem.dataset.navCounted || 0) + shown;
+    tail.dataset.navCounted = counted;
+    tail.style.counterReset = `${counterName} ${counted}`;
+    pieces(tail).forEach((li, idx) => {
+      if (inner && idx === fit) li.replaceWith(inner.tail);
+      else if (idx < fit) li.remove();
+    });
 
-    return { head, tail, headCount: fit, headHeight: used };
+    const headHeight = used + (inner ? inner.headHeight : 0);
+    tail.dataset.navLine = 0;
+    tail.dataset.navTotal = Number(navItem.dataset.navTotal) - headHeight;
+    head.dataset.navTotal = headHeight;
+
+    return { head, tail, headHeight };
   }
 
   function splitNavigationIntoPages(mainElement, navElement, maxHeight) {
     const pages = [];
+    measureNavItems(navElement);
     const navItems = Array.from(
       navElement.querySelectorAll(":scope > li"),
     );
@@ -482,10 +524,7 @@ const warn = window.SVEMY_WARN;
     while (queue.length > 0) {
       const navItem = queue.shift();
       itemNumber++;
-      const navItemHeight =
-        navItem.svemyNavHeight !== undefined
-          ? navItem.svemyNavHeight
-          : getElementHeight(navItem);
+      const navItemHeight = Number(navItem.dataset.navTotal);
 
       log(
         `[Split Nav] Item ${itemNumber}: ${Math.round(
@@ -494,22 +533,17 @@ const warn = window.SVEMY_WARN;
       );
 
       // Check if adding this item would overflow
-      if (
-        currentHeight + navItemHeight > maxHeight &&
-        currentNavItems.length > 0
-      ) {
+      if (currentHeight + navItemHeight > maxHeight) {
         const parts = splitNavItem(navItem, maxHeight - currentHeight);
         if (parts) {
-          log(
-            `[Split Nav] Split section between sub-entries: ${parts.headCount} here, rest on next page`,
-          );
+          log(`[Split Nav] Split entry, the rest continues on the next page`);
           currentNavItems.push(parts.head);
           currentHeight += parts.headHeight;
           flushNavPage();
           queue.unshift(parts.tail);
           continue;
         }
-        flushNavPage();
+        if (currentNavItems.length > 0) flushNavPage();
       }
 
       // Add nav item to current collection

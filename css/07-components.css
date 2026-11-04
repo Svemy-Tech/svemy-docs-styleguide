@@ -49,7 +49,7 @@ Status callouts: 50 fill with the 400 rule of the same scale
 BADGES / TAGS
 =============================== */
 /* Fixed for every badge, whatever its text: 5 mm high, 2 mm side padding,
-   1.5 mm dot, 1.2 mm gap. Text is typed in sentence case */
+   1.3 mm dot, 1.2 mm gap. Text is typed in sentence case */
 .badge {
   display: inline-flex;
   align-items: center;
@@ -69,7 +69,7 @@ BADGES / TAGS
   border-radius: var(--radius);
 }
 
-/* A 1.5 mm dot drawn as a fixed-radius gradient: at this size a rounded box
+/* A 1.3 mm dot drawn as a fixed-radius gradient: at this size a rounded box
    snaps to device pixels and turns oval. The whole-pixel box keeps the center
    the same on every row; negative margins keep the padding and gap */
 .badge::before {
@@ -78,11 +78,11 @@ BADGES / TAGS
   width: 8px;
   height: 8px;
   /* The top margin returns the dot to the center of the badge */
-  margin: 0.3mm calc((1.5mm - 8px) / 2) 0;
+  margin: 0.3mm calc((1.3mm - 8px) / 2) 0;
   background: radial-gradient(
     circle at center,
-    var(--badge-dot) 0.75mm,
-    transparent 0.8mm
+    var(--badge-dot) 0.65mm,
+    transparent 0.7mm
   );
 }
 

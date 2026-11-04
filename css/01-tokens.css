@@ -9,11 +9,9 @@ CSS VARIABLES - SVEMY THEME (main palette and fonts)
   /* Document base font size and line height */
   --base-font-size: 11pt;
   --base-line-height: 1.4;
-  --image-border: 0.5pt solid var(--svemy-light-400);
 
   /* Base colors */
   --svemy-white: #ffffff;
-  --svemy-black: #000000;
 
   /* ------------------------------------------
      TIER 1 - SCALES. One hue per meaning. Status scales share four
