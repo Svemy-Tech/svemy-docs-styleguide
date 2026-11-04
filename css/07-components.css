@@ -2,11 +2,18 @@
 CALLOUT BLOCKS / COMPONENTS
 Status callouts: 50 fill with the 400 rule of the same scale
 =============================== */
+/* Bar and fill are layers of one background, so they share the same edges and
+   the bar cannot stick out past the fill. The bar on the left stays square */
 .callout {
-  border-left: 1mm solid var(--svemy-light-500);
-  padding: 3mm 4mm;
+  --callout-bar: var(--svemy-light-500);
+  --callout-fill: var(--svemy-light-200);
+  padding: 3mm 4mm 3mm 4.8mm;
   margin-bottom: 3mm;
-  background: var(--svemy-light-200);
+  background:
+    linear-gradient(var(--callout-bar), var(--callout-bar)) left / 0.8mm 100%
+      no-repeat,
+    var(--callout-fill);
+  border-radius: 0 var(--radius) var(--radius) 0;
 }
 
 .callout > p:last-child {
@@ -19,23 +26,23 @@ Status callouts: 50 fill with the 400 rule of the same scale
 }
 
 .callout-info {
-  border-left-color: var(--svemy-info-400);
-  background: var(--svemy-info-50);
+  --callout-bar: var(--svemy-info-400);
+  --callout-fill: var(--svemy-info-50);
 }
 
 .callout-success {
-  border-left-color: var(--svemy-success-400);
-  background: var(--svemy-success-50);
+  --callout-bar: var(--svemy-success-400);
+  --callout-fill: var(--svemy-success-50);
 }
 
 .callout-warning {
-  border-left-color: var(--svemy-warning-400);
-  background: var(--svemy-warning-50);
+  --callout-bar: var(--svemy-warning-400);
+  --callout-fill: var(--svemy-warning-50);
 }
 
 .callout-danger {
-  border-left-color: var(--svemy-danger-400);
-  background: var(--svemy-danger-50);
+  --callout-bar: var(--svemy-danger-400);
+  --callout-fill: var(--svemy-danger-50);
 }
 
 /* ===============================
@@ -59,7 +66,7 @@ BADGES / TAGS
   letter-spacing: 0.02em;
   white-space: nowrap;
   vertical-align: middle;
-  border-radius: 2px;
+  border-radius: var(--radius);
 }
 
 /* A 1.5 mm dot drawn as a fixed-radius gradient: at this size a rounded box
@@ -213,6 +220,7 @@ pre {
   font-size: 9pt;
   line-height: 1.5;
   background: var(--svemy-light-300);
+  border-radius: var(--radius);
   padding: 3mm 4mm;
   margin: 4mm 0;
   overflow-x: auto;
@@ -229,12 +237,13 @@ pre code {
 /* ===============================
 HIGHLIGHTED TEXT
 =============================== */
-/* Design system: yellow is never a highlight; gray fill, square corners.
+/* Design system: yellow is never a highlight; gray fill.
    Status highlights: 50 fill with 500 text of the same scale */
 .text-highlight {
   background: var(--svemy-light-300);
   color: var(--svemy-dark-500);
   padding: 0.1mm 0.5mm;
+  border-radius: var(--radius);
   font-weight: 400;
 }
 

@@ -79,7 +79,7 @@
 
       <div class="cover-meta">
         <p class="cover-meta-company">&copy; SVEMY Construction Ltd.</p>
-        <p class="cover-meta-year">2025</p>
+        <p class="cover-meta-year">2026</p>
       </div>
     </section>
 
@@ -172,9 +172,9 @@
 
           <div class="description-credits">
             <p>
-              <strong>Created by:</strong> Dmytro Prasolov
+              <strong>Created by:</strong> Dmytro Prasolov, Eugenia Hryhorevych
             </p>
-            <p><strong>Date:</strong> November 27, 2025</p>
+            <p><strong>Date:</strong> November 4, 2026</p>
           </div>
         </main>
 
@@ -309,19 +309,19 @@
                 <p class="color-group-title">Light</p>
                 <span class="color-group-token">--svemy-light-*</span>
               </div>
-              <div class="color-swatch color-bg-light-200" title="Neutral callout fill">
+              <div class="color-swatch color-bg-light-200" title="Neutral callout fill, table zebra">
                 <p class="color-swatch-step">200</p>
                 <p class="color-swatch-hex">#FAFAFA</p>
               </div>
-              <div class="color-swatch color-bg-light-300" title="Card, zebra, code fill">
+              <div class="color-swatch color-bg-light-300" title="Card and code fill, table group and totals rows, table outline">
                 <p class="color-swatch-step">300</p>
                 <p class="color-swatch-hex">#F3F3F3</p>
               </div>
-              <div class="color-swatch color-bg-light-400" title="Hairlines, group rows, neutral badge fill">
+              <div class="color-swatch color-bg-light-400" title="Hairlines, table column rules, neutral badge fill">
                 <p class="color-swatch-step">400</p>
                 <p class="color-swatch-hex">#E5E5E5</p>
               </div>
-              <div class="color-swatch color-bg-light-500" title="Neutral callout rule">
+              <div class="color-swatch color-bg-light-500" title="Neutral callout rule, table header rules">
                 <p class="color-swatch-step">500</p>
                 <p class="color-swatch-hex">#C4C4C4</p>
               </div>
@@ -918,7 +918,9 @@
               For text, costs, quantities and schedules: black header, zebra rows,
               optional group rows and a totals row. Text left, numbers right, short
               labels and status centered; headers over numbers centered. Units in
-              the header, negatives in parentheses.
+              the header, negatives in parentheses. A light outline runs around the
+              body and totals rows, with column rules on the body rows only; the
+              totals row has none.
             </p>
 
             <table>
@@ -1080,7 +1082,7 @@
             </h3>
             <p class="text-small">
               For notes and status messages set apart from the text. Light fill,
-              colored rule on the left.
+              colored rule on the left, square on that side.
             </p>
 
             <div class="callout">
@@ -1265,8 +1267,8 @@
               <a href="#toc">Checkboxes</a>
             </h3>
             <p class="text-small">
-              For options in forms. 9&nbsp;pt box, 0.75&nbsp;pt outline, check mark
-              when checked, 2&nbsp;mm before the label in Body.
+              For options in forms. 9&nbsp;pt box, 0.75&nbsp;pt outline, 2&nbsp;px
+              corners, check mark when checked, 2&nbsp;mm before the label in Body.
             </p>
             <div class="checkbox-group">
               <label class="checkbox"><input type="checkbox" checked />For your approval</label>
@@ -1301,6 +1303,11 @@
         <main role="main">
           <p class="text-muted mb-6">
             A consistent grid keeps content aligned across every document.
+          </p>
+          <p class="text-small">
+            <strong>Corners:</strong> 4&nbsp;px on every table, image and filled block,
+            including badges and inline code. Exceptions: checkboxes use 2&nbsp;px, as
+            4&nbsp;px would make them look round; callouts round the right side only.
           </p>
 
           <article class="subsection">

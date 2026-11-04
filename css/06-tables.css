@@ -1,9 +1,8 @@
 /* ===============================
 TABLES
-One table style: black header, zebra, optional group and totals rows.
-Colours use the current palette until it is aligned with the design
-system: brand-black = dark-600, grey-200 = light-400,
-grey-100 = light-300, grey-600 = dark-200.
+One table style: black header, zebra, optional group and totals rows,
+a light outline and column rules. Header rules light-500, column rules
+light-400, outline light-300.
 =============================== */
 table {
   width: 100%;
@@ -141,18 +140,70 @@ thead tr:has(th[colspan] + th[rowspan]:last-child) + tr th:last-child {
   border-right: 0.5pt solid var(--svemy-light-500);
 }
 
-/* Zebra: white and light-300; restarts in every tbody after a group row.
-   Group rows sit one step darker, on light-400 */
+/* Rounded corners: the header's outer top corners, and the last row's bottom
+   corners, which show when the row is filled */
+thead tr:first-child th:first-child {
+  border-top-left-radius: var(--radius);
+}
+
+thead tr:first-child th:last-child {
+  border-top-right-radius: var(--radius);
+}
+
+table > tbody:last-child > tr:last-child > :first-child {
+  border-bottom-left-radius: var(--radius);
+}
+
+table > tbody:last-child > tr:last-child > :last-child {
+  border-bottom-right-radius: var(--radius);
+}
+
+/* Column rules on the body rows, none on the totals row */
+tbody tr > * + * {
+  border-left: 0.5pt solid var(--svemy-light-400);
+}
+
+/* Outline around everything below the header, in the group row color */
+tbody tr > :first-child,
+tfoot tr > :first-child {
+  border-left: 0.5pt solid var(--svemy-light-300);
+}
+
+tbody tr > :last-child,
+tfoot tr > :last-child {
+  border-right: 0.5pt solid var(--svemy-light-300);
+}
+
+tfoot tr:last-child > *,
+table > tbody:last-child > tr:last-child > * {
+  border-bottom: 0.5pt solid var(--svemy-light-300);
+}
+
+tfoot tr:last-child > :first-child {
+  border-bottom-left-radius: var(--radius);
+}
+
+tfoot tr:last-child > :last-child {
+  border-bottom-right-radius: var(--radius);
+}
+
+/* Zebra: white and light-200; restarts in every tbody after a group row.
+   Group and totals rows sit one step darker, on light-300 */
 tbody tr:nth-child(even of :not(.table-group)) {
-  background: var(--svemy-light-300);
+  background: var(--svemy-light-200);
 }
 
 .table-group th {
-  background: var(--svemy-light-400);
   padding: 4pt 6pt;
 }
 
-/* Totals row: no fill, strong rule above; label and values both in
+.table-group th,
+tfoot th,
+tfoot td {
+  background: var(--svemy-light-300);
+}
+
+/* Totals row: strong rule above; label and values both in
    Table Text SemiBold, so the row reads as one line */
 tfoot th {
   font-family: var(--font-body);
@@ -163,9 +214,12 @@ tfoot th {
   text-transform: none;
 }
 
+/* A little more above than below centers the figures in the row */
 tfoot th,
 tfoot td {
   border-top: 0.75pt solid var(--svemy-dark-600);
+  padding-top: 4.5pt;
+  padding-bottom: 3.5pt;
 }
 
 tfoot td {

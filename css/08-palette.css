@@ -61,6 +61,7 @@ come from the tokens.
   display: flex;
   flex-direction: column;
   padding: 2.5mm;
+  border-radius: var(--radius);
   color: var(--svemy-dark-700);
 }
 

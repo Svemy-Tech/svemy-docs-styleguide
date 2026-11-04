@@ -101,6 +101,7 @@ main > .subsection > p:not(.text-small, .layout-note, .table-note, .badge-row) {
   font-size: 9pt;
   background: var(--svemy-light-300);
   padding: 0.3mm 1.5mm;
+  border-radius: var(--radius);
 }
 
 /* Text color, underline fades in on hover. The line is always there but

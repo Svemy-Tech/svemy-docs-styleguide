@@ -19,6 +19,7 @@ hr {
 .card {
   padding: 4mm 5mm;
   background: var(--svemy-light-300);
+  border-radius: var(--radius);
 }
 
 .card > *:last-child {
@@ -204,6 +205,12 @@ GRID / LAYOUT
 
 /* Caption below the figure: FIGURE 01 run-in (.type-caption-label),
    en space, caption text */
+.image-figure img,
+.project-gallery-tile,
+.project-gallery-tile img {
+  border-radius: var(--radius);
+}
+
 .image-caption {
   margin-top: 2mm;
 }
