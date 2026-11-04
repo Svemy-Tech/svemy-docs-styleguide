@@ -74,10 +74,14 @@ p {
 
 /* Reading text at full text width is justified. Small text, notes and
    structured text (cards, tables, callouts, captions, lists, specimens)
-   stay left: at small sizes justification opens uneven gaps between words */
+   stay left: at small sizes justification opens uneven gaps between words.
+   Long words hyphenate so justified lines do not open wide gaps; this needs
+   lang on the html element */
 main > p:not(.text-small, .layout-note, .table-note, .badge-row),
 main > .subsection > p:not(.text-small, .layout-note, .table-note, .badge-row) {
   text-align: justify;
+  hyphens: auto;
+  hyphenate-limit-chars: 5 2 3;
 }
 
 /* Styleguide only: section intros on these pages. Documents use Lead */
@@ -224,6 +228,8 @@ system. Leading 1.4 unless a style sets its own.
   font-weight: 400;
   color: var(--svemy-dark-600);
   text-align: justify;
+  hyphens: auto;
+  hyphenate-limit-chars: 5 2 3;
   margin: 0 0 3mm;
 }
 

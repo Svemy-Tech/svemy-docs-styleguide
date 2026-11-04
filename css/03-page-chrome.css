@@ -133,6 +133,8 @@ DESCRIPTION PAGE (PAGE 2)
 
 .document-description {
   text-align: justify;
+  hyphens: auto;
+  hyphenate-limit-chars: 5 2 3;
   margin-bottom: 6mm;
 }
 
