@@ -215,7 +215,7 @@ CODE BLOCKS
 =============================== */
 pre {
   font-family:
-    "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    Consolas, "SF Mono", Menlo, Monaco, "Liberation Mono", "Courier New",
     monospace;
   font-size: 9pt;
   line-height: 1.5;

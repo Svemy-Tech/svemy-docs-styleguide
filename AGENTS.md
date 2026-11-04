@@ -1,6 +1,6 @@
 # SVEMY document styleguide — agent guide
 
-Styleguide that AI agents use as a block library to generate branded SVEMY Construction Ltd. PDF documents (printed from Chrome, US Letter). The target design system is described in `context/design-system/SVEMY-Document-System.md`. The `context/` folder is git-ignored and shared out of band; if it is missing, ask the user for it. Its `README.md` explains the full project background.
+Styleguide that AI agents use as a block library to generate branded SVEMY Construction Ltd. PDF documents (printed from Chrome, US Letter). The styleguide itself is the source of truth; `context/design-system/SVEMY-Document-System.md` is a reference only. The `context/` folder is git-ignored and shared out of band; if it is missing, ask the user for it. Its `README.md` explains the full project background.
 
 ## Layout
 

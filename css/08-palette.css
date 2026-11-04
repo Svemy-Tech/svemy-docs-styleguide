@@ -51,7 +51,7 @@ come from the tokens.
 
 .color-group-token {
   font-family:
-    "SF Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    Consolas, "SF Mono", Menlo, Monaco, "Liberation Mono", "Courier New",
     monospace;
   font-size: 7pt;
   color: var(--svemy-light-700);
