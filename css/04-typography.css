@@ -33,6 +33,12 @@ h2 {
   text-transform: uppercase;
 }
 
+/* A section heading inside the text of a document */
+main > h2 {
+  line-height: 25.2pt;
+  margin: 8mm 0 3.5mm;
+}
+
 /* Subsection heading */
 h3 {
   font-family: var(--font-display);

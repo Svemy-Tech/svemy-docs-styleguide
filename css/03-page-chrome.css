@@ -13,23 +13,47 @@ HEADER / FOOTER FOR INNER PAGES
 /* Document header: logo left, document type right; the rule runs across the
    full page */
 .page-header-doc {
-  /* The type's baseline sits on the bottom edge of the logo */
-  align-items: baseline;
+  /* The last text line's baseline sits on the bottom edge of the logo */
+  align-items: last baseline;
   margin: -16mm -16mm 8mm;
-  padding: 10mm 16mm 3mm;
+  padding: 10mm 16mm 4mm;
   border-bottom: 0.5pt solid var(--svemy-light-400);
 }
 
 .page-header-doc svg {
   display: block;
-  width: 53mm;
+  width: 46mm;
   height: auto;
 }
 
-/* The document type is an H4 set in capitals */
+/* The document type: an H4 in capitals when alone, an H3 above a contract number */
 .page-header-type.type-h4 {
   margin: 0;
   text-transform: uppercase;
+}
+
+.page-header-type.type-h3 {
+  margin: 0;
+}
+
+/* Two lines beside the logo: the document type's capitals line up with the top
+   of the logo, the number's baseline with its bottom */
+.page-header-meta {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.page-header-meta .page-header-type,
+.page-header-meta .type-label {
+  margin: 0;
+  text-box: trim-both cap alphabetic;
+}
+
+.page-header-meta .type-label {
+  font-weight: 500;
 }
 
 /* SV Footer: company left, page number centre, web address right.
@@ -197,9 +221,13 @@ Label and value in two columns, a hairline under each row. Labels use
 /* Styleguide sample: inside a page the header cannot run to the page edges */
 .document-opening-sample .page-header-doc {
   margin: 6mm 0 8mm;
-  padding: 0 0 3mm;
+  padding: 0 0 4mm;
 }
 
 .document-opening-sample .info-list {
   margin-bottom: 0;
+}
+
+.document-opening-sample + .text-small {
+  margin-top: 8mm;
 }
