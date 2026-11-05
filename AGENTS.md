@@ -21,7 +21,9 @@ Styleguide that AI agents use as a block library to generate branded SVEMY Const
 | `js/paginator.js` | Automatic pagination and footer auto-fill |
 | `templates/` | Document templates, one HTML file per document type, built from the styleguide blocks |
 | `fonts/` | Self-hosted woff2 files and OFL licences |
-| `scripts/build_standalone.py` | Builds the single-file version |
+| `scripts/build_standalone.py` | Builds a single-file version of the styleguide or of any document page |
+| `scripts/build_kit.py` | Builds `dist/svemy-document-kit.zip`, the kit people attach to an AI chat |
+| `kit/` | Files that go only into the kit, such as `START_HERE.md` |
 
 CSS files load in prefix order and the cascade depends on it. Do not reorder files or move rules between files unless the task says so.
 

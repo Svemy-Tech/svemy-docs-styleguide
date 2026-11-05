@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
-"""Build a single self-contained HTML file from svemy_styleguide.html.
+"""Build a single self-contained HTML file from a styleguide or document page.
 
-Inlines every css/*.css <link>, js/*.js <script src>, and every font
-referenced from the CSS (as base64 data URIs), so the result can be
-attached to an AI chat or opened from anywhere without its folders.
+Inlines every css/*.css <link>, js/*.js <script src>, and every font or image
+referenced from the CSS (as base64 data URIs), so the result can be opened
+from anywhere without its folders. Paths resolve from the input file's folder.
+A cover drawing is inlined only if the page uses its cover-art class.
 
 Usage (from the repo root):
     python3 scripts/build_standalone.py
-Output:
-    dist/svemy_styleguide.standalone.html
+        -> dist/svemy_styleguide.standalone.html
+    python3 scripts/build_standalone.py documents/my-rfi.html
+        -> documents/my-rfi.print.html
+    python3 scripts/build_standalone.py INPUT.html OUTPUT.html
 """
 import base64
 import re
@@ -16,28 +19,33 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SOURCE = ROOT / "svemy_styleguide.html"
-OUTPUT = ROOT / "dist" / "svemy_styleguide.standalone.html"
+DEFAULT_SOURCE = ROOT / "svemy_styleguide.html"
+DEFAULT_OUTPUT = ROOT / "dist" / "svemy_styleguide.standalone.html"
 
 LINK_RE = re.compile(r'^(\s*)<link rel="stylesheet" href="([^"]+)"\s*/>\s*$', re.M)
 SCRIPT_RE = re.compile(r'^(\s*)<script src="([^"]+)"></script>\s*$', re.M)
 URL_RE = re.compile(r'url\("(?!data:)([^"]+)"\)')
 MIME = {".woff2": "font/woff2", ".woff": "font/woff", ".ttf": "font/ttf",
-        ".svg": "image/svg+xml", ".png": "image/png"}
+        ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg",
+        ".jpeg": "image/jpeg", ".webp": "image/webp"}
 
 
 def read(path: Path) -> str:
     if not path.is_file():
-        sys.exit(f"error: missing file {path.relative_to(ROOT)}")
+        sys.exit(f"error: missing file {path}")
     return path.read_text(encoding="utf-8")
 
 
-def inline_urls(css: str, css_path: Path) -> str:
+def inline_urls(css: str, css_path: Path, html: str) -> str:
     def repl(m: re.Match) -> str:
         asset = (css_path.parent / m.group(1)).resolve()
+        # Cover drawings are large: keep only the ones this page uses
+        used = re.compile(r'class="[^"]*\bcover-art-' + re.escape(asset.stem) + r'\b')
+        if asset.parent.name == "covers" and not used.search(html):
+            return "none"
         if not asset.is_file():
             sys.exit(f"error: missing asset {m.group(1)} referenced in {css_path.name}")
-        mime = MIME.get(asset.suffix)
+        mime = MIME.get(asset.suffix.lower())
         if mime is None:
             sys.exit(f"error: unknown asset type {asset.suffix}")
         data = base64.b64encode(asset.read_bytes()).decode("ascii")
@@ -50,27 +58,41 @@ def indent(text: str, pad: str) -> str:
                    for line in text.splitlines(keepends=True))
 
 
-def main() -> None:
-    html = read(SOURCE)
+def build(source: Path) -> str:
+    html = read(source)
+    base = source.parent
 
     def css_repl(m: re.Match) -> str:
-        path = ROOT / m.group(2)
-        css = inline_urls(read(path), path)
+        path = (base / m.group(2)).resolve()
+        css = inline_urls(read(path), path, html)
         pad = m.group(1)
         return f"{pad}<style>\n{indent(css, pad + '  ')}{pad}</style>\n"
 
     def js_repl(m: re.Match) -> str:
-        js = read(ROOT / m.group(2))
+        js = read((base / m.group(2)).resolve())
         pad = m.group(1)
         return f"{pad}<script>\n{indent(js, pad + '  ')}{pad}</script>\n"
 
     html = LINK_RE.sub(css_repl, html)
-    html = SCRIPT_RE.sub(js_repl, html)
+    return SCRIPT_RE.sub(js_repl, html)
 
-    OUTPUT.parent.mkdir(exist_ok=True)
-    OUTPUT.write_text(html, encoding="utf-8")
-    size_kb = OUTPUT.stat().st_size / 1024
-    print(f"{OUTPUT.relative_to(ROOT)} ({size_kb:.0f} KB)")
+
+def main() -> None:
+    args = sys.argv[1:]
+    if not args:
+        source, output = DEFAULT_SOURCE, DEFAULT_OUTPUT
+    else:
+        source = Path(args[0]).resolve()
+        output = Path(args[1]).resolve() if len(args) > 1 else source.with_suffix(".print.html")
+    html = build(source)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(html, encoding="utf-8")
+    size_kb = output.stat().st_size / 1024
+    try:
+        shown = output.relative_to(ROOT)
+    except ValueError:
+        shown = output
+    print(f"{shown} ({size_kb:.0f} KB)")
 
 
 if __name__ == "__main__":
