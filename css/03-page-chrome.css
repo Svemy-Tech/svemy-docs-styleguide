@@ -10,13 +10,13 @@ HEADER / FOOTER FOR INNER PAGES
   margin-bottom: 8mm;
 }
 
-/* Document header: logo left, document type right; the rule runs across the
-   full page */
+/* Document header: logo left, document type right; the rule ends at the page
+   margins */
 .page-header-doc {
   /* The last text line's baseline sits on the bottom edge of the logo */
   align-items: last baseline;
-  margin: -16mm -16mm 8mm;
-  padding: 10mm 16mm 4mm;
+  margin: -16mm 0 8mm;
+  padding: 10mm 0 4mm;
   border-bottom: 0.5pt solid var(--svemy-light-400);
 }
 
