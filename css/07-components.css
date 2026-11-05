@@ -180,6 +180,60 @@ CHECKBOXES
 }
 
 /* ===============================
+SIGNATURE BLOCK
+=============================== */
+/* One party after another, never split across pages. The party name and any
+   statement of authority run the full width, so long text stays readable; the
+   fields sit in two columns below. A rule is written on from above and named
+   below, and is darker than a hairline so it prints clearly */
+p + .signature-block {
+  margin-top: 6mm;
+}
+
+.signature-block {
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.signature-party {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3mm 10mm;
+}
+
+.signature-party + .signature-party {
+  margin-top: 9mm;
+}
+
+.signature-party > .type-label,
+.signature-party > .text-small {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+.signature-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 11mm;
+}
+
+.signature-field.is-signature {
+  min-height: 15mm;
+}
+
+.signature-field .type-body {
+  margin: 0 0 1mm;
+  text-align: left;
+}
+
+.signature-field .text-small {
+  margin: 0;
+  padding-top: 1mm;
+  border-top: 0.5pt solid var(--svemy-dark-200);
+}
+
+/* ===============================
 HORIZONTAL RULES / SEPARATORS
 =============================== */
 /* Title accent line: 72 pt x 2.5 pt brand yellow, square ends, under the

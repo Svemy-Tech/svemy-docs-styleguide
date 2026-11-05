@@ -218,6 +218,12 @@ Label and value in two columns, a hairline under each row. Labels use
   text-align: left;
 }
 
+/* A short note under a value, in Small */
+.info-list .text-small {
+  display: block;
+  margin: 0;
+}
+
 /* Styleguide sample: inside a page the header cannot run to the page edges */
 .document-opening-sample .page-header-doc {
   margin: 6mm 0 8mm;
