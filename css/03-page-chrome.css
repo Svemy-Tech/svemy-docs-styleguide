@@ -237,3 +237,61 @@ Label and value in two columns, a hairline under each row. Labels use
 .document-opening-sample + .text-small {
   margin-top: 8mm;
 }
+
+/* ===============================
+COVER ART
+A light drawing beside the opening of a document's first page, behind the
+text. Add cover-art-building or cover-art-bridge to that page and wrap the
+title, subtitle, accent line and fields in .cover-opening; leave the class
+out for a plain cover. The opening keeps the drawing's height, so the
+contents below never run over it.
+=============================== */
+.cover-opening {
+  position: relative;
+  isolation: isolate;
+}
+
+[class*="cover-art-"] .cover-opening {
+  min-height: 74mm;
+}
+
+[class*="cover-art-"] .cover-opening::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -4mm;
+  right: -16mm;
+  width: 100mm;
+  height: 98mm;
+  background: right top / contain no-repeat;
+  /* The drawing fades out towards the text */
+  -webkit-mask-image: linear-gradient(to left, #000 55%, transparent),
+    linear-gradient(to top, transparent, #000 25%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to left, #000 55%, transparent),
+    linear-gradient(to top, transparent, #000 25%);
+  mask-composite: intersect;
+}
+
+.cover-art-building .cover-opening::before {
+  background-image: url("../assets/covers/building.png");
+}
+
+/* The bridge fills its box, cropping empty sky above and water below */
+.cover-art-bridge .cover-opening::before {
+  width: 85mm;
+  height: 98mm;
+  background-image: url("../assets/covers/bridge.png");
+  background-size: cover;
+  background-position: right center;
+}
+
+/* The title and fields stay clear of the drawing; a long title wraps */
+[class*="cover-art-"] .cover-opening .cover-title,
+[class*="cover-art-"] .cover-opening .type-doc-title {
+  max-width: 75%;
+}
+
+[class*="cover-art-"] .info-list {
+  max-width: 55%;
+}

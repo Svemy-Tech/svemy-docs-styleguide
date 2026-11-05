@@ -313,7 +313,7 @@ system. Leading 1.4 unless a style sets its own.
 /* Page furniture and components, as used in this styleguide */
 .type-toc-1,
 .type-toc-2 {
-  font-family: var(--font-display);
+  font-family: var(--font-contents);
   font-size: 14pt;
   line-height: 1.7;
   letter-spacing: 0.02em;
@@ -328,7 +328,7 @@ system. Leading 1.4 unless a style sets its own.
 
 .type-toc-2 {
   font-weight: 400;
-  color: var(--svemy-dark-400);
+  color: var(--svemy-dark-500);
 }
 
 .type-callout-title {

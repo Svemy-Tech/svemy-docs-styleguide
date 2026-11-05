@@ -5,6 +5,8 @@ CSS VARIABLES - SVEMY THEME (main palette and fonts)
   /* Document fonts */
   --font-display: "DINish Condensed", "Arial Narrow", sans-serif;
   --font-body: "Geist", Arial, sans-serif;
+  /* Normal-width DINish, for the table of contents */
+  --font-contents: "DINish", "DINish Condensed", Arial, sans-serif;
 
   /* Document base font size and line height */
   --base-font-size: 11pt;

@@ -58,3 +58,20 @@ font-display: block so print never falls back to a system font
   font-style: normal;
   font-display: block;
 }
+
+/* DINish at normal width, for the table of contents */
+@font-face {
+  font-family: "DINish";
+  src: url("../fonts/DINish-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: "DINish";
+  src: url("../fonts/DINish-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: block;
+}

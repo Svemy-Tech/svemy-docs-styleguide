@@ -1009,10 +1009,13 @@ const warn = window.SVEMY_WARN;
       const tocTitleOverride =
         mainTocSection.getAttribute("data-toc-title") ||
         "Table of Contents";
-      const tocItem = createNavItem("toc", tocTitleOverride, {
-        noNumber: true,
-      });
-      nav.appendChild(tocItem);
+      // A contents list on the document's first page does not list itself
+      if (mainTocSection.getAttribute("data-toc-exclude") !== "true") {
+        const tocItem = createNavItem("toc", tocTitleOverride, {
+          noNumber: true,
+        });
+        nav.appendChild(tocItem);
+      }
       log(
         `[ToC] Added ToC item. Nav now has ${nav.children.length} items`,
       );

@@ -165,13 +165,13 @@ PRINT RULES (Ctrl+P)
     color: var(--svemy-dark-500) !important;
   }
 
-  /* Sublists in print mode */
+  /* Sublists in print mode: the same color as the sections */
   .document-navigation li > ul > li > a {
-    color: var(--svemy-dark-400) !important;
+    color: var(--svemy-dark-500) !important;
   }
 
   .document-navigation li > ul > li > a .nav-text {
-    color: var(--svemy-dark-400) !important;
+    color: var(--svemy-dark-500) !important;
   }
 
   /* Guarantee grid and flexbox work in print */
