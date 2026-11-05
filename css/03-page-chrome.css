@@ -138,15 +138,9 @@ COVER PAGE (PAGE 1)
   color: var(--svemy-dark-500);
 }
 
-/* Display sizes take a tight leading so title and subtitle read as one block */
-.cover-subtitle {
-  font-family: var(--font-display);
-  font-size: 24pt;
-  line-height: 28pt;
-  margin-bottom: 0;
-  color: var(--svemy-dark-200);
-  font-weight: 500 !important;
-  letter-spacing: 0.02em;
+/* The cover subtitle takes the H2 style */
+.cover-subtitle.type-h2 {
+  margin: 0;
 }
 
 .cover-meta {
@@ -232,6 +226,20 @@ Label and value in two columns, a hairline under each row. Labels use
 
 .document-opening-sample .info-list {
   margin-bottom: 0;
+}
+
+/* Cover Art samples: the contents heading in its place, as an H2 in a document */
+.document-opening-sample .cover-art-next {
+  margin: 8mm 0 0;
+}
+
+.document-opening-sample + .document-opening-sample {
+  margin-top: 6mm;
+}
+
+/* In the styleguide the second drawing stops short of the footer */
+.document-opening-sample + .document-opening-sample .cover-opening::before {
+  height: 84mm;
 }
 
 .document-opening-sample + .text-small {

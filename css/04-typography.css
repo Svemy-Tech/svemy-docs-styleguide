@@ -4,8 +4,7 @@ TYPOGRAPHY
 h1,
 h2,
 h3,
-h4,
-h5 {
+h4 {
   font-family: var(--font-display);
   font-weight: 700;
   color: var(--svemy-dark-500);
@@ -68,14 +67,6 @@ h4 {
   margin-bottom: 3mm;
 }
 
-/* Minor heading above a paragraph */
-h5 {
-  font-family: var(--font-body);
-  font-size: 11pt;
-  font-weight: 600;
-  letter-spacing: 0;
-}
-
 p {
   margin-bottom: 3mm;
 }
@@ -88,7 +79,7 @@ main > .subsection > p:not(.text-small, .layout-note, .table-note, .badge-row) {
   text-align: justify;
 }
 
-/* Styleguide only: section intros on these pages. Documents use Lead */
+/* Styleguide only: section intros on these pages, not used in documents */
 .text-muted {
   color: var(--svemy-light-700);
   margin-bottom: 5mm;
@@ -145,11 +136,11 @@ i {
 /* ===============================
 TYPE SCALE (Typography System page)
 One class per style, matching the styles used in this styleguide:
-H1 = .cover-title, subtitle = .cover-subtitle, H2 = section header,
-H3 = subsection title, H4 / H5 = base h4 / h5, body = body text,
+H1 = .cover-title, H2 = section header and document subtitle,
+H3 = subsection title, H4 = base h4, body = body text,
 small = .text-small, caption = .image-caption-meta and .table-note.
-Lead, caption label, label small and table text follow the design
-system. Leading 1.4 unless a style sets its own.
+.type-label-small sets the spec labels on that page only.
+Leading 1.4 unless a style sets its own.
 =============================== */
 .type-doc-title {
   font-family: var(--font-display);
@@ -160,17 +151,6 @@ system. Leading 1.4 unless a style sets its own.
   text-transform: uppercase;
   color: var(--svemy-dark-500);
   margin: 0 0 4mm;
-}
-
-/* Subtitle typed as written, no transform */
-.type-doc-subtitle {
-  font-family: var(--font-display);
-  font-size: 24pt;
-  line-height: 28pt;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--svemy-dark-200);
-  margin: 0;
 }
 
 .type-h2 {
@@ -204,25 +184,6 @@ system. Leading 1.4 unless a style sets its own.
   letter-spacing: 0;
   color: var(--svemy-dark-500);
   margin: 0 0 3mm;
-}
-
-.type-h5 {
-  font-family: var(--font-body);
-  font-size: 11pt;
-  line-height: 1.4;
-  font-weight: 600;
-  letter-spacing: 0;
-  color: var(--svemy-dark-500);
-  margin: 0 0 2mm;
-}
-
-.type-lead {
-  font-family: var(--font-body);
-  font-size: 12pt;
-  line-height: 18pt;
-  font-weight: 400;
-  color: var(--svemy-dark-600);
-  margin: 0 0 5mm;
 }
 
 .type-body {
