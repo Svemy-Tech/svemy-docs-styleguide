@@ -251,6 +251,15 @@ const warn = window.SVEMY_WARN;
             )}px)`,
           );
 
+          // A heading never ends a page: it moves on with the text it opens
+          const carried = [];
+          while (
+            currentPage.length > 1 &&
+            /^H[2-5]$/.test(currentPage[currentPage.length - 1].tagName)
+          ) {
+            carried.unshift(currentPage.pop());
+          }
+
           // Close current page
           if (currentPage.length > 0) {
             log(
@@ -261,10 +270,12 @@ const warn = window.SVEMY_WARN;
             pages.push(currentPage);
           }
 
-          // Start new page with this element
+          // Start new page with the carried headings and this element
           log(`[Split]   → Starting new page with this element`);
-          currentPage = [child];
-          currentHeight = childHeight;
+          currentPage = [...carried, child];
+          currentHeight =
+            carried.reduce((sum, el) => sum + getElementHeight(el), 0) +
+            childHeight;
         }
         // CASE 3: Element fits on current page
         else {
@@ -440,9 +451,13 @@ const warn = window.SVEMY_WARN;
       return pages;
     }
 
-    // Get all other children of main (before and after nav)
+    // Get all other children of main (before and after nav). The list usually
+    // sits inside a <nav> wrapper: split around the child of main that holds it
     const allChildren = Array.from(mainElement.children);
-    const navIndex = allChildren.indexOf(navElement);
+    const navHolder =
+      allChildren.find((el) => el === navElement || el.contains(navElement)) ||
+      navElement;
+    const navIndex = allChildren.indexOf(navHolder);
     const beforeNav = allChildren.slice(0, navIndex);
     const afterNav = allChildren.slice(navIndex + 1);
 
@@ -596,8 +611,22 @@ const warn = window.SVEMY_WARN;
         );
         return; // Skip this element
       }
+      // Text after the contents (an introduction) is measured like any
+      // content: what does not fit moves on to a new page, and a heading
+      // moves on with the element after it
+      const elHeight = getElementHeight(el);
+      const next = afterNav[afterNav.indexOf(el) + 1];
+      const needed =
+        /^H[2-5]$/.test(el.tagName) && next
+          ? elHeight + getElementHeight(next)
+          : elHeight;
+      if (currentPage.length > 0 && currentHeight + needed > maxHeight) {
+        pages.push(currentPage);
+        currentPage = [];
+        currentHeight = 0;
+      }
       currentPage.push(el.cloneNode(true));
-      currentHeight += getElementHeight(el);
+      currentHeight += elHeight;
     });
 
     // Add final page if it has content
@@ -632,9 +661,22 @@ const warn = window.SVEMY_WARN;
     footer,
     isFirstPage,
     sectionId,
+    sourcePage,
   ) {
     const page = document.createElement("section");
     page.className = "page";
+
+    // Keep what the original page says about itself (data-toc-exclude,
+    // data-toc-sections, data-toc-numbers, cover classes) on every page
+    // made from it
+    if (sourcePage) {
+      sourcePage.classList.forEach((name) => page.classList.add(name));
+      Array.from(sourcePage.attributes).forEach((attr) => {
+        if (!["id", "class", "data-section-id", "data-toc-split"].includes(attr.name)) {
+          page.setAttribute(attr.name, attr.value);
+        }
+      });
+    }
 
     // CRITICAL: Preserve section ID on FIRST page for back-links to work
     // Subsequent pages use data-section-id for navigation tracking only
@@ -1067,6 +1109,72 @@ const warn = window.SVEMY_WARN;
         // Mark this section as processed
         processedSections.add(sectionId);
 
+        // A document whose sections flow on, one after another, marks its
+        // content page with data-toc-sections: every h2 with an id is a
+        // section and h3 with an id a subsection. Topics (h4) are numbered
+        // in the text but not listed, so the contents stays short
+        // The page script rebuilds pages, so the content itself shows it: no
+        // section header, and h2 headings with ids in the text
+        const flowing =
+          page.hasAttribute("data-toc-sections") ||
+          (!page.querySelector(".section-header") &&
+            allPages.some(
+              (p) =>
+                (p.id || p.getAttribute("data-section-id")) === sectionId &&
+                p.querySelector("main h2[id]"),
+            ));
+        if (flowing) {
+          // data-toc-numbers="as-written": the headings carry their own
+          // numbers (Category 1, 1.a.i), shown in the contents as typed
+          const asWritten = allPages.some(
+            (p) =>
+              (p.id || p.getAttribute("data-section-id")) === sectionId &&
+              p.getAttribute("data-toc-numbers") === "as-written",
+          );
+          let current = null;
+          let currentSub = null;
+          let currentTopic = null;
+          allPages.forEach((flowPage) => {
+            if ((flowPage.id || flowPage.getAttribute("data-section-id")) !== sectionId) {
+              return;
+            }
+            const flowMain = flowPage.querySelector("main");
+            if (!flowMain) return;
+            flowMain.querySelectorAll("h2[id], h3[id]").forEach((heading) => {
+              let title = (heading.getAttribute("data-toc-title") || heading.textContent)
+                .trim()
+                .replace(/\s+/g, " ");
+              if (!asWritten) title = title.replace(/^\d+(\.\d+)*\.?\s+/, "");
+              const item = createNavItem(heading.id, title, {});
+              if (asWritten) item.classList.add("nav-as-written");
+              if (heading.tagName === "H2") {
+                nav.appendChild(item);
+                current = item;
+                currentSub = null;
+                currentTopic = null;
+                sectionsAdded++;
+                return;
+              }
+              const parent =
+                heading.tagName === "H3" ? current :
+                heading.tagName === "H4" ? currentSub : currentTopic;
+              if (!parent) return;
+              let list = parent.querySelector(":scope > ul");
+              if (!list) {
+                list = document.createElement("ul");
+                parent.appendChild(list);
+              }
+              list.appendChild(item);
+              if (heading.tagName === "H3") {
+                currentSub = item;
+                currentTopic = null;
+              }
+              if (heading.tagName === "H4") currentTopic = item;
+            });
+          });
+          return;
+        }
+
         // Determine section title from first page
         const header =
           page.querySelector(".section-header h2") ||
@@ -1417,9 +1525,9 @@ const warn = window.SVEMY_WARN;
         ':scope > li > a[href^="#"]',
       );
 
-      // Also find links in nested subsections (ul > li > a)
+      // Also find links in nested entries, down to the fourth level
       const nestedLinks = pageNav.querySelectorAll(
-        ':scope > li > ul > li > a[href^="#"], :scope > li > ul > li > ul > li > a[href^="#"]',
+        ':scope > li > ul > li > a[href^="#"], :scope > li > ul > li > ul > li > a[href^="#"], :scope > li > ul > li > ul > li > ul > li > a[href^="#"]',
       );
 
       // Combine both sets
@@ -1568,8 +1676,20 @@ const warn = window.SVEMY_WARN;
           )}px (max: ${Math.round(AVAILABLE_CONTENT_HEIGHT_PX)}px)`,
         );
 
+        // In a proposal (data-toc-sections) every section after the first
+        // starts a new page
+        let sectionBreaks = 0;
+        if (page.hasAttribute("data-toc-sections")) {
+          main.querySelectorAll(":scope > h2").forEach((h2, idx) => {
+            if (idx > 0) {
+              h2.dataset.pageBreak = "before";
+              sectionBreaks++;
+            }
+          });
+        }
+
         // Content fits - keep page unchanged
-        if (mainHeight <= AVAILABLE_CONTENT_HEIGHT_PX) {
+        if (mainHeight <= AVAILABLE_CONTENT_HEIGHT_PX && sectionBreaks === 0) {
           log(`[Pagination] Content fits, keeping page unchanged`);
           newPages.push(page);
           return;
@@ -1602,6 +1722,7 @@ const warn = window.SVEMY_WARN;
             footer,
             splitIndex === 0, // First page of section
             sectionId,
+            page,
           );
           newPages.push(newPage);
 
@@ -1800,6 +1921,7 @@ const warn = window.SVEMY_WARN;
                     tocFooter,
                     splitIndex === 0,
                     "toc",
+                    tocPage,
                   );
 
                   // CRITICAL: Verify navigation after page creation

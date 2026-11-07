@@ -59,14 +59,22 @@ GRID / LAYOUT
   gap: 3mm;
 }
 
-.image-feature {
-  margin-bottom: 8mm;
-}
-
 .image-figure {
   margin: 0;
   page-break-inside: avoid;
   break-inside: avoid;
+}
+
+/* After the general figure rule, so its space below is kept */
+.image-feature {
+  margin-bottom: 8mm;
+}
+
+/* A figure on its own in the text keeps the same space below its caption as a
+   table does; figures inside a grid are spaced by the grid */
+main > .image-figure:not(.image-feature),
+.subsection > .image-figure:not(.image-feature) {
+  margin-bottom: 6mm;
 }
 
 .image-figure img {
@@ -239,6 +247,13 @@ GRID / LAYOUT
   border-bottom: 0.5mm solid var(--svemy-dark-300);
 }
 
+/* In a document the section heading has no rule under it, and sits like an
+   H2 in the text */
+.page-header-doc ~ .section-header {
+  border-bottom: 0;
+  margin-bottom: 3.5mm;
+}
+
 /* First section without top margin */
 main > .section-header:first-child,
 .section-header:first-child {
@@ -298,7 +313,7 @@ main > .section-header:first-child,
 .section-header-index {
   font-family: var(--font-display);
   font-size: 18pt;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   color: var(--svemy-dark-500); /* same as .section-header a h2 */
@@ -309,7 +324,7 @@ main > .section-header:first-child,
 .section-header-index-dot {
   font-family: var(--font-display);
   font-size: 18pt;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.02em;
   color: var(--svemy-dark-500);
   margin-left: 0;
@@ -421,7 +436,18 @@ DOCUMENT NAVIGATION (PAGE 2)
 /* Third level: h4 topics */
 .document-navigation li > ul > li > ul > li {
   counter-increment: topic-nav-counter;
+  counter-reset: point-nav-counter;
+}
+
+/* Fourth level: h5 points */
+.document-navigation li > ul > li > ul > li > ul > li {
+  counter-increment: point-nav-counter;
   counter-reset: none;
+}
+
+/* A continued entry does not count again, at any level */
+.document-navigation li.nav-continued {
+  counter-increment: none;
 }
 
 /* Container for link with dotted line - entire row is clickable */
@@ -514,6 +540,17 @@ nav .document-navigation li > ul > li > a,
     counter(topic-nav-counter);
 }
 
+.document-navigation li ul li ul li ul li a .nav-number-dot::before {
+  content: counter(nav-counter) "." counter(sub-nav-counter) "."
+    counter(topic-nav-counter) "." counter(point-nav-counter);
+}
+
+/* Headings that carry their own numbers (Category 1, 1.a.i) are listed as
+   written, without a counted number */
+.document-navigation li.nav-as-written > a .nav-number-dot {
+  display: none;
+}
+
 /* Selection of entire link content, including pseudo-elements */
 .document-navigation a {
   -webkit-user-select: text;
@@ -540,15 +577,18 @@ nav .document-navigation li > ul > li > a,
   min-width: 0;
 }
 
-/* Dotted line between title and page number */
+/* Dotted line between title and page number: real full stops, so the dots
+   print as crisp round type at any zoom */
 .document-navigation a .nav-text::after {
-  content: "";
+  content: "............................................................................................................................................................................................................................................................................................................";
+  letter-spacing: 0.08em;
   flex: 1;
-  border-bottom: 0.2mm dotted var(--svemy-light-500);
-  height: 0.2mm;
-  align-self: flex-end;
-  margin: 0 0 0.5em 0;
   min-width: 0;
+  contain: inline-size; /* the long run of dots never widens the line */
+  overflow: hidden;
+  white-space: pre;
+  color: var(--svemy-light-500);
+  font-weight: 400;
 }
 
 /* Page number on the right */

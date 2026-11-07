@@ -19,8 +19,13 @@
   </head>
 
   <body>
-    <!-- Cover art: add cover-art-building or cover-art-bridge to the first
-         page, or leave it out for a plain cover. -->
+    <!-- The document has exactly these two pages; the page script adds the
+         rest. Cover art: add cover-art-building or cover-art-bridge to this
+         page, or leave it out for a plain cover. A photo the person gives for
+         the cover replaces cover art: Cover Photo in the styleguide, right after
+         the title. It has no caption and no figure number.
+         The document type in every page header is Technical & Commercial
+         Proposal, Technical Proposal or Commercial Proposal, as the text says. -->
     <section class="page" id="toc" data-toc-exclude="true">
       <div class="page-inner">
         <header class="page-header page-header-doc">
@@ -85,6 +90,18 @@
           <nav role="navigation" aria-label="Table of Contents">
             <ul class="document-navigation" data-toc-auto="true"></ul>
           </nav>
+
+          <!-- Optional introduction: text that comes before the first section,
+               such as how the submission is organized. Delete the heading and
+               its text if there is none. Not listed in the contents. -->
+          <h2>[Introduction title]</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+            nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+            fugiat nulla pariatur.
+          </p>
         </main>
 
         <footer class="page-footer" role="contentinfo">
@@ -95,7 +112,12 @@
       </div>
     </section>
 
-    <section class="page" id="section-01">
+    <!-- Sections follow one another, without starting a new page; the first
+         starts on the page after the contents. Each section is an h2 with an
+         id, numbered 01., 02., ...; subsections are h3, topics h4 and points
+         h5, each with an id. Subsections and topics get their numbers by
+         themselves; the contents lists sections and subsections. -->
+    <section class="page" id="content" data-toc-sections>
       <div class="page-inner">
         <header class="page-header page-header-doc">
         <svg
@@ -139,13 +161,8 @@
           </div>
         </header>
 
-        <div class="section-header">
-          <span class="section-header-index">01</span>
-          <span class="section-header-index-dot">.</span>
-          <h2>[Section title]</h2>
-        </div>
-
         <main role="main">
+          <h2 id="section-01">01. [Section title]</h2>
           <h3 id="section-01-1" class="subsection-title">[Subsection title]</h3>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

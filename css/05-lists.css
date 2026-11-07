@@ -12,6 +12,26 @@ ul {
   list-style-type: square;
 }
 
+/* The bullet is drawn, not typed: a small square centered on the first line.
+   Lists with their own class (checklists, contents) keep their own marks */
+ul:not([class], [class] ul) {
+  list-style: none;
+}
+
+ul:not([class], [class] ul) > li {
+  position: relative;
+}
+
+ul:not([class], [class] ul) > li::before {
+  content: "";
+  position: absolute;
+  left: -4.2mm;
+  top: calc(0.5lh - 0.5mm);
+  width: 1mm;
+  height: 1mm;
+  background: currentColor;
+}
+
 /* Ordered: 1., a. */
 ol ol {
   list-style-type: lower-alpha;

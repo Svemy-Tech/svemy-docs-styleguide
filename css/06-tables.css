@@ -2,7 +2,7 @@
 TABLES
 One table style: dark header, zebra, optional group and totals rows,
 a light outline and column rules. Header rules light-500, column rules
-light-400, outline light-300.
+and outline light-300, totals rule light-400.
 =============================== */
 table {
   width: 100%;
@@ -28,9 +28,9 @@ table + h4 {
   margin-top: 6mm;
 }
 
-/* A two-column table reads as label and text: the label column stays wide
-   enough not to wrap on short labels */
-table:not(:has(td + td + td)) thead th:first-child {
+/* A two-column text table reads as label and text: the label column stays
+   wide enough not to wrap on short labels */
+table:not(:has(td + td + td, .numeric)) thead th:first-child {
   width: 25%;
 }
 
@@ -63,6 +63,28 @@ th {
 /* Numbers are right aligned; the headers over them are centred */
 td.numeric {
   text-align: right;
+}
+
+/* Figures never wrap. Columns share the width by their content, so short
+   labels (years, codes) do not stretch across the table */
+td.numeric,
+th.numeric {
+  min-width: 24mm;
+  white-space: nowrap;
+}
+
+/* In a cost table (with a totals or group row) the number columns take only
+   the width they need: the item column gets the rest and the figures sit
+   close under their headers */
+table:has(tfoot, .table-group) td.numeric,
+table:has(tfoot, .table-group) th.numeric {
+  width: 1%;
+}
+
+/* Space between a table, or its note, and the text after it */
+table + :not(.table-note),
+.table-note + * {
+  margin-top: 6mm;
 }
 
 th.numeric {
@@ -117,10 +139,22 @@ thead th {
   padding: 5pt 6pt;
 }
 
+/* Every rule in a table is an inset shadow, never a border. Borders print
+   in different ways (plain bars, slanted joins where two colors meet, masks
+   in rounded cells) and viewers show those at different widths; one kind of
+   shape keeps every rule the same. Each cell sets the sides it needs. The
+   first shadow paints on top, so where a column rule meets the outline or
+   the totals rule, the across rule shows */
+th,
+td {
+  box-shadow: var(--rule-top, 0 0 #0000), var(--rule-bottom, 0 0 #0000),
+    var(--rule-left, 0 0 #0000), var(--rule-right, 0 0 #0000);
+}
+
 /* Spanning header over a column group: centred, hairline under its label */
 thead th[colspan] {
   text-align: center;
-  border-bottom: 0.5pt solid var(--svemy-light-500);
+  --rule-bottom: inset 0 -1px 0 var(--svemy-light-500);
 }
 
 /* A header with sub-headers reads as one taller row, not two rows */
@@ -139,20 +173,40 @@ thead tr + tr th {
    each row draws its own piece, so a spanning label joins its rules cleanly */
 thead th + th,
 thead tr:has(th[rowspan]:first-child) + tr th:first-child {
-  border-left: 0.5pt solid var(--svemy-light-500);
+  --rule-left: inset 1px 0 0 var(--svemy-light-500);
 }
 
 thead th[colspan] + th[rowspan]:last-child {
-  border-left: 0;
+  --rule-left: 0 0 #0000;
 }
 
 thead th[colspan]:has(+ th[rowspan]:last-child),
 thead tr:has(th[colspan] + th[rowspan]:last-child) + tr th:last-child {
-  border-right: 0.5pt solid var(--svemy-light-500);
+  --rule-right: inset -1px 0 0 var(--svemy-light-500);
+}
+
+/* Column rules on the body rows, in the outline's color; none on the
+   totals row */
+tbody tr > * + * {
+  --rule-left: inset 1px 0 0 var(--svemy-light-300);
+}
+
+/* Outline around the body rows, in the group row color. The totals row needs
+   none: its fill is that color */
+tbody tr > :first-child {
+  --rule-left: inset 1px 0 0 var(--svemy-light-300);
+}
+
+tbody tr > :last-child {
+  --rule-right: inset -1px 0 0 var(--svemy-light-300);
+}
+
+table > tbody:last-child > tr:last-child > * {
+  --rule-bottom: inset 0 -1px 0 var(--svemy-light-300);
 }
 
 /* Rounded corners: the header's outer top corners, and the last row's bottom
-   corners, which show when the row is filled */
+   corners */
 thead tr:first-child th:first-child {
   border-top-left-radius: var(--radius);
 }
@@ -161,39 +215,12 @@ thead tr:first-child th:last-child {
   border-top-right-radius: var(--radius);
 }
 
-table > tbody:last-child > tr:last-child > :first-child {
-  border-bottom-left-radius: var(--radius);
-}
-
-table > tbody:last-child > tr:last-child > :last-child {
-  border-bottom-right-radius: var(--radius);
-}
-
-/* Column rules on the body rows, none on the totals row */
-tbody tr > * + * {
-  border-left: 0.5pt solid var(--svemy-light-400);
-}
-
-/* Outline around everything below the header, in the group row color */
-tbody tr > :first-child,
-tfoot tr > :first-child {
-  border-left: 0.5pt solid var(--svemy-light-300);
-}
-
-tbody tr > :last-child,
-tfoot tr > :last-child {
-  border-right: 0.5pt solid var(--svemy-light-300);
-}
-
-tfoot tr:last-child > *,
-table > tbody:last-child > tr:last-child > * {
-  border-bottom: 0.5pt solid var(--svemy-light-300);
-}
-
+table > tbody:last-child > tr:last-child > :first-child,
 tfoot tr:last-child > :first-child {
   border-bottom-left-radius: var(--radius);
 }
 
+table > tbody:last-child > tr:last-child > :last-child,
 tfoot tr:last-child > :last-child {
   border-bottom-right-radius: var(--radius);
 }
@@ -231,7 +258,7 @@ tfoot td {
    without an index; the values stay in Table Text SemiBold */
 tfoot th,
 tfoot td {
-  border-top: 0.5pt solid var(--svemy-light-400);
+  --rule-top: inset 0 1px 0 var(--svemy-light-400);
 }
 
 /* A little more above than below centers the figures in the row */

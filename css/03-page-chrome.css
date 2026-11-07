@@ -29,6 +29,9 @@ HEADER / FOOTER FOR INNER PAGES
 /* The document type: an H4 in capitals when alone, an H3 above a contract number */
 .page-header-type.type-h4 {
   margin: 0;
+  font-size: 12pt;
+  line-height: 1.4;
+  font-weight: 700;
   text-transform: uppercase;
 }
 
@@ -244,6 +247,37 @@ Label and value in two columns, a hairline under each row. Labels use
 
 .document-opening-sample + .text-small {
   margin-top: 8mm;
+}
+
+/* ===============================
+COVER PHOTO
+A photo or illustration the person gives for the cover, in the place of the
+cover drawing: beside the subtitle and fields, under the title, which keeps
+the full width. The fields keep the short width they have beside cover art.
+The figure goes right after the title. No caption, no figure number
+=============================== */
+.cover-opening:has(.cover-photo) {
+  display: flow-root;
+}
+
+.cover-opening:has(.cover-photo) .info-list {
+  max-width: 55%;
+}
+
+.cover-photo {
+  float: right;
+  width: 40%;
+  margin: 0 0 4mm 6mm;
+}
+
+.cover-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 90mm;
+  object-fit: contain;
+  object-position: right top;
+  border-radius: var(--radius);
 }
 
 /* ===============================
