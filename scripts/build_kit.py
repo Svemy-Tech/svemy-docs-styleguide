@@ -3,7 +3,7 @@
 
 The kit keeps the files readable for the AI (plain HTML that links shared CSS)
 and ships build_document.py, which turns a finished document into one
-self-contained file to open in Chrome and save as PDF. New templates in
+self-contained file and, with Node.js, into a PDF. New templates in
 templates/ are picked up automatically.
 
 Usage (from the repo root):
@@ -24,7 +24,6 @@ ZIP = DIST / "svemy-document-kit.zip"
 # What goes into the kit, relative to the repo root
 FILES = ["svemy_styleguide.html"]
 FOLDERS = ["css", "js", "fonts", "assets", "templates"]
-GUIDE = ROOT / "kit" / "START_HERE.md"
 
 
 def main() -> None:
@@ -36,12 +35,10 @@ def main() -> None:
         shutil.copy2(ROOT / name, KIT / name)
     for name in FOLDERS:
         shutil.copytree(ROOT / name, KIT / name)
-    shutil.copy2(ROOT / "scripts" / "build_standalone.py", KIT / "build_document.py")
+    shutil.copy2(ROOT / "scripts" / "build_standalone.py", KIT / "build_standalone.py")
+    for name in ["START_HERE.md", "build_document.py", "render_pdf.js"]:
+        shutil.copy2(ROOT / "kit" / name, KIT / name)
     (KIT / "documents").mkdir()
-    if GUIDE.is_file():
-        shutil.copy2(GUIDE, KIT / "START_HERE.md")
-    else:
-        print("note: kit/START_HERE.md is missing, the kit has no guide yet")
 
     if ZIP.exists():
         ZIP.unlink()
