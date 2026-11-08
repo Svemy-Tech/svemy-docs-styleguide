@@ -189,6 +189,22 @@ const warn = window.SVEMY_WARN;
       let currentPage = [];
       let currentHeight = 0;
 
+      // The height an element adds under the one before it on the same page.
+      // Their touching margins collapse into the larger one, and a heading
+      // that opens a page has no top margin
+      const marginsOf = (el) => {
+        const s = window.getComputedStyle(el);
+        return [parseFloat(s.marginTop) || 0, parseFloat(s.marginBottom) || 0];
+      };
+      const addedHeight = (el, prev) => {
+        const height = getElementHeight(el);
+        const top = marginsOf(el)[0];
+        if (!prev) return /^H[2-5]$/.test(el.tagName) ? height - top : height;
+        return height - Math.min(top, marginsOf(prev)[1]);
+      };
+      const stackHeight = (els) =>
+        els.reduce((sum, el, idx) => sum + addedHeight(el, els[idx - 1]), 0);
+
       log(
         `[Split] Starting split. Max height: ${Math.round(maxHeight)}px`,
       );
@@ -240,9 +256,12 @@ const warn = window.SVEMY_WARN;
         // CASE 2: Adding element would overflow current page.
         // Its bottom margin does not count: if the element ends the page,
         // that space would fall below the content area anyway.
-        const childMarginBottom =
-          parseFloat(window.getComputedStyle(child).marginBottom) || 0;
-        if (currentHeight + childHeight - childMarginBottom > maxHeight) {
+        const childMarginBottom = marginsOf(child)[1];
+        const childAdded = addedHeight(
+          child,
+          currentPage[currentPage.length - 1],
+        );
+        if (currentHeight + childAdded - childMarginBottom > maxHeight) {
           log(
             `[Split]   → Would overflow (${Math.round(
               currentHeight,
@@ -273,19 +292,17 @@ const warn = window.SVEMY_WARN;
           // Start new page with the carried headings and this element
           log(`[Split]   → Starting new page with this element`);
           currentPage = [...carried, child];
-          currentHeight =
-            carried.reduce((sum, el) => sum + getElementHeight(el), 0) +
-            childHeight;
+          currentHeight = stackHeight(currentPage);
         }
         // CASE 3: Element fits on current page
         else {
           log(
             `[Split]   → Adding to current page (total: ${Math.round(
-              currentHeight + childHeight,
+              currentHeight + childAdded,
             )}px)`,
           );
           currentPage.push(child);
-          currentHeight += childHeight;
+          currentHeight += childAdded;
         }
       }
 
@@ -616,6 +633,17 @@ const warn = window.SVEMY_WARN;
       // moves on with the element after it
       const elHeight = getElementHeight(el);
       const next = afterNav[afterNav.indexOf(el) + 1];
+      // The introduction's heading is dropped when its text fits under the
+      // last part of the contents (the text then sits 8mm below the list)
+      if (
+        afterNav.indexOf(el) === 0 &&
+        /^H[2-5]$/.test(el.tagName) &&
+        next &&
+        currentHeight + getElementHeight(next) + 8 * CONFIG.MM_TO_PX <= maxHeight
+      ) {
+        log(`[Split Nav] Introduction fits under the contents, heading removed`);
+        return;
+      }
       const needed =
         /^H[2-5]$/.test(el.tagName) && next
           ? elHeight + getElementHeight(next)
@@ -1790,6 +1818,37 @@ const warn = window.SVEMY_WARN;
           const tocFooter = tocPageInner.querySelector(".page-footer");
 
           if (tocMain) {
+            // An introduction under the contents drops its heading when it
+            // fits on the page; when it moves on to its own page the heading
+            // stays with it
+            const tocNavHolder = Array.from(tocMain.children).find(
+              (el) =>
+                el.matches(".document-navigation") ||
+                el.querySelector(".document-navigation"),
+            );
+            const introHeading = tocNavHolder && tocNavHolder.nextElementSibling;
+            if (
+              introHeading &&
+              /^H[2-5]$/.test(introHeading.tagName) &&
+              introHeading.nextElementSibling
+            ) {
+              const marker = document.createComment("intro heading");
+              introHeading.replaceWith(marker);
+              // main stretches to the page, so measure to the bottom of its
+              // last element rather than the box itself
+              const last = tocMain.lastElementChild;
+              const contentHeight =
+                last.getBoundingClientRect().bottom +
+                (parseFloat(getComputedStyle(last).marginBottom) || 0) -
+                tocMain.getBoundingClientRect().top;
+              if (contentHeight > AVAILABLE_CONTENT_HEIGHT_PX) {
+                marker.replaceWith(introHeading);
+              } else {
+                marker.remove();
+                log(`[Pagination] Introduction fits under the contents, heading removed`);
+              }
+            }
+
             const tocMainHeight = getElementHeight(tocMain);
             log(
               `[Pagination] ToC content height: ${Math.round(

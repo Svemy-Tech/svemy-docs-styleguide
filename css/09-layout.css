@@ -385,6 +385,13 @@ DOCUMENT NAVIGATION (PAGE 2)
   counter-reset: nav-counter 0;
 }
 
+/* An introduction right under the contents keeps the space a heading would
+   have above it */
+main > .document-navigation + *,
+main > nav + * {
+  margin-top: 8mm;
+}
+
 .document-navigation > li {
   margin: 0;
   padding: 0;
