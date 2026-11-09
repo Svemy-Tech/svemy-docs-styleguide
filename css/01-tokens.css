@@ -22,8 +22,10 @@ CSS VARIABLES - SVEMY THEME (main palette and fonts)
      on the 50 and 100 fills pass 4.5:1).
      ------------------------------------------ */
 
-  /* One corner radius for every filled block, table and image */
-  --radius: 4px;
+  /* Square corners on every filled block, table and image, so a document
+     looks the same when it is made in Word. Only badges keep round corners */
+  --radius: 0;
+  --radius-badge: 4px;
 
   /* Brand - SVEMY yellow. Accent only, never a status color */
   --svemy-primary-300: #ffdb4f;
