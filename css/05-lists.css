@@ -37,8 +37,10 @@ ol ol {
   list-style-type: lower-alpha;
 }
 
-/* A nested list sits under its parent item at the parent's text indent */
-.list-ordered-decimal li > ol {
+/* A nested list sits under its parent item at the parent's text indent, with
+   the same 1.5 mm above and below it as between items */
+li > ol,
+li > ul {
   margin: 1.5mm 0 0;
   padding-left: 5mm;
 }
