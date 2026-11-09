@@ -31,12 +31,12 @@ You turn a person's text into a branded SVEMY Construction Ltd. document. Read t
 
 | Template file | Use it for | Notes |
 |---|---|---|
-| `request-for-information.html` | A request for information (RFI) to a client or consultant | The title "Request for Information" is fixed. `[Brief description]` is the subject. The text goes under `Comments:`. |
+| `request-for-information.html` | A request for information (RFI) to a client or consultant | The title "Request for Information" is fixed. `[Brief description]` is the subject. The text goes under `Comments:`. After the RFI comes the Client / Engineer Review page, which stays empty under its heading; never write on it or remove it. |
 | `memorandum.html` | A memo that sets out a position or a record | The title is the memo's subject. |
 | `extension-justification.html` | A request to extend a completion date, with its reasons | The title is the subject; the subtitle under it is the project name. |
 | `final-settlement-agreement.html` | A settlement or other agreement between SVEMY and another party | Amounts in bold. Ends with the Signature Block. |
-| `transmittal-form.html` | A transmittal that sends documents for review | Has issue status and format checkboxes. `Prepared by` is whoever prepared it, not SVEMY by default. |
-| `shop-drawing.html` | A shop drawing submission | The same layout as the transmittal form. |
+| `transmittal-form.html` | A transmittal that sends documents for review | Has issue status and format checkboxes. `Prepared by` is whoever prepared it, not SVEMY by default. Two pages: the form, then the Client / Engineer Review page, which stays empty under its heading; never write on it or remove it. Forms have no page numbers. |
+| `shop-drawing.html` | A shop drawing submission | The same layout as the transmittal form. Two pages, as the transmittal form, with the empty Client / Engineer Review page and no page numbers. |
 | `technical-commercial-proposal.html` | A long proposal: technical, commercial or both | Contents on the first page, built automatically. Optional cover drawing or cover photo, and an optional introduction under the contents. The document has only the template's two pages: never add a page of your own. The document type in every page header is `Technical & Commercial Proposal`, `Technical Proposal` or `Commercial Proposal`, as the text says; the same on every page. |
 
 ## Content rules
@@ -57,7 +57,7 @@ Ask only for fields the chosen template has. If the text gives something the tem
 | Contract number | Ask the person. If they confirm there is none, use the header without a number (below) and remove the contract number row from the field list. Never write N/A or make one up. |
 | Proposal number | The same as the contract number. |
 | Date | Ask. Do not use today's date unless the person says so. |
-| Prepared by | Use `Vladan Myska` in the RFI, memorandum, extension justification and proposal, unless the text names someone else. In the transmittal form and shop drawing, use the company and person from the text, or ask. |
+| Prepared by | The person the text names (in the transmittal form and shop drawing, their company and name). If the text names no one, ask. |
 | Recipient, client, project name, other party | Ask. |
 | Specification reference | Write `N/A` only if the person says there is none. |
 | Revision | Use `0` for a first issue, unless the text says otherwise. |
@@ -73,10 +73,10 @@ Ask only for fields the chosen template has. If the text gives something the tem
 
 - **Never change the styling.** Do not add `<style>`, `style="..."` attributes, scripts, fonts or new class names. Use only the classes in the templates and in `svemy_styleguide.html`.
 - **Copy blocks from the styleguide.** For a table, list, callout, badge, card, image, quote or reference, copy its markup from `svemy_styleguide.html` and change only the text.
-- **Figures go in a table.** When the text compares several figures, such as tender against actual, planned against completed, quantities, rates or amounts, set them out in a table rather than in sentences. Use the Text table for label and description rows and the Cost table for quantities and money, both from `svemy_styleguide.html`, each with a numbered caption (`Table 01`, `Table 02`). The text around it says what the figures show; it does not repeat them all. This does not apply to lettered items (below).
-- **Table captions.** Every table has a caption with its number and a short title: `Table 01`&emsp;`Preliminary structural basis`. If the text gives no title, write one from what the table lists. Keep a table whole; if it must be split, both parts keep the same number and the second title ends with `(continued)`.
-- **Sections.** A template shows one section as an example. Repeat it for each section the text needs, numbered in order: `01.`, `02.`, `03.`. Section headings inside a document are `<h2>`.
-- **Proposal sections.** In the proposal, all sections go in the one `<section class="page" id="content" data-toc-sections>` page, one after another. Each section starts on a new page by itself; subsections and topics follow on without breaks. Each section is `<h2 id="section-NN">NN. Title</h2>`, subsections `<h3 class="subsection-title" id="...">`, topics `<h4 id="...">` and points `<h5 id="...">`; every id must be unique. The contents on the first page fills itself from these headings: never type it.
+- **Figures go in a table.** When the text compares several figures, such as tender against actual, planned against completed, quantities, rates or amounts, set them out in a table rather than in sentences. Use the Text table for label and description rows and the Cost table for quantities and money, both from `svemy_styleguide.html`, each with a numbered caption (`Table 1`, `Table 2`). The text around it says what the figures show; it does not repeat them all. This does not apply to lettered items (below).
+- **Table captions.** Every table has a caption with its number and a short title: `Table 1`&emsp;`Preliminary structural basis`. If the text gives no title, write one from what the table lists. Keep a table whole; if it must be split, both parts keep the same number and the second title ends with `(continued)`.
+- **Sections.** A template shows one section as an example. Repeat it for each section the text needs, numbered in order: `1.`, `2.`, `3.`. Section headings inside a document are `<h2>`.
+- **Proposal sections.** In the proposal, all sections go in the one `<section class="page" id="content" data-toc-sections>` page, one after another. Each section starts on a new page by itself; subsections and topics follow on without breaks. Each section is `<h2 id="section-N">N. Title</h2>`, subsections `<h3 class="subsection-title" id="...">`, topics `<h4 id="...">` and points `<h5 id="...">`; every id must be unique. The contents on the first page fills itself from these headings: never type it.
 - **Headings are headings.** Every line that names the text after it is a heading at its level, never a paragraph set in bold. Only a real heading stays with its text at a page break and appears in the contents. The build stops on a paragraph that is all bold.
 - **Pages break by themselves.** Do not add page breaks or empty space. Put flowing text directly in `<main>`, not inside `<article class="subsection">`, because an article never splits across pages.
 - **Headings.** Subsection titles in Title Case; topic (`<h4>`) and point (`<h5>`) headings in sentence case.
@@ -92,23 +92,23 @@ Read the whole text for mistakes before you write, and treat them in two ways:
 
 When the text follows the structure of a request for proposal (`Category 1`, `1. Project Examples`, `a. Concept Proposal document`, `i. Description of any design assumptions`), keep its order and titles, but number it the SVEMY way: the contents numbers the headings itself, as in `svemy_styleguide.html`.
 
-- **Levels.** Each category is a section `<h2>` numbered `01.`, `02.` in the same order: `Category 1 Design-Build Capability and Experience` becomes `01. Design-Build Capability and Experience`. A numbered item under it (`1. Project Examples`) is a subsection `<h3>`, a lettered item or named part under that (`a. Concept Proposal document`, `Project 1 Hector Gorge Salt Shed Replacement`) a topic `<h4>`, and a roman item (`i. Description of any design assumptions`) a point `<h5>`. Type subsection, topic and point titles without their RFP number or letter: the contents numbers them.
+- **Levels.** Each category is a section `<h2>` numbered `1.`, `2.` in the same order: `Category 1 Design-Build Capability and Experience` becomes `1. Design-Build Capability and Experience`. A numbered item under it (`1. Project Examples`) is a subsection `<h3>`, a lettered item or named part under that (`a. Concept Proposal document`, `Project 1 Hector Gorge Salt Shed Replacement`) a topic `<h4>`, and a roman item (`i. Description of any design assumptions`) a point `<h5>`. Type subsection, topic and point titles without their RFP number or letter: the contents numbers them.
 - **Unnumbered headings in the text** (`Operating use and building geometry`, `RMEI Structural engineering`) are one level below the heading they sit under.
 - **No numbers or letters in subsection, topic and point headings.** Not `1.`, `a.`, `i.`, `II.` and not roman numerals: the contents numbers subsections and topics itself, and points are not numbered. The build stops on a heading that starts with one.
-- **Text already in SVEMY numbering** (`01. Title`, `1.1 Title`, `1.1.1 Title`): `01.` is the section `<h2>` with its number, `1.1` a subsection `<h3>` and `1.1.1` a topic `<h4>`, both typed without the number; a short unnumbered heading line under a topic is a point `<h5>`.
-- **The contents** lists sections and subsections (`01.`, `1.1.`). In the text, subsections and topics show their numbers (`1.1.`, `1.1.1.`) by themselves; points (`<h5>`) have none.
+- **Text already in SVEMY numbering** (`1. Title`, `1.1 Title`, `1.1.1 Title`): `1.` is the section `<h2>` with its number, `1.1` a subsection `<h3>` and `1.1.1` a topic `<h4>`, both typed without the number; a short unnumbered heading line under a topic is a point `<h5>`.
+- **The contents** lists sections and subsections (`1.`, `1.1.`). In the text, subsections and topics show their numbers (`1.1.`, `1.1.1.`) by themselves; points (`<h5>`) have none.
 - **Keep the order and every item.** Do not merge, drop or reorder items.
 - **Lettered items stay lettered.** Items such as `a. Project name and location. ...`, `b. Owner. ...` are paragraphs in their order, each starting with its label in `<strong>` followed by its text: `<p><strong>a. Project name and location.</strong> Hector Gorge Salt Shed Replacement, ...</p>`. Do not move them into a table and do not drop, merge or renumber any of them.
 - **Text before the first section,** such as how the submission is organized, is the introduction under the contents on the first page, under the heading the text gives it (or `Introduction`). Keep the heading: when the introduction fits under the contents the heading is hidden by itself, and it shows only when the introduction moves on to its own page. If there is no such text, delete the introduction heading and text. The first section always starts on the next page by itself.
 
 ## Text without numbering
 
-When the text has no sections or numbering of its own, divide it yourself, in the SVEMY numbering (`01.`, `1.1.`, `1.1.1.`):
+When the text has no sections or numbering of its own, divide it yourself, in the SVEMY numbering (`1.`, `1.1.`, `1.1.1.`):
 
 - **Keep the order.** Group the text by topic as it runs; never move paragraphs to another place.
 - **Titles from the text.** Each heading is short and uses the text's own words. It adds no facts and no selling phrases.
 - **Depth by length.** A short text has sections only. Add subsections only where a section has at least two separate topics: never a single subsection under a section. Topics (`<h4>`) only in long sections.
-- **Report.** With the PDF, list the sections and subsections you made (`01. Background`, `02. Schedule`, ...), so the person can ask to merge, split or rename them.
+- **Report.** With the PDF, list the sections and subsections you made (`1. Background`, `2. Schedule`, ...), so the person can ask to merge, split or rename them.
 
 ## Special blocks
 
@@ -116,7 +116,7 @@ When the text has no sections or numbering of its own, divide it yourself, in th
 - **Signature Block** (agreements): one party after another. Fill `Name` and `Title` from the text; leave `Date` and `Signature` empty for handwriting. Remove the statement of authority if the person signs only for themselves. Keep the heading, the opening sentence and the block together, as in the template.
 - **Cover drawing** (proposal only): add `cover-art-building` or `cover-art-bridge` to the first page's `class` only when the text clearly shows the project is a building or a bridge. Otherwise leave the cover plain. Keep the `cover-opening` wrapper either way.
 - **Cover photo** (proposal only): when the person gives a photo or illustration for the cover, put it inside the `cover-opening`, right after the title, as `<figure class="cover-photo"><img src="images/<file name>" alt="..." /></figure>`, as Cover Photo in `svemy_styleguide.html`. It stands beside the subtitle and fields. Use either cover art or a cover photo, never both. Write no caption or description of the image anywhere on the cover, and keep the cover fields as in the template (`Prepared for`, `Prepared by`, `Date`).
-- **Cover text** (proposal): the title, then one line under it, the project location. Do not repeat the document type (`Design Build Technical Proposal`): it is in the page header. The build stops on any other line. It has no caption and no figure number, and the figures inside the document start at `Figure 01` without it. Where the text refers to it, call it the cover photo or the cover illustration.
+- **Cover text** (proposal): the title, then one line under it, the project location. Do not repeat the document type (`Design Build Technical Proposal`): it is in the page header. The build stops on any other line. It has no caption and no figure number, and the figures inside the document start at `Figure 1` without it. Where the text refers to it, call it the cover photo or the cover illustration.
 - **Status badges.** The badge's text is the status itself, in the person's words where they fit: `badge-success` for done (`Completed`), `badge-warning` for not started or waiting (`Pending`), `badge-danger` for late or blocked (`Delayed`), `badge-primary` for under way (`In progress`), `badge-neutral` for anything else (`Open`, `Mitigated`). Never write the class name, such as `Primary`, as the text. The badge is the status column: do not add another column that repeats it in words.
 
 ## Photos
@@ -126,8 +126,8 @@ The person attaches photos to the chat together with the text.
 - **Where they go.** The text may mark a place with `[photo 1]`, `[photo 2: caption]` or `[photo 3 + photo 4]`. The number is the order in which the photos were attached; a file name such as `[IMG_2041]` also works. `+` means side by side. Put each photo exactly where its mark is and remove the mark. Without marks, place each photo by what it shows, next to the text about the same thing.
 - **Files.** Copy each photo into `documents/images/` under its own file name and link it as `images/<file name>`. The build makes photos smaller and turns them upright by itself.
 - **Layout.** Copy the markup from Image Layouts in `svemy_styleguide.html`: one photo on its own is the Feature Image; two photos side by side, or a photo standing upright, go in the Two-Column Gallery; three or more go in pairs in Two-Column Galleries. The photos are cropped to the frame, so do not use them for drawings or documents that must show whole.
-- **Numbers and captions.** Every photo is a figure: `Figure 01`, `Figure 02` in order through the document. Use the person's caption when they give one. Without one, write a short caption of only what the photo plainly shows (`Steel truss on the north bank`), never dates, places, names or facts that the photo and the text do not give.
-- **Report.** When you hand over the PDF, list each photo with its figure number, where you put it and its caption, so the person can ask for changes, for example `Figure 02 (IMG_2041): section 04.2, "East abutment formwork"`.
+- **Numbers and captions.** Every photo is a figure: `Figure 1`, `Figure 2` in order through the document. Use the person's caption when they give one. Without one, write a short caption of only what the photo plainly shows (`Steel truss on the north bank`), never dates, places, names or facts that the photo and the text do not give.
+- **Report.** When you hand over the PDF, list each photo with its figure number, where you put it and its caption, so the person can ask for changes, for example `Figure 2 (IMG_2041): section 4.2, "East abutment formwork"`.
 
 ## Changes after the PDF
 
@@ -144,7 +144,7 @@ When the person asks for changes to a document you have handed over:
 - [ ] No `[` placeholders and no Lorem ipsum are left.
 - [ ] Every fact comes from the person's text or their answers.
 - [ ] Contract or proposal number is filled in, or removed after the person confirmed there is none.
-- [ ] Sections are numbered `01.`, `02.`, ... without gaps.
+- [ ] Sections are numbered `1.`, `2.`, ... without gaps.
 - [ ] No new styles, classes or inline styles were added.
 - [ ] Every photo mark is replaced by its photo, every photo is in `documents/images/`, and the figures are numbered in order.
 - [ ] Every line that names the text after it is a heading, not a bold paragraph; in the proposal, every heading has an id.

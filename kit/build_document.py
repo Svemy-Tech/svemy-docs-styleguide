@@ -149,7 +149,7 @@ def heading_problems(text: str) -> list:
                             "Move everything else into those two and delete the pages you added.")
         unnumbered = [re.sub(r"<[^>]+>|\s+", " ", m.group(3)).strip()
                       for m in HEADING.finditer(flow.group(1))
-                      if m.group(1) == "2" and not re.match(r"\s*\d{2}\. ", re.sub(r"<[^>]+>", "", m.group(3)))]
+                      if m.group(1) == "2" and not re.match(r"\s*\d{1,2}\. ", re.sub(r"<[^>]+>", "", m.group(3)))]
         marked = [re.sub(r"<[^>]+>|\s+", " ", m.group(3)).strip()
                   for m in HEADING.finditer(flow.group(1))
                   if m.group(1) in "345" and re.match(
@@ -160,9 +160,9 @@ def heading_problems(text: str) -> list:
                             + "; ".join(f'"{h[:60]}"' for h in marked[:6])
                             + ". Type them without it: the contents numbers subsections and topics itself.")
         if unnumbered:
-            problems.append("Section headings not numbered 01., 02., ...: "
+            problems.append("Section headings not numbered 1., 2., ...: "
                             + "; ".join(f'"{h[:60]}"' for h in unnumbered[:6])
-                            + ". Number every section h2 in order, for example \"01. Design-Build Capability\".")
+                            + ". Number every section h2 in order, for example \"1. Design-Build Capability\".")
         missing = [re.sub(r"<[^>]+>|\s+", " ", m.group(3)).strip()
                    for m in HEADING.finditer(flow.group(1)) if not re.search(r"\bid=", m.group(2))]
         if missing:
