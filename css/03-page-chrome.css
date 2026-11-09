@@ -92,6 +92,11 @@ HEADER / FOOTER FOR INNER PAGES
   justify-self: end;
 }
 
+/* A footer without a page number (forms) keeps the website on the right */
+.page-footer .footer-web {
+  grid-column: 3;
+}
+
 /* Page number: the footer style, one weight heavier */
 .page-number {
   justify-self: center;

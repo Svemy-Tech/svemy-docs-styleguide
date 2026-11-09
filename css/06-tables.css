@@ -104,7 +104,7 @@ tr {
   break-inside: avoid;
 }
 
-/* Table title above the table: TABLE 01 in grey, em space, title */
+/* Table title above the table: TABLE 1 in grey, em space, title */
 table caption {
   caption-side: top;
   text-align: left;
@@ -235,7 +235,7 @@ tbody tr:nth-child(even of :not(.table-group)) {
   padding: 4pt 6pt;
 }
 
-/* Group rows number themselves: 01., 02. */
+/* Group rows number themselves: 1., 2. */
 table {
   counter-reset: table-group;
 }
@@ -245,7 +245,7 @@ table {
 }
 
 .table-group th::before {
-  content: counter(table-group, decimal-leading-zero) ". ";
+  content: counter(table-group) ". ";
 }
 
 .table-group th,

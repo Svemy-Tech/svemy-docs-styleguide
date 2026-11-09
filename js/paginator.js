@@ -768,13 +768,18 @@ const warn = window.SVEMY_WARN;
       // Constants for page numbering
       const BASE_PAGE_NUMBER = 1; // First content page (after cover) is page 1
 
+      // A document without a separate cover opens on its title page: that
+      // page counts as page 1 but shows no number, so the next one reads 2
+      const titlePageUnnumbered = !document.querySelector(".page-cover");
+
       let updateCount = 0;
       pages.forEach((page, index) => {
         try {
           const pageNumElement = page.querySelector(".page-number");
           if (pageNumElement) {
             const pageNumber = index + BASE_PAGE_NUMBER;
-            pageNumElement.textContent = pageNumber;
+            pageNumElement.textContent =
+              titlePageUnnumbered && index === 0 ? "" : pageNumber;
             updateCount++;
           }
         } catch (error) {

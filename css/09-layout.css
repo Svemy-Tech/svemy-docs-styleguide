@@ -519,7 +519,7 @@ nav .document-navigation li > ul > li > a,
 }
 
 .document-navigation a .nav-number-dot::before {
-  content: counter(nav-counter, decimal-leading-zero);
+  content: counter(nav-counter);
   color: inherit;
 }
 

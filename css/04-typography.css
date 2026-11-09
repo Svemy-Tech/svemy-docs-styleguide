@@ -110,7 +110,7 @@ main > h4 + h5 {
 
 /* In a proposal (data-toc-sections) subsection and topic headings show their
    numbers, counted the way the contents counts them: 1.1. and 1.1.1. The
-   section heading carries its number as typed (01.) */
+   section heading carries its number as typed (1.) */
 body {
   counter-reset: doc-section doc-subsection doc-topic;
 }
