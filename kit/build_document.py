@@ -144,7 +144,7 @@ def heading_problems(text: str) -> list:
     if flow:
         pages = len(re.findall(r'<section\b[^>]*class="[^"]*\bpage\b', text))
         if pages != 2:
-            problems.append(f"The proposal has {pages} pages in its file. It must keep only the template's two: "
+            problems.append(f"The document has {pages} pages in its file. It must keep only the template's two: "
                             "the cover with the contents (and the introduction under it) and the content page. "
                             "Move everything else into those two and delete the pages you added.")
         unnumbered = [re.sub(r"<[^>]+>|\s+", " ", m.group(3)).strip()

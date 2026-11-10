@@ -1710,9 +1710,12 @@ const warn = window.SVEMY_WARN;
         );
 
         // In a proposal (data-toc-sections) every section after the first
-        // starts a new page
+        // starts a new page; data-sections-flow lets sections follow on
         let sectionBreaks = 0;
-        if (page.hasAttribute("data-toc-sections")) {
+        if (
+          page.hasAttribute("data-toc-sections") &&
+          !page.hasAttribute("data-sections-flow")
+        ) {
           main.querySelectorAll(":scope > h2").forEach((h2, idx) => {
             if (idx > 0) {
               h2.dataset.pageBreak = "before";
